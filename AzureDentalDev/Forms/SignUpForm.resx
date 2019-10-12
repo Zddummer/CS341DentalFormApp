@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="LoginFormMainPictureBox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SignUpFormMainPictureBox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
         AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
@@ -202,35 +202,6 @@
         HVIAQYGMTzmfPNLyOU5Xk+cZDbZbmeQ3WV5RelvOusiyGyLt7m0LkVVdOdYGyzETuRF8Y2uf8cMfUUDI
         40RiQHqFpaaHV1Zuag6uXXZLYh0gVu7Z8fCbt0w/SGyEzCkLklVgKVAxvUtJw4pw2zmad/lnJtBW3zPY
         rhTsXK6jTl4uUDIerj3HazSNyMtLum2LLy+ZrWwi9chRSusj/9k=
-</value>
-  </data>
-  <data name="LoginFormUserPictureBox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJ
-        TUUH4wkXFgck9zNjDwAAAa9JREFUWEfVlu2SgjAMRffNQEBRQVH50Pd/kewcZ+JQjLS6sOz+ODMKbe5t
-        m6R8xXEsS/I/DWRZJtvtVoqikLIsZb/fy2azkSRJzPFjvGUA4ePxKG3byu12c7her1LXtex2O1mtVuZ8
-        i2ADrNgStqiqKng3ggzkeS5d15lirzidTkE74TWQpqk0TWOK+CBHrJh9vAZIMit4CBhnAVZcZdQA50hi
-        WcFDISmt2MqogfV6/fbZD6FqrNjKqAGSj/KyAodyPp/N2MrfNrD4ESyehLBoGcLijQg+acXcB5O0YiX0
-        MqJqJr+MFN91fLlc5rmOKUeSURPq1QcJwozhP3OGcSxGDRCE7dTz13ONouhpLM94xxjGMoffPiOmAVbY
-        F+7DPW8F5RnvhuPVCDGHc+DJABnvSzaCInY4HO7w2zLbh1Lm2IZ6jgESyBfoJ5Co5Edf82GAJJpTXEED
-        LccAycOtZU2YA7S0VO8GKJ3fWL2Clpb0w0DoJ/cUoOUYYDusEpoLtJwj0F2glVoTpgQNXb1jQE3Q6+fI
-        B2LSkPri4BhQ6Fr0ebbq028B4KzJeGLZnTCWb7+aiKFDuiweAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="LoginFormPassPictureBox.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAApCAYAAABUdSs8AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJ
-        TUUH4wkXFgwrhHinVQAAAc5JREFUWEftmNmSgyAQRf00o9nMYtTs//8hpA5VWAS6iS/GFx7u1CzN5XTT
-        EJiiLEszRavVymy3W3O5XMz9fjfv99u8Xq9Rt9vNnM9ns9lsxPGaJgGs12s78ePx+JpUEjGA1HUteoX6
-        CbDb7WzG0mQpDcNgwSVPX0kASj4la03X6/UnhApACTGQjIEiw67rTN/3Nk4DJYb+keZAKsDpdIrMns+n
-        advWZuWb8j3Nx2TSmP1+/+XtSwQge7o6NANKincChGYNx1ElrQoiAMShCSVPldJJgmd5tF4QASizb4Ca
-        poniNLENp46PAMiSbP3BqQwksXVZe98DKCk2AqiqKiohXT6l/E7AhruCBpViIwDWMDx4Uk0kSfOQYn8C
-        cOZrgzWFVcRDa2JxCSg5EIhSsrXCuJTwYELfQzuQIgCEAZVw4mcpLqWpHiMAdHTv8Xi0B84cwjv8uLYA
-        EFKicOvMIZaDLemWo6A00hk+t9y5UHBC/SPzUFSC5SiWyN7pcDiYgj0u/fEfoikzQAbIABkgA2SADLA8
-        gPSa/ZfshYSX8BJXMt4LPOEKbqdLVIFr+ngt52bMkzx8UM4hMmftx2s5XxC/4J9SrAsBcwjv72d+aT4i
-        wvSQpzUcJAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

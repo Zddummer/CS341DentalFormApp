@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.LoginFormMainPictureBox = new System.Windows.Forms.PictureBox();
             this.LoginFormUserPanel = new System.Windows.Forms.Panel();
@@ -40,6 +41,8 @@
             this.LoginFormLoginButton = new System.Windows.Forms.Button();
             this.LoginFormSignUpButton = new System.Windows.Forms.Button();
             this.LoginFormErrorLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormMainPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormUserPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormPassPictureBox)).BeginInit();
@@ -85,6 +88,7 @@
             // 
             // LoginFormUserPictureBox
             // 
+            this.LoginFormUserPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.LoginFormUserPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LoginFormUserPictureBox.BackgroundImage")));
             this.LoginFormUserPictureBox.Location = new System.Drawing.Point(76, 187);
             this.LoginFormUserPictureBox.Name = "LoginFormUserPictureBox";
@@ -110,8 +114,10 @@
             this.LoginFormUserTextBox.Location = new System.Drawing.Point(115, 199);
             this.LoginFormUserTextBox.Name = "LoginFormUserTextBox";
             this.LoginFormUserTextBox.Size = new System.Drawing.Size(211, 19);
-            this.LoginFormUserTextBox.TabIndex = 6;
+            this.LoginFormUserTextBox.TabIndex = 7;
             this.LoginFormUserTextBox.Text = "Username";
+            this.LoginFormUserTextBox.Click += new System.EventHandler(this.LoginFormUserTextBox_Click);
+            this.LoginFormUserTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginFormUserTextBox_KeyDown);
             // 
             // LoginFormPassTextBox
             // 
@@ -122,8 +128,11 @@
             this.LoginFormPassTextBox.Location = new System.Drawing.Point(115, 272);
             this.LoginFormPassTextBox.Name = "LoginFormPassTextBox";
             this.LoginFormPassTextBox.Size = new System.Drawing.Size(211, 19);
-            this.LoginFormPassTextBox.TabIndex = 7;
+            this.LoginFormPassTextBox.TabIndex = 8;
             this.LoginFormPassTextBox.Text = "Password";
+            this.LoginFormPassTextBox.Click += new System.EventHandler(this.LoginFormPassTextBox_Click);
+            this.LoginFormPassTextBox.Enter += new System.EventHandler(this.LoginFormPassTextBox_Enter);
+            this.LoginFormPassTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginFormPassTextBox_KeyDown);
             // 
             // LoginFormLoginButton
             // 
@@ -134,7 +143,8 @@
             this.LoginFormLoginButton.Location = new System.Drawing.Point(76, 372);
             this.LoginFormLoginButton.Name = "LoginFormLoginButton";
             this.LoginFormLoginButton.Size = new System.Drawing.Size(250, 35);
-            this.LoginFormLoginButton.TabIndex = 8;
+            this.LoginFormLoginButton.TabIndex = 9;
+            this.LoginFormLoginButton.TabStop = false;
             this.LoginFormLoginButton.Text = "Log in";
             this.LoginFormLoginButton.UseVisualStyleBackColor = false;
             this.LoginFormLoginButton.Click += new System.EventHandler(this.LoginFormLoginButton_Click);
@@ -147,9 +157,10 @@
             this.LoginFormSignUpButton.Location = new System.Drawing.Point(76, 414);
             this.LoginFormSignUpButton.Name = "LoginFormSignUpButton";
             this.LoginFormSignUpButton.Size = new System.Drawing.Size(250, 35);
-            this.LoginFormSignUpButton.TabIndex = 9;
+            this.LoginFormSignUpButton.TabIndex = 6;
             this.LoginFormSignUpButton.Text = "Sign up";
             this.LoginFormSignUpButton.UseVisualStyleBackColor = false;
+            this.LoginFormSignUpButton.Click += new System.EventHandler(this.LoginFormSignUpButton_Click);
             // 
             // LoginFormErrorLabel
             // 
@@ -162,6 +173,16 @@
             this.LoginFormErrorLabel.TabIndex = 10;
             this.LoginFormErrorLabel.Text = "Invalid Username or Password";
             this.LoginFormErrorLabel.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 10;
+            this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
             // LoginForm
             // 
@@ -184,7 +205,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Log in";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormMainPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormUserPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormPassPictureBox)).EndInit();
@@ -206,6 +229,8 @@
         private System.Windows.Forms.Button LoginFormLoginButton;
         private System.Windows.Forms.Button LoginFormSignUpButton;
         private System.Windows.Forms.Label LoginFormErrorLabel;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
