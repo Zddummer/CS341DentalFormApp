@@ -48,6 +48,7 @@
             this.SignUpFormFirstPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.SignUpFormValidLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SignUpFormMainPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,7 +126,7 @@
             this.SignUpFormErrorLabel.AutoSize = true;
             this.SignUpFormErrorLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUpFormErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.SignUpFormErrorLabel.Location = new System.Drawing.Point(112, 404);
+            this.SignUpFormErrorLabel.Location = new System.Drawing.Point(112, 395);
             this.SignUpFormErrorLabel.Name = "SignUpFormErrorLabel";
             this.SignUpFormErrorLabel.Size = new System.Drawing.Size(193, 16);
             this.SignUpFormErrorLabel.TabIndex = 15;
@@ -245,12 +246,25 @@
             this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
+            // SignUpFormValidLabel
+            // 
+            this.SignUpFormValidLabel.AutoSize = true;
+            this.SignUpFormValidLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUpFormValidLabel.ForeColor = System.Drawing.Color.Lime;
+            this.SignUpFormValidLabel.Location = new System.Drawing.Point(115, 415);
+            this.SignUpFormValidLabel.Name = "SignUpFormValidLabel";
+            this.SignUpFormValidLabel.Size = new System.Drawing.Size(179, 15);
+            this.SignUpFormValidLabel.TabIndex = 25;
+            this.SignUpFormValidLabel.Text = "Your account has been created!";
+            this.SignUpFormValidLabel.Visible = false;
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(400, 500);
+            this.Controls.Add(this.SignUpFormValidLabel);
             this.Controls.Add(this.SignUpFormFirstLabel);
             this.Controls.Add(this.SignUpFormFirstTextBox);
             this.Controls.Add(this.SignUpFormFirstPanel);
@@ -298,5 +312,6 @@
         private System.Windows.Forms.Panel SignUpFormFirstPanel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label SignUpFormValidLabel;
     }
 }

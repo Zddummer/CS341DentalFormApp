@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AzureDentalDev.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -118,6 +119,29 @@ namespace AzureDentalDev.Forms
 
         private void SignUpFormRegisterButton_Click(object sender, EventArgs e)
         {
+
+            if (SignUpFormFirstTextBox.Text == "Enter your first name" || SignUpFormFirstTextBox.Text == String.Empty ||
+               SignUpFormLastTextBox.Text == "Enter your last name" || SignUpFormLastTextBox.Text == String.Empty ||
+               SignUpFormUserTextBox.Text == "Create a username" || SignUpFormUserTextBox.Text == String.Empty ||
+               SignUpFormPassTextBox.Text == "Create a password" || SignUpFormPassTextBox.Text == String.Empty)
+            {
+                return;
+            }
+
+            Boolean blnWasAccountCreated = DataAccessClass.registerNewUser(SignUpFormFirstTextBox.Text, 
+                                                                           SignUpFormLastTextBox.Text,
+                                                                           SignUpFormUserTextBox.Text,
+                                                                           SignUpFormPassTextBox.Text);
+
+            if (blnWasAccountCreated)
+            {
+                SignUpFormValidLabel.Visible = true;
+                SignUpFormErrorLabel.Visible = false;
+            } else
+            {
+                SignUpFormValidLabel.Visible = false;
+                SignUpFormErrorLabel.Visible = true;
+            }
 
         }
 

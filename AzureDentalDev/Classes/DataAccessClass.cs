@@ -71,8 +71,40 @@ namespace AzureDentalDev.Classes
                                               String strPassword)
         {
             Boolean blnWasUserCreated = false;
+            int intNumberOfRowsAffected = 0;
 
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "cs341azuredb.database.windows.net";
+            builder.UserID = "adminonly";
+            builder.Password = "CS341dbNULL";
+            builder.InitialCatalog = "DentalDev";
 
+            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Begin ");
+                sb.Append("If Not Exists(Select Top 1 * ");
+                sb.Append("From Users As U ");
+                sb.Append($"Where U.userName = '{strUserName}') ");
+                sb.Append("Begin ");
+                sb.Append("INSERT INTO Users(userName, password, firstName, lastName, userType, accessType) ");
+                sb.Append($"VALUES('{strUserName}', '{strPassword}', '{strFirstName}', '{strLastName}', 'C', 'A') ");
+                sb.Append("End ");
+                sb.Append("End");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if(intNumberOfRowsAffected > 0)
+                    {
+                        blnWasUserCreated = true;
+                    }
+                }
+            }
 
             return blnWasUserCreated;
         }

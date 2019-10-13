@@ -38,8 +38,20 @@ namespace AzureDentalDev
                         AdminHomeForm oAdminHomeForm = new AdminHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
                         oAdminHomeForm.Show();
                         this.Visible = false;
+                        childSignUpForm.Visible = false;
                         break;
+                    case 'C':
+                        CustomerHomeForm oCustomerHomeForm = new CustomerHomeForm();
+                        oCustomerHomeForm.Show();
+                        this.Visible = false;
+                        childSignUpForm.Visible = false;
+                        break;
+                    case 'D':
 
+                        break;
+                    case 'H':
+
+                        break;
                     default:
                         LoginFormErrorLabel.Visible = true;
                         break;
