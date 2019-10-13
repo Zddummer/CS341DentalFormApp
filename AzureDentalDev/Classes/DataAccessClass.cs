@@ -64,5 +64,17 @@ namespace AzureDentalDev.Classes
             return ucReturnUser;
 
         }
+
+        public static Boolean registerNewUser(String strFirstName,
+                                              String strLastName,
+                                              String strUserName,
+                                              String strPassword)
+        {
+            Boolean blnWasUserCreated = false;
+
+
+
+            return blnWasUserCreated;
+        }
     }
 }
