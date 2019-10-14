@@ -132,5 +132,15 @@ namespace AzureDentalDev
                 timer2.Stop();
             }
         }
+
+        private void LoginFormCloseLabel_MouseHover(object sender, EventArgs e)
+        {
+            LoginFormCloseLabel.ForeColor = Color.Red;
+        }
+
+        private void LoginFormCloseLabel_MouseLeave(object sender, EventArgs e)
+        {
+            LoginFormCloseLabel.ForeColor = Color.Gray;
+        }
     }
 }

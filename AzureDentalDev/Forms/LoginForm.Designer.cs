@@ -85,6 +85,8 @@
             this.LoginFormCloseLabel.TabIndex = 3;
             this.LoginFormCloseLabel.Text = "X";
             this.LoginFormCloseLabel.Click += new System.EventHandler(this.Label1_Click);
+            this.LoginFormCloseLabel.MouseLeave += new System.EventHandler(this.LoginFormCloseLabel_MouseLeave);
+            this.LoginFormCloseLabel.MouseHover += new System.EventHandler(this.LoginFormCloseLabel_MouseHover);
             // 
             // LoginFormUserPictureBox
             // 
