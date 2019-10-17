@@ -1,38 +1,51 @@
-﻿using AzureDentalDev.Classes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace AzureDentalDev.Forms
+﻿namespace AzureDentalDev.Forms
 {
-    public partial class DoctorHomeForm : Form
+    partial class DoctorHomeForm
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-        public DoctorHomeForm(String strUserName, String strPassword)
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
         {
-            InitializeComponent();
-            DoctorHomeFormCode(strUserName, strPassword);
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
-        private void DoctorHomeFormCode(String strUserName, String strPassword)
-        {
-            UserClass ucUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
+        #region Windows Form Designer generated code
 
-            DoctorHomeFormWelcomeLabel.Text = $"Welcome Dr. {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // DoctorHomeForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(1178, 636);
+            this.ForeColor = System.Drawing.Color.Aqua;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "DoctorHomeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "DoctorHomeForm";
+            this.Load += new System.EventHandler(this.DoctorHomeForm_Load);
+            this.ResumeLayout(false);
+
         }
 
-        private void DoctorHomeFormCloseLabel_Click(object sender, EventArgs e)
-        {
-            Close();
-            Application.Exit();
-        }
-
-        private TextBox DoctorHomeFormWelcomeLabel;
+        #endregion
     }
 }
