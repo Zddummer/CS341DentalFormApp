@@ -54,11 +54,11 @@
     <Compile Include="Forms\AdminHomeForm.Designer.cs">
       <DependentUpon>AdminHomeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomerHomeForm.cs">
+    <Compile Include="Forms\PatientHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomerHomeForm.Designer.cs">
-      <DependentUpon>CustomerHomeForm.cs</DependentUpon>
+    <Compile Include="Forms\PatientHomeForm.Designer.cs">
+      <DependentUpon>PatientHomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DoctorHomeForm.cs">
       <SubType>Form</SubType>
@@ -83,8 +83,8 @@
     <EmbeddedResource Include="Forms\AdminHomeForm.resx">
       <DependentUpon>AdminHomeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomerHomeForm.resx">
-      <DependentUpon>CustomerHomeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PatientHomeForm.resx">
+      <DependentUpon>PatientHomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DoctorHomeForm.resx">
       <DependentUpon>DoctorHomeForm.cs</DependentUpon>

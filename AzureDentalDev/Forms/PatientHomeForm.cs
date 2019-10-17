@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace AzureDentalDev.Forms
 {
-    public partial class CustomerHomeForm : Form
+    public partial class PatientHomeForm : Form
     {
-        public CustomerHomeForm()
+        public PatientHomeForm()
         {
             InitializeComponent();
+        }
+
+        private void CustomerHomeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace AzureDentalDev.Forms
 {
-    partial class CustomerHomeForm
+    partial class PatientHomeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,17 @@
         {
             this.SuspendLayout();
             // 
-            // CustomerHomeForm
+            // PatientHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "CustomerHomeForm";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "PatientHomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CustomerHomeForm";
+            this.Text = "PatientHomeForm";
+            this.Load += new System.EventHandler(this.CustomerHomeForm_Load);
             this.ResumeLayout(false);
 
         }
