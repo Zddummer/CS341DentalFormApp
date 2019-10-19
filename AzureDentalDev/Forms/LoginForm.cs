@@ -48,8 +48,8 @@ namespace AzureDentalDev
                         break;
 
                     case 'D':
-                        DoctorHomeForm oDoctorHomeForm = new DoctorHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.text);
-                        oDoctorHomeForm.show();
+                        DoctorHomeForm oDoctorHomeForm = new DoctorHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
+                        oDoctorHomeForm.Show();
                         this.Visible = false;
                         break;
                     case 'H':

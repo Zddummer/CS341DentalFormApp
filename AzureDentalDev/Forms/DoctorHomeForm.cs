@@ -12,7 +12,7 @@ namespace AzureDentalDev.Forms
 {
     public partial class DoctorHomeForm : Form
     {
-        public DoctorHomeForm()
+        public DoctorHomeForm(String strUserName, String strPassword)
         {
             InitializeComponent();
         }
