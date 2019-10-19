@@ -174,7 +174,7 @@
             this.AdminCreateTypeCombobox.Name = "AdminCreateTypeCombobox";
             this.AdminCreateTypeCombobox.Size = new System.Drawing.Size(121, 30);
             this.AdminCreateTypeCombobox.TabIndex = 13;
-            this.AdminCreateTypeCombobox.Text = "C";
+            this.AdminCreateTypeCombobox.Text = "P";
             // 
             // panel5
             // 
