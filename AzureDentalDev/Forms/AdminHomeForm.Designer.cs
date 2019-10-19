@@ -161,6 +161,7 @@
             this.AdminHomeFormUpdateButton.TabIndex = 1;
             this.AdminHomeFormUpdateButton.Text = "Update Account";
             this.AdminHomeFormUpdateButton.UseVisualStyleBackColor = false;
+            this.AdminHomeFormUpdateButton.Click += new System.EventHandler(this.AdminHomeFormUpdateButton_Click);
             // 
             // AdminHomeForm
             // 
@@ -175,7 +176,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminHomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminHomeForm";
+            this.Text = "Welcome!";
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

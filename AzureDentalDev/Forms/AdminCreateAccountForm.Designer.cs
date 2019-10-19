@@ -34,6 +34,9 @@
             this.AdminCreateAccountFormCloseLabel = new System.Windows.Forms.Label();
             this.AdminHomeFormMainPictureBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.AdminCreateErrorLabel = new System.Windows.Forms.Label();
+            this.AdminCreateValidLabel = new System.Windows.Forms.Label();
+            this.AdminCreateButton = new System.Windows.Forms.Button();
             this.AdminCreateTypeCombobox = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -48,9 +51,6 @@
             this.AdminCreateUserPanel = new System.Windows.Forms.Panel();
             this.AdminCreateUserTextbox = new System.Windows.Forms.TextBox();
             this.AdminCreateUserLabel = new System.Windows.Forms.Label();
-            this.AdminCreateButton = new System.Windows.Forms.Button();
-            this.AdminCreateValidLabel = new System.Windows.Forms.Label();
-            this.AdminCreateErrorLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
@@ -124,6 +124,44 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(687, 376);
             this.panel2.TabIndex = 1;
+            // 
+            // AdminCreateErrorLabel
+            // 
+            this.AdminCreateErrorLabel.AutoSize = true;
+            this.AdminCreateErrorLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminCreateErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.AdminCreateErrorLabel.Location = new System.Drawing.Point(378, 206);
+            this.AdminCreateErrorLabel.Name = "AdminCreateErrorLabel";
+            this.AdminCreateErrorLabel.Size = new System.Drawing.Size(171, 16);
+            this.AdminCreateErrorLabel.TabIndex = 16;
+            this.AdminCreateErrorLabel.Text = "That account already exists!";
+            this.AdminCreateErrorLabel.Visible = false;
+            // 
+            // AdminCreateValidLabel
+            // 
+            this.AdminCreateValidLabel.AutoSize = true;
+            this.AdminCreateValidLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminCreateValidLabel.ForeColor = System.Drawing.Color.Lime;
+            this.AdminCreateValidLabel.Location = new System.Drawing.Point(406, 222);
+            this.AdminCreateValidLabel.Name = "AdminCreateValidLabel";
+            this.AdminCreateValidLabel.Size = new System.Drawing.Size(108, 16);
+            this.AdminCreateValidLabel.TabIndex = 15;
+            this.AdminCreateValidLabel.Text = "Account Created!";
+            this.AdminCreateValidLabel.Visible = false;
+            // 
+            // AdminCreateButton
+            // 
+            this.AdminCreateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.AdminCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminCreateButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminCreateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AdminCreateButton.Location = new System.Drawing.Point(365, 241);
+            this.AdminCreateButton.Name = "AdminCreateButton";
+            this.AdminCreateButton.Size = new System.Drawing.Size(200, 36);
+            this.AdminCreateButton.TabIndex = 14;
+            this.AdminCreateButton.Text = "Create Account";
+            this.AdminCreateButton.UseVisualStyleBackColor = false;
+            this.AdminCreateButton.Click += new System.EventHandler(this.AdminCreateButton_Click);
             // 
             // AdminCreateTypeCombobox
             // 
@@ -281,44 +319,6 @@
             this.AdminCreateUserLabel.TabIndex = 0;
             this.AdminCreateUserLabel.Text = "Username";
             // 
-            // AdminCreateButton
-            // 
-            this.AdminCreateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.AdminCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdminCreateButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminCreateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.AdminCreateButton.Location = new System.Drawing.Point(365, 241);
-            this.AdminCreateButton.Name = "AdminCreateButton";
-            this.AdminCreateButton.Size = new System.Drawing.Size(200, 36);
-            this.AdminCreateButton.TabIndex = 14;
-            this.AdminCreateButton.Text = "Create Account";
-            this.AdminCreateButton.UseVisualStyleBackColor = false;
-            this.AdminCreateButton.Click += new System.EventHandler(this.AdminCreateButton_Click);
-            // 
-            // AdminCreateValidLabel
-            // 
-            this.AdminCreateValidLabel.AutoSize = true;
-            this.AdminCreateValidLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminCreateValidLabel.ForeColor = System.Drawing.Color.Lime;
-            this.AdminCreateValidLabel.Location = new System.Drawing.Point(406, 222);
-            this.AdminCreateValidLabel.Name = "AdminCreateValidLabel";
-            this.AdminCreateValidLabel.Size = new System.Drawing.Size(108, 16);
-            this.AdminCreateValidLabel.TabIndex = 15;
-            this.AdminCreateValidLabel.Text = "Account Created!";
-            this.AdminCreateValidLabel.Visible = false;
-            // 
-            // AdminCreateErrorLabel
-            // 
-            this.AdminCreateErrorLabel.AutoSize = true;
-            this.AdminCreateErrorLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminCreateErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.AdminCreateErrorLabel.Location = new System.Drawing.Point(378, 206);
-            this.AdminCreateErrorLabel.Name = "AdminCreateErrorLabel";
-            this.AdminCreateErrorLabel.Size = new System.Drawing.Size(171, 16);
-            this.AdminCreateErrorLabel.TabIndex = 16;
-            this.AdminCreateErrorLabel.Text = "That account already exists!";
-            this.AdminCreateErrorLabel.Visible = false;
-            // 
             // AdminCreateAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,7 +330,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminCreateAccountForm";
-            this.Text = "AdminCreateAccountForm";
+            this.Text = "Create an Account";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).EndInit();
