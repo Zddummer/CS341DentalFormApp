@@ -16,7 +16,7 @@ namespace AzureDentalDev.Forms
         public AdminCreateAccountForm()
         {
             InitializeComponent();
-            AdminCreateTypeCombobox.Items.Add("C");
+            AdminCreateTypeCombobox.Items.Add("P");
             AdminCreateTypeCombobox.Items.Add("D");
             AdminCreateTypeCombobox.Items.Add("H");
             AdminCreateTypeCombobox.Items.Add("A");

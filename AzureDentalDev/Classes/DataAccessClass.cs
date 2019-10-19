@@ -84,7 +84,7 @@ namespace AzureDentalDev.Classes
                                    strLastName,
                                    strUserName,
                                    strPassword,
-                                   "C");
+                                   "P");
         }
 
         public static Boolean registerNewUser(String strFirstName,

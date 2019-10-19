@@ -40,7 +40,7 @@ namespace AzureDentalDev
                         this.Visible = false;
                         childSignUpForm.Visible = false;
                         break;
-                    case 'C':
+                    case 'P':
                         PatientHomeForm oCustomerHomeForm = new PatientHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
                         oCustomerHomeForm.Show();
                         this.Visible = false;
