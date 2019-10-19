@@ -35,10 +35,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.AdminHomeFormTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.AccountsTabPage = new System.Windows.Forms.TabPage();
+            this.AdminHomeFormUpdateButton = new System.Windows.Forms.Button();
+            this.AdminFormCreateButton = new System.Windows.Forms.Button();
             this.ScheduleTabPage = new System.Windows.Forms.TabPage();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.AdminFormCreateButton = new System.Windows.Forms.Button();
-            this.AdminHomeFormUpdateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.AdminHomeFormTabControl.SuspendLayout();
@@ -113,6 +113,34 @@
             this.AccountsTabPage.TabIndex = 0;
             this.AccountsTabPage.Text = "Accounts";
             // 
+            // AdminHomeFormUpdateButton
+            // 
+            this.AdminHomeFormUpdateButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.AdminHomeFormUpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminHomeFormUpdateButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminHomeFormUpdateButton.ForeColor = System.Drawing.Color.Aqua;
+            this.AdminHomeFormUpdateButton.Location = new System.Drawing.Point(508, 120);
+            this.AdminHomeFormUpdateButton.Name = "AdminHomeFormUpdateButton";
+            this.AdminHomeFormUpdateButton.Size = new System.Drawing.Size(115, 130);
+            this.AdminHomeFormUpdateButton.TabIndex = 1;
+            this.AdminHomeFormUpdateButton.Text = "Update Account";
+            this.AdminHomeFormUpdateButton.UseVisualStyleBackColor = false;
+            this.AdminHomeFormUpdateButton.Click += new System.EventHandler(this.AdminHomeFormUpdateButton_Click);
+            // 
+            // AdminFormCreateButton
+            // 
+            this.AdminFormCreateButton.BackColor = System.Drawing.Color.Aqua;
+            this.AdminFormCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminFormCreateButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminFormCreateButton.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.AdminFormCreateButton.Location = new System.Drawing.Point(269, 120);
+            this.AdminFormCreateButton.Name = "AdminFormCreateButton";
+            this.AdminFormCreateButton.Size = new System.Drawing.Size(115, 130);
+            this.AdminFormCreateButton.TabIndex = 0;
+            this.AdminFormCreateButton.Text = "Create Account";
+            this.AdminFormCreateButton.UseVisualStyleBackColor = false;
+            this.AdminFormCreateButton.Click += new System.EventHandler(this.AdminFormCreateButton_Click);
+            // 
             // ScheduleTabPage
             // 
             this.ScheduleTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -134,34 +162,6 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(901, 23);
             this.materialTabSelector1.TabIndex = 5;
             this.materialTabSelector1.Text = "materialTabSelector1";
-            // 
-            // AdminFormCreateButton
-            // 
-            this.AdminFormCreateButton.BackColor = System.Drawing.Color.Aqua;
-            this.AdminFormCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdminFormCreateButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminFormCreateButton.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.AdminFormCreateButton.Location = new System.Drawing.Point(269, 120);
-            this.AdminFormCreateButton.Name = "AdminFormCreateButton";
-            this.AdminFormCreateButton.Size = new System.Drawing.Size(115, 130);
-            this.AdminFormCreateButton.TabIndex = 0;
-            this.AdminFormCreateButton.Text = "Create Account";
-            this.AdminFormCreateButton.UseVisualStyleBackColor = false;
-            this.AdminFormCreateButton.Click += new System.EventHandler(this.AdminFormCreateButton_Click);
-            // 
-            // AdminHomeFormUpdateButton
-            // 
-            this.AdminHomeFormUpdateButton.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.AdminHomeFormUpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdminHomeFormUpdateButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminHomeFormUpdateButton.ForeColor = System.Drawing.Color.Aqua;
-            this.AdminHomeFormUpdateButton.Location = new System.Drawing.Point(508, 120);
-            this.AdminHomeFormUpdateButton.Name = "AdminHomeFormUpdateButton";
-            this.AdminHomeFormUpdateButton.Size = new System.Drawing.Size(115, 130);
-            this.AdminHomeFormUpdateButton.TabIndex = 1;
-            this.AdminHomeFormUpdateButton.Text = "Update Account";
-            this.AdminHomeFormUpdateButton.UseVisualStyleBackColor = false;
-            this.AdminHomeFormUpdateButton.Click += new System.EventHandler(this.AdminHomeFormUpdateButton_Click);
             // 
             // AdminHomeForm
             // 
