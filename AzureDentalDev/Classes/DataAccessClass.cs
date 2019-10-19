@@ -9,6 +9,16 @@ namespace AzureDentalDev.Classes
 {
     class DataAccessClass
     {
+        private static SqlConnection getConnection()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "cs341azuredb.database.windows.net";
+            builder.UserID = "adminonly";
+            builder.Password = "CS341dbNULL";
+            builder.InitialCatalog = "DentalDev";
+
+            return new SqlConnection(builder.ConnectionString);
+        }
 
         public static UserClass QueryDatabaseForUser(String strUserName, String strPassword)
         {
@@ -120,6 +130,26 @@ namespace AzureDentalDev.Classes
             }
 
             return blnWasUserCreated;
+        }
+        
+        public static List<AppointmentClass> getAppointments(String strUserName)
+        {
+            //get all appointments associaated with the given username
+            return new List<AppointmentClass>();
+        }
+
+        public static Boolean createAppointment(DateTime dateTime,
+                        String strPatientName,
+                        String strDentistName,
+                        String strAppointmentType,
+                        String strDescription,
+                        DateTime createdDate,
+                        System.Data.SqlTypes.SqlChars status)
+        {
+            //validate appointment time
+            //add appointment to database
+            //return whether the add was successful
+            return false;
         }
     }
 }
