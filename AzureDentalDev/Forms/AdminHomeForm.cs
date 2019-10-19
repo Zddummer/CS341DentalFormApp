@@ -32,5 +32,16 @@ namespace AzureDentalDev.Forms
             Close();
             Application.Exit();
         }
+
+        private void AdminFormCreateButton_Click(object sender, EventArgs e)
+        {
+            AdminCreateAccountForm oAdminCreateAccountForm = new AdminCreateAccountForm();
+            oAdminCreateAccountForm.Show();
+        }
+
+        private void AdminHomeFormUpdateButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

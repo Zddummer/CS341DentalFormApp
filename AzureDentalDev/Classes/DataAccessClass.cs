@@ -80,6 +80,19 @@ namespace AzureDentalDev.Classes
                                               String strUserName,
                                               String strPassword)
         {
+            return registerNewUser(strFirstName,
+                                   strLastName,
+                                   strUserName,
+                                   strPassword,
+                                   "C");
+        }
+
+        public static Boolean registerNewUser(String strFirstName,
+                                              String strLastName,
+                                              String strUserName,
+                                              String strPassword,
+                                              String chrUserType)
+        {
             Boolean blnWasUserCreated = false;
             int intNumberOfRowsAffected = 0;
 
@@ -100,7 +113,7 @@ namespace AzureDentalDev.Classes
                 sb.Append($"Where U.userName = '{strUserName}') ");
                 sb.Append("Begin ");
                 sb.Append("INSERT INTO Users(userName, password, firstName, lastName, userType, accessType) ");
-                sb.Append($"VALUES('{strUserName}', '{strPassword}', '{strFirstName}', '{strLastName}', 'C', 'A') ");
+                sb.Append($"VALUES('{strUserName}', '{strPassword}', '{strFirstName}', '{strLastName}', '{chrUserType}', 'A') ");
                 sb.Append("End ");
                 sb.Append("End");
                 String sql = sb.ToString();
