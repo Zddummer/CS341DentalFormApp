@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AppointmentClass.cs" />
     <Compile Include="Classes\DataAccessClass.cs" />
     <Compile Include="Classes\UserClass.cs" />
     <Compile Include="Forms\AdminHomeForm.cs">
