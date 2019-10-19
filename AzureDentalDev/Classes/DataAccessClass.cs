@@ -134,7 +134,7 @@ namespace AzureDentalDev.Classes
         
         public static List<AppointmentClass> getAppointments(String strUserName)
         {
-            //get all appointments associaated with the given username
+            //get all appointments associated with the given username
             return new List<AppointmentClass>();
         }
 

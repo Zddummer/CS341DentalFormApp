@@ -35,13 +35,13 @@ namespace AzureDentalDev.Forms
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             //Validity check
-            panel1.Visible = true;
+            AppointmentConfirmationPanel.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //store appointment in database
-            panel1.Visible = false;
+            AppointmentConfirmationPanel.Visible = false;
         }
     }
 }
