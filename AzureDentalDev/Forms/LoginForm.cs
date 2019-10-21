@@ -51,6 +51,7 @@ namespace AzureDentalDev
                         DoctorHomeForm oDoctorHomeForm = new DoctorHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
                         oDoctorHomeForm.Show();
                         this.Visible = false;
+                        childSignUpForm.Visible = false;
                         break;
                     case 'H':
 
