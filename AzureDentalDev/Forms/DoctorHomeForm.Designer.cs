@@ -53,7 +53,7 @@
             this.DoctorAppointmentListView.HideSelection = false;
             this.DoctorAppointmentListView.Location = new System.Drawing.Point(18, 140);
             this.DoctorAppointmentListView.Name = "DoctorAppointmentListView";
-            this.DoctorAppointmentListView.Size = new System.Drawing.Size(415, 515);
+            this.DoctorAppointmentListView.Size = new System.Drawing.Size(414, 483);
             this.DoctorAppointmentListView.TabIndex = 1;
             this.DoctorAppointmentListView.UseCompatibleStateImageBehavior = false;
             // 
