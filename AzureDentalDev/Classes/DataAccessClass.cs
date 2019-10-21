@@ -138,14 +138,15 @@ namespace AzureDentalDev.Classes
             return new List<AppointmentClass>();
         }
 
-        public static Boolean createAppointment(DateTime dateTime,
-                        String strPatientName,
-                        String strDentistName,
+        public static Boolean createAppointment(DateTime dtDateTime,
+                        String strPatientUserName,
+                        String strDentistUserName,
                         String strAppointmentType,
                         String strDescription,
                         DateTime createdDate,
                         System.Data.SqlTypes.SqlChars status)
         {
+            
             //validate appointment time
             //add appointment to database
             //return whether the add was successful

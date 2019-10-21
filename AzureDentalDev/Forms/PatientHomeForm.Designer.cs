@@ -47,9 +47,13 @@
             this.ScheduleAppointmentButton = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.AppointmentConfirmationPanel = new System.Windows.Forms.Panel();
+            this.DenyConfirmationButton = new System.Windows.Forms.Button();
             this.ConfirmationMessage = new System.Windows.Forms.Label();
             this.AppointmentConfirmationButton = new System.Windows.Forms.Button();
-            this.DenyConfirmationButton = new System.Windows.Forms.Button();
+            this.PickTimeComboBox = new System.Windows.Forms.ComboBox();
+            this.ClosePatientHomeFormButton = new System.Windows.Forms.Button();
+            this.ScheduleDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.DentistHygeinistComboBox = new System.Windows.Forms.ComboBox();
             this.AppointmentConfirmationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +105,8 @@
             // 
             // ScheduleAppointmentButton
             // 
+            this.ScheduleAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ScheduleAppointmentButton.Font = new System.Drawing.Font("Arial", 12F);
             this.ScheduleAppointmentButton.Location = new System.Drawing.Point(532, 91);
             this.ScheduleAppointmentButton.Name = "ScheduleAppointmentButton";
             this.ScheduleAppointmentButton.Size = new System.Drawing.Size(142, 78);
@@ -111,10 +117,12 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(506, 251);
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 9F);
+            this.dateTimePicker1.Location = new System.Drawing.Point(372, 246);
             this.dateTimePicker1.MaxDate = new System.DateTime(9998, 10, 19, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(242, 21);
             this.dateTimePicker1.TabIndex = 3;
             this.dateTimePicker1.Value = new System.DateTime(2019, 10, 19, 0, 0, 0, 0);
             this.dateTimePicker1.Visible = false;
@@ -132,33 +140,85 @@
             this.AppointmentConfirmationPanel.TabIndex = 4;
             this.AppointmentConfirmationPanel.Visible = false;
             // 
+            // DenyConfirmationButton
+            // 
+            this.DenyConfirmationButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DenyConfirmationButton.Location = new System.Drawing.Point(17, 63);
+            this.DenyConfirmationButton.Name = "DenyConfirmationButton";
+            this.DenyConfirmationButton.Size = new System.Drawing.Size(75, 23);
+            this.DenyConfirmationButton.TabIndex = 2;
+            this.DenyConfirmationButton.Text = "Cancel";
+            this.DenyConfirmationButton.UseVisualStyleBackColor = true;
+            this.DenyConfirmationButton.Click += new System.EventHandler(this.DenyConfirmationButton_Click);
+            // 
             // ConfirmationMessage
             // 
             this.ConfirmationMessage.AutoSize = true;
-            this.ConfirmationMessage.Location = new System.Drawing.Point(73, 18);
+            this.ConfirmationMessage.Location = new System.Drawing.Point(43, 15);
             this.ConfirmationMessage.Name = "ConfirmationMessage";
-            this.ConfirmationMessage.Size = new System.Drawing.Size(45, 13);
+            this.ConfirmationMessage.Size = new System.Drawing.Size(104, 13);
             this.ConfirmationMessage.TabIndex = 1;
-            this.ConfirmationMessage.Text = "Confirm ";
+            this.ConfirmationMessage.Text = "Confirm Appointment";
             // 
             // AppointmentConfirmationButton
             // 
+            this.AppointmentConfirmationButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AppointmentConfirmationButton.Location = new System.Drawing.Point(113, 63);
             this.AppointmentConfirmationButton.Name = "AppointmentConfirmationButton";
             this.AppointmentConfirmationButton.Size = new System.Drawing.Size(75, 23);
             this.AppointmentConfirmationButton.TabIndex = 0;
             this.AppointmentConfirmationButton.Text = "Okay";
             this.AppointmentConfirmationButton.UseVisualStyleBackColor = true;
-            this.AppointmentConfirmationButton.Click += new System.EventHandler(this.button1_Click);
+            this.AppointmentConfirmationButton.Click += new System.EventHandler(this.AppointmentConfirmationButton_Click);
             // 
-            // DenyConfirmationButton
+            // PickTimeComboBox
             // 
-            this.DenyConfirmationButton.Location = new System.Drawing.Point(17, 63);
-            this.DenyConfirmationButton.Name = "DenyConfirmationButton";
-            this.DenyConfirmationButton.Size = new System.Drawing.Size(75, 23);
-            this.DenyConfirmationButton.TabIndex = 2;
-            this.DenyConfirmationButton.Text = "button2";
-            this.DenyConfirmationButton.UseVisualStyleBackColor = true;
+            this.PickTimeComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PickTimeComboBox.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.PickTimeComboBox.FormattingEnabled = true;
+            this.PickTimeComboBox.Location = new System.Drawing.Point(644, 245);
+            this.PickTimeComboBox.Name = "PickTimeComboBox";
+            this.PickTimeComboBox.Size = new System.Drawing.Size(121, 22);
+            this.PickTimeComboBox.TabIndex = 5;
+            this.PickTimeComboBox.Visible = false;
+            this.PickTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.PickTimeComboBox_SelectedIndexChanged);
+            // 
+            // ClosePatientHomeFormButton
+            // 
+            this.ClosePatientHomeFormButton.BackColor = System.Drawing.Color.DimGray;
+            this.ClosePatientHomeFormButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClosePatientHomeFormButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClosePatientHomeFormButton.Font = new System.Drawing.Font("Arial", 12F);
+            this.ClosePatientHomeFormButton.ForeColor = System.Drawing.Color.Black;
+            this.ClosePatientHomeFormButton.Location = new System.Drawing.Point(713, 13);
+            this.ClosePatientHomeFormButton.Name = "ClosePatientHomeFormButton";
+            this.ClosePatientHomeFormButton.Size = new System.Drawing.Size(52, 32);
+            this.ClosePatientHomeFormButton.TabIndex = 6;
+            this.ClosePatientHomeFormButton.Text = "X";
+            this.ClosePatientHomeFormButton.UseVisualStyleBackColor = false;
+            this.ClosePatientHomeFormButton.Click += new System.EventHandler(this.ClosePatientHomeFormButton_Click);
+            // 
+            // ScheduleDescriptionTextBox
+            // 
+            this.ScheduleDescriptionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ScheduleDescriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ScheduleDescriptionTextBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.ScheduleDescriptionTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.ScheduleDescriptionTextBox.Location = new System.Drawing.Point(372, 195);
+            this.ScheduleDescriptionTextBox.Name = "ScheduleDescriptionTextBox";
+            this.ScheduleDescriptionTextBox.Size = new System.Drawing.Size(242, 23);
+            this.ScheduleDescriptionTextBox.TabIndex = 7;
+            this.ScheduleDescriptionTextBox.Text = "Description of Appointment";
+            this.ScheduleDescriptionTextBox.Visible = false;
+            // 
+            // DentistHygeinistComboBox
+            // 
+            this.DentistHygeinistComboBox.FormattingEnabled = true;
+            this.DentistHygeinistComboBox.Location = new System.Drawing.Point(644, 196);
+            this.DentistHygeinistComboBox.Name = "DentistHygeinistComboBox";
+            this.DentistHygeinistComboBox.Size = new System.Drawing.Size(121, 21);
+            this.DentistHygeinistComboBox.TabIndex = 8;
+            this.DentistHygeinistComboBox.Visible = false;
             // 
             // PatientHomeForm
             // 
@@ -166,6 +226,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DentistHygeinistComboBox);
+            this.Controls.Add(this.ScheduleDescriptionTextBox);
+            this.Controls.Add(this.ClosePatientHomeFormButton);
+            this.Controls.Add(this.PickTimeComboBox);
             this.Controls.Add(this.AppointmentConfirmationPanel);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.ScheduleAppointmentButton);
@@ -197,5 +261,9 @@
         private System.Windows.Forms.Label ConfirmationMessage;
         private System.Windows.Forms.Button AppointmentConfirmationButton;
         private System.Windows.Forms.Button DenyConfirmationButton;
+        private System.Windows.Forms.ComboBox PickTimeComboBox;
+        private System.Windows.Forms.Button ClosePatientHomeFormButton;
+        private System.Windows.Forms.TextBox ScheduleDescriptionTextBox;
+        private System.Windows.Forms.ComboBox DentistHygeinistComboBox;
     }
 }
