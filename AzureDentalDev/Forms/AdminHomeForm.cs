@@ -25,6 +25,18 @@ namespace AzureDentalDev.Forms
             UserClass ucUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
 
             AdminHomeFormWelcomeLabel.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
+
+            for(int i = 9; i <= 17; i++)
+            {
+                if(i <= 12)
+                {
+                    StartTimeComboBox.Items.Add($"{i}:00");
+                }
+                else
+                {
+                    CloseTimeComboBox.Items.Add($"{i}:00");
+                }
+            }
         }
 
         private void AdminHomeFormCloseLabel_Click(object sender, EventArgs e)
@@ -42,6 +54,36 @@ namespace AzureDentalDev.Forms
         private void AdminHomeFormUpdateButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void HoursUpdateButton_Click(object sender, EventArgs e)
+        {
+            if (DataAccessClass.updateOpenOfficeHours(StartTimeComboBox.Text, CloseTimeComboBox.Text))
+            {
+                HoursUpdatedLabel.Visible = true;
+            }
+            else
+            {
+                HoursUpdatedLabel.Visible = false;
+            }
+        }
+
+        private void AdminOpenDayButton_Click(object sender, EventArgs e)
+        {
+            if (DataAccessClass.openDay(AdminDateTimePicker.Value.Date.Date.ToString()))
+            {
+                AdminOpenDayLabel.Visible = true;
+                AdminCloseDayLabel.Visible = false;
+            }
+        }
+
+        private void AdminCloseDayButton_Click(object sender, EventArgs e)
+        {
+           if(DataAccessClass.closeDay(AdminDateTimePicker.Value.Date.ToString()))
+            {
+                AdminCloseDayLabel.Visible = true;
+                AdminOpenDayLabel.Visible = false;
+            }
         }
     }
 }
