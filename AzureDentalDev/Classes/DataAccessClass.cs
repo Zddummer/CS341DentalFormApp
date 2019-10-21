@@ -151,5 +151,108 @@ namespace AzureDentalDev.Classes
             //return whether the add was successful
             return false;
         }
+
+        public static Boolean updateOpenOfficeHours(String strStartTime, String strCloseTime)
+        {
+            Boolean blnWereHoursUpdated = false;
+            int intNumberOfRowsAffected = 0;
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "cs341azuredb.database.windows.net";
+            builder.UserID = "adminonly";
+            builder.Password = "CS341dbNULL";
+            builder.InitialCatalog = "DentalDev";
+
+            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"update OfficeHours Set OpenTime = '{strStartTime}', CloseTime = '{strCloseTime}' Where Status = 'O';");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        blnWereHoursUpdated = true;
+                    }
+                }
+            }
+
+            return blnWereHoursUpdated;
+        }
+
+        public static Boolean closeDay(String strDateToClose)
+        {
+            Boolean blnWasDayClosed = false;
+            int intNumberOfRowsAffected = 0;
+
+            strDateToClose = strDateToClose.Split(' ')[0];
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "cs341azuredb.database.windows.net";
+            builder.UserID = "adminonly";
+            builder.Password = "CS341dbNULL";
+            builder.InitialCatalog = "DentalDev";
+
+            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"update OfficeHours Set Status = 'C' Where Date = '{strDateToClose}' AND Status = 'O'");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        blnWasDayClosed = true;
+                    }
+                }
+            }
+
+            return blnWasDayClosed;
+        }
+
+        public static Boolean openDay(String strDateToOpen)
+        {
+            Boolean blnWasDayClosed = false;
+            int intNumberOfRowsAffected = 0;
+
+            strDateToOpen = strDateToOpen.Split(' ')[0];
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "cs341azuredb.database.windows.net";
+            builder.UserID = "adminonly";
+            builder.Password = "CS341dbNULL";
+            builder.InitialCatalog = "DentalDev";
+
+            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"update OfficeHours Set Status = 'O' Where Date = '{strDateToOpen}' AND Status = 'C'");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        blnWasDayClosed = true;
+                    }
+                }
+            }
+
+            return blnWasDayClosed;
+        }
     }
 }
