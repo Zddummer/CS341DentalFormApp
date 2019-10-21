@@ -14,7 +14,7 @@ namespace AzureDentalDev.Forms
 {
     public partial class PatientHomeForm : Form
     {
-        List<UserClass> m_dentistsHygeinists = new List<UserClass>();
+        List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
 
         public PatientHomeForm(String strUserName, String strPassword)
         {
@@ -31,6 +31,7 @@ namespace AzureDentalDev.Forms
             PickTimeComboBox.Items.Add("14:00-15:00");
             PickTimeComboBox.Items.Add("15:00-16:00");
             PickTimeComboBox.Items.Add("16:00-17:00");
+
             //Fill dentistHygeinistList
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "cs341azuredb.database.windows.net";
@@ -55,7 +56,7 @@ namespace AzureDentalDev.Forms
                     {
                         while (reader.Read())
                         {
-                            m_dentistsHygeinists.Add(new UserClass(reader.GetString(0),
+                            m_lstDentistsHygeinists.Add(new UserClass(reader.GetString(0),
                                                          reader.GetString(1),
                                                          reader.GetString(2),
                                                          reader.GetString(3),
@@ -65,29 +66,43 @@ namespace AzureDentalDev.Forms
                     }
                 }
             }
-            //fill dentistHygeinistComboBox
 
+            //fill dentistHygeinistComboBox
+            foreach(UserClass user in m_lstDentistsHygeinists)
+            {
+                DentistHygeinistComboBox.Items.Add(user.m_strFirstName + " " + user.m_strLastName);
+            }
 
             //Retrieve and display appointments associated with current user
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointments(strUserName);
+            int i = 1;
+            foreach(AppointmentClass acAppointment in lstAppointments)
+            {
+                UserClass appointmentDentist = null;
+                foreach (UserClass user in m_lstDentistsHygeinists)
+                {
+                    if (user.m_strUsername.Equals(acAppointment.m_strDentistName))
+                    {
+                        appointmentDentist = user;
+                    }
+                }
+
+                ListViewItem item = new ListViewItem("Appointment " + i);
+                item.SubItems.Add(acAppointment.m_dtDateTime.Date.ToShortDateString());
+                item.SubItems.Add(acAppointment.m_dtDateTime.TimeOfDay.ToString());
+                item.SubItems.Add(appointmentDentist.m_strFirstName + " " + appointmentDentist.m_strLastName);
+                item.SubItems.Add(acAppointment.m_strDescription);
+                item.ForeColor = Color.LightSkyBlue;
+                item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                AppointmentsList.Items.Add(item);
+                i++;
+            }
         }
 
         private void ClosePatientHomeFormButton_Click(object sender, EventArgs e)
         {
             Close();
             Application.Exit();
-        }
-
-        private void AppointmentsList_MouseClick(object sender, MouseEventArgs e)
-        {
-            for(int i = 0; i < AppointmentsList.Items.Count; i++)
-            {
-                var rectangle = AppointmentsList.GetItemRect(i);
-                if (rectangle.Contains(e.Location))
-                {
-                    dateTimePicker1.Visible = true;
-                    return;
-                }
-            }
         }
 
         private void CustomerHomeForm_Load(object sender, EventArgs e)
@@ -121,10 +136,10 @@ namespace AzureDentalDev.Forms
 
 
             PickTimeComboBox.Visible = false;
-            PickTimeComboBox.Text = String.Empty;
+            PickTimeComboBox.Text = "Select Appointment Time";
 
             DentistHygeinistComboBox.Visible = false;
-            DentistHygeinistComboBox.Text = String.Empty;
+            DentistHygeinistComboBox.Text = "Select Dentist/Hygeinist";
 
             dateTimePicker1.Visible = false;
             dateTimePicker1.Value = DateTime.Today;
@@ -138,10 +153,10 @@ namespace AzureDentalDev.Forms
         private void DenyConfirmationButton_Click(object sender, EventArgs e)
         {
             PickTimeComboBox.Visible = false;
-            PickTimeComboBox.Text = String.Empty;
+            PickTimeComboBox.Text = "Select Appointment Time";
 
             DentistHygeinistComboBox.Visible = false;
-            DentistHygeinistComboBox.Text = String.Empty;
+            DentistHygeinistComboBox.Text = "Select Dentist/Hygeinist";
 
             dateTimePicker1.Visible = false;
             dateTimePicker1.Value = DateTime.Today;
@@ -150,6 +165,42 @@ namespace AzureDentalDev.Forms
             ScheduleDescriptionTextBox.Text = "Description of Appointment";
 
             AppointmentConfirmationPanel.Visible = false;
+        }
+
+        private void AppointmentsList_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
+
+            String date = items[1].Text.ToString();
+            String time = items[2].Text.ToString();
+            String dentist = items[3].Text.ToString();
+            String description = items[4].Text.ToString();
+            
+            UserClass appointmentDentist = null;
+            foreach (UserClass user in m_lstDentistsHygeinists)
+            {
+                String name = user.m_strFirstName + " " + user.m_strLastName;
+                if (name.Equals(dentist))
+                {
+                    appointmentDentist = user;
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.Append(AppointmentsList.FocusedItem.Text.ToString());
+            sb.Append($"\nDate of Appointment: {date}");
+            sb.Append($"\nTime of Appointment: {time}");
+            
+            if (appointmentDentist.m_chrUserType.ToString() == "H")
+            {
+                sb.Append("\nYour Hygeinist: ");
+            } 
+            else
+            {
+                sb.Append("\nYour Dentist: ");
+            }
+            sb.Append($"{dentist} \nDescription: ");
+            sb.Append(description);
+            MessageBox.Show(sb.ToString());
         }
     }
 }

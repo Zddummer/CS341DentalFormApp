@@ -135,7 +135,38 @@ namespace AzureDentalDev.Classes
         public static List<AppointmentClass> getAppointments(String strUserName)
         {
             //get all appointments associated with the given username
-            return new List<AppointmentClass>();
+            List<AppointmentClass> appointments = new List<AppointmentClass>();
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append("SELECT * ");
+                sb.Append("FROM Appointments ");
+                sb.Append($"WHERE CustomerName = '{strUserName}' ");
+                sb.Append("ORDER BY AppointmentDate");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            appointments.Add( new AppointmentClass(reader.GetString(0),
+                                                         reader.GetString(1),
+                                                         reader.GetString(2),
+                                                         reader.GetString(3),
+                                                         reader.GetDateTime(4),
+                                                         reader.GetDateTime(5),
+                                                         reader.GetSqlChars(6)));
+                        }
+                    }
+                }
+            }
+
+            return appointments;
         }
 
         public static Boolean createAppointment(DateTime dtDateTime,
@@ -143,14 +174,53 @@ namespace AzureDentalDev.Classes
                         String strDentistUserName,
                         String strAppointmentType,
                         String strDescription,
-                        DateTime createdDate,
+                        DateTime dtCreatedDate,
                         System.Data.SqlTypes.SqlChars status)
         {
-            
-            //validate appointment time
+
+            //validate appointment time (make Office Hours class and query database for hours info)
+            using (SqlConnection connection = getConnection())
+            {
+                connection.Open();
+                String sql = "";
+                SqlCommand command = new SqlCommand(sql, connection);
+            }
+            if (dtDateTime > DateTimeOffset.Now.AddDays(1))
+            {
+
+            }
             //add appointment to database
+            Boolean blnWasAppointmentCreated = false;
+            int intNumberOfRowsAffected = 0;
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                
+                sb.Append("Insert into Appointments Values(");
+                sb.Append($"{strPatientUserName}, ");
+                sb.Append($"{strDentistUserName}, ");
+                sb.Append($"{strAppointmentType}, ");
+                sb.Append($"{strDescription}, ");
+                sb.Append($"{dtCreatedDate}, ");
+                sb.Append($"{dtDateTime}, ");
+                sb.Append($"{status})");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        blnWasAppointmentCreated = true;
+                    }
+                }
+            }
             //return whether the add was successful
-            return false;
+            return blnWasAppointmentCreated;
         }
 
         public static Boolean updateOpenOfficeHours(String strStartTime, String strCloseTime)

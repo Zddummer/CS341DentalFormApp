@@ -8,29 +8,29 @@ namespace AzureDentalDev.Classes
 {
     class AppointmentClass
     {
-        public DateTime m_dateTime = DateTime.Now;
+        public DateTime m_dtDateTime = DateTime.Now;
         public String m_strPatientName = String.Empty;
         public String m_strDentistName = String.Empty;
         public String m_strAppointmentType = String.Empty;
         public String m_strDescription = String.Empty;
-        public DateTime m_createdDate = DateTime.Now;
+        public DateTime m_dtCreatedDate = DateTime.Now;
         public System.Data.SqlTypes.SqlChars m_chrStatus;
 
 
-        public AppointmentClass(DateTime dateTime,
-                        String strPatientName,
+        public AppointmentClass(String strPatientName,
                         String strDentistName,
                         String strAppointmentType,
                         String strDescription,
-                        DateTime createdDate,
+                        DateTime dtCreatedDate,
+                        DateTime dtDateTime,
                         System.Data.SqlTypes.SqlChars chrStatus)
         {
-            m_dateTime = dateTime;
             m_strPatientName = strPatientName;
             m_strDentistName = strDentistName;
             m_strAppointmentType = strAppointmentType;
             m_strDescription = strDescription;
-            m_createdDate = createdDate;
+            m_dtCreatedDate = dtCreatedDate;
+            m_dtDateTime = dtDateTime;
             m_chrStatus = chrStatus;
         }
 

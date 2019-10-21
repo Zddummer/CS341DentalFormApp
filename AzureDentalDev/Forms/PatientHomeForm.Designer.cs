@@ -28,22 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Appointment 1",
-            "Appointment Date",
-            "Appointment Time",
-            "Doctor/Hygeinist"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Arial", 8.25F));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Appointment 2",
-            "Appointment Date",
-            "Appointment Time",
-            "Doctor/Hygeinist"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Arial", 8.25F));
             this.PatientHomeFormWelcome = new System.Windows.Forms.Label();
             this.AppointmentsList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ScheduleAppointmentButton = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.AppointmentConfirmationPanel = new System.Windows.Forms.Panel();
@@ -75,17 +66,16 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
-            this.AppointmentsList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
+            this.columnHeader4,
+            this.columnHeader5});
             this.AppointmentsList.Location = new System.Drawing.Point(12, 91);
             this.AppointmentsList.Name = "AppointmentsList";
             this.AppointmentsList.Size = new System.Drawing.Size(308, 336);
             this.AppointmentsList.TabIndex = 1;
-            this.AppointmentsList.TileSize = new System.Drawing.Size(150, 60);
+            this.AppointmentsList.TileSize = new System.Drawing.Size(150, 80);
             this.AppointmentsList.UseCompatibleStateImageBehavior = false;
             this.AppointmentsList.View = System.Windows.Forms.View.Tile;
+            this.AppointmentsList.ItemActivate += new System.EventHandler(this.AppointmentsList_ItemActivate);
             // 
             // columnHeader1
             // 
@@ -154,7 +144,7 @@
             // ConfirmationMessage
             // 
             this.ConfirmationMessage.AutoSize = true;
-            this.ConfirmationMessage.Location = new System.Drawing.Point(43, 15);
+            this.ConfirmationMessage.Location = new System.Drawing.Point(53, 16);
             this.ConfirmationMessage.Name = "ConfirmationMessage";
             this.ConfirmationMessage.Size = new System.Drawing.Size(104, 13);
             this.ConfirmationMessage.TabIndex = 1;
@@ -178,8 +168,9 @@
             this.PickTimeComboBox.FormattingEnabled = true;
             this.PickTimeComboBox.Location = new System.Drawing.Point(644, 245);
             this.PickTimeComboBox.Name = "PickTimeComboBox";
-            this.PickTimeComboBox.Size = new System.Drawing.Size(121, 22);
+            this.PickTimeComboBox.Size = new System.Drawing.Size(144, 22);
             this.PickTimeComboBox.TabIndex = 5;
+            this.PickTimeComboBox.Text = "Select Appointment Time";
             this.PickTimeComboBox.Visible = false;
             this.PickTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.PickTimeComboBox_SelectedIndexChanged);
             // 
@@ -216,8 +207,9 @@
             this.DentistHygeinistComboBox.FormattingEnabled = true;
             this.DentistHygeinistComboBox.Location = new System.Drawing.Point(644, 196);
             this.DentistHygeinistComboBox.Name = "DentistHygeinistComboBox";
-            this.DentistHygeinistComboBox.Size = new System.Drawing.Size(121, 21);
+            this.DentistHygeinistComboBox.Size = new System.Drawing.Size(144, 21);
             this.DentistHygeinistComboBox.TabIndex = 8;
+            this.DentistHygeinistComboBox.Text = "Select Dentist/Hygeinist";
             this.DentistHygeinistComboBox.Visible = false;
             // 
             // PatientHomeForm
@@ -265,5 +257,6 @@
         private System.Windows.Forms.Button ClosePatientHomeFormButton;
         private System.Windows.Forms.TextBox ScheduleDescriptionTextBox;
         private System.Windows.Forms.ComboBox DentistHygeinistComboBox;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
