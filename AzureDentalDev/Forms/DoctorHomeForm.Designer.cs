@@ -32,10 +32,11 @@
             this.DoctorAppointmentListView = new System.Windows.Forms.ListView();
             this.DoctorHomeFormAppointmentsLabel = new System.Windows.Forms.Label();
             this.DoctorHomeFormCloseButton = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.appointmentNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.patient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // DoctorHomeFormWelcomeLabel
@@ -54,18 +55,20 @@
             // 
             this.DoctorAppointmentListView.BackColor = System.Drawing.Color.DimGray;
             this.DoctorAppointmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.appointmentNum,
+            this.date,
+            this.time,
+            this.patient,
+            this.description});
             this.DoctorAppointmentListView.ForeColor = System.Drawing.Color.Aqua;
             this.DoctorAppointmentListView.HideSelection = false;
             this.DoctorAppointmentListView.Location = new System.Drawing.Point(18, 140);
             this.DoctorAppointmentListView.Name = "DoctorAppointmentListView";
-            this.DoctorAppointmentListView.Size = new System.Drawing.Size(414, 483);
+            this.DoctorAppointmentListView.Size = new System.Drawing.Size(646, 483);
             this.DoctorAppointmentListView.TabIndex = 1;
             this.DoctorAppointmentListView.TileSize = new System.Drawing.Size(150, 80);
             this.DoctorAppointmentListView.UseCompatibleStateImageBehavior = false;
+            this.DoctorAppointmentListView.View = System.Windows.Forms.View.Tile;
             // 
             // DoctorHomeFormAppointmentsLabel
             // 
@@ -115,9 +118,10 @@
         private System.Windows.Forms.ListView DoctorAppointmentListView;
         private System.Windows.Forms.Label DoctorHomeFormAppointmentsLabel;
         private System.Windows.Forms.Button DoctorHomeFormCloseButton;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader appointmentNum;
+        private System.Windows.Forms.ColumnHeader date;
+        private System.Windows.Forms.ColumnHeader time;
+        private System.Windows.Forms.ColumnHeader patient;
+        private System.Windows.Forms.ColumnHeader description;
     }
 }
