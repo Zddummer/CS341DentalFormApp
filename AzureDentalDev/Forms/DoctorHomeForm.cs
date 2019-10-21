@@ -18,7 +18,24 @@ namespace AzureDentalDev.Forms
         {           InitializeComponent();
             UserClass ucDoctorUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
             DoctorHomeFormWelcomeLabel.Text = $"Welcome Dr. {ucDoctorUser.m_strFirstName} {ucDoctorUser.m_strLastName}";
-            
+
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointments(strUserName);
+
+            int i = 1;
+            foreach(AppointmentClass appointment in lstAppointments)
+            {
+
+                ListViewItem item = new ListViewItem("Appointment " + i);
+                item.SubItems.Add(appointment.m_dtDateTime.Date.ToShortDateString());
+                item.SubItems.Add(appointment.m_dtDateTime.TimeOfDay.ToString());
+                item.SubItems.Add(appointment.m_strPatientName);
+                item.SubItems.Add(appointment.m_strDescription);
+                item.ForeColor = Color.LightSkyBlue;
+                item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                DoctorAppointmentListView.Items.Add(item);
+                i++;
+
+            }
         }
 
         private void DoctorHomeForm_Load(object sender, EventArgs e)
@@ -29,6 +46,12 @@ namespace AzureDentalDev.Forms
         private void Label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DoctorHomeFormCloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+            Application.Exit();
         }
     }
 }

@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.DoctorHomeFormWelcomeLabel = new System.Windows.Forms.Label();
-            this.flpViewApptsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.DoctorAppointmentListView = new System.Windows.Forms.ListView();
+            this.DoctorHomeFormAppointmentsLabel = new System.Windows.Forms.Label();
+            this.DoctorHomeFormCloseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DoctorHomeFormWelcomeLabel
@@ -44,12 +46,37 @@
             this.DoctorHomeFormWelcomeLabel.Text = "Welcome Dr. ";
             this.DoctorHomeFormWelcomeLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
-            // flpViewApptsPanel
+            // DoctorAppointmentListView
             // 
-            this.flpViewApptsPanel.Location = new System.Drawing.Point(57, 126);
-            this.flpViewApptsPanel.Name = "flpViewApptsPanel";
-            this.flpViewApptsPanel.Size = new System.Drawing.Size(429, 472);
-            this.flpViewApptsPanel.TabIndex = 1;
+            this.DoctorAppointmentListView.BackColor = System.Drawing.Color.DimGray;
+            this.DoctorAppointmentListView.ForeColor = System.Drawing.Color.Aqua;
+            this.DoctorAppointmentListView.HideSelection = false;
+            this.DoctorAppointmentListView.Location = new System.Drawing.Point(18, 140);
+            this.DoctorAppointmentListView.Name = "DoctorAppointmentListView";
+            this.DoctorAppointmentListView.Size = new System.Drawing.Size(415, 515);
+            this.DoctorAppointmentListView.TabIndex = 1;
+            this.DoctorAppointmentListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // DoctorHomeFormAppointmentsLabel
+            // 
+            this.DoctorHomeFormAppointmentsLabel.AutoSize = true;
+            this.DoctorHomeFormAppointmentsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DoctorHomeFormAppointmentsLabel.Location = new System.Drawing.Point(18, 114);
+            this.DoctorHomeFormAppointmentsLabel.Name = "DoctorHomeFormAppointmentsLabel";
+            this.DoctorHomeFormAppointmentsLabel.Size = new System.Drawing.Size(188, 20);
+            this.DoctorHomeFormAppointmentsLabel.TabIndex = 2;
+            this.DoctorHomeFormAppointmentsLabel.Text = "Upcoming Appointments:";
+            // 
+            // DoctorHomeFormCloseButton
+            // 
+            this.DoctorHomeFormCloseButton.ForeColor = System.Drawing.Color.Red;
+            this.DoctorHomeFormCloseButton.Location = new System.Drawing.Point(1140, 1);
+            this.DoctorHomeFormCloseButton.Name = "DoctorHomeFormCloseButton";
+            this.DoctorHomeFormCloseButton.Size = new System.Drawing.Size(40, 40);
+            this.DoctorHomeFormCloseButton.TabIndex = 3;
+            this.DoctorHomeFormCloseButton.Text = "X";
+            this.DoctorHomeFormCloseButton.UseVisualStyleBackColor = true;
+            this.DoctorHomeFormCloseButton.Click += new System.EventHandler(this.DoctorHomeFormCloseButton_Click);
             // 
             // DoctorHomeForm
             // 
@@ -57,7 +84,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1178, 635);
-            this.Controls.Add(this.flpViewApptsPanel);
+            this.Controls.Add(this.DoctorHomeFormCloseButton);
+            this.Controls.Add(this.DoctorHomeFormAppointmentsLabel);
+            this.Controls.Add(this.DoctorAppointmentListView);
             this.Controls.Add(this.DoctorHomeFormWelcomeLabel);
             this.ForeColor = System.Drawing.Color.Aqua;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -73,6 +102,8 @@
         #endregion
 
         private System.Windows.Forms.Label DoctorHomeFormWelcomeLabel;
-        private System.Windows.Forms.FlowLayoutPanel flpViewApptsPanel;
+        private System.Windows.Forms.ListView DoctorAppointmentListView;
+        private System.Windows.Forms.Label DoctorHomeFormAppointmentsLabel;
+        private System.Windows.Forms.Button DoctorHomeFormCloseButton;
     }
 }
