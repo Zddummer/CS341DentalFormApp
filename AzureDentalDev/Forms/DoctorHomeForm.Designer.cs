@@ -32,6 +32,10 @@
             this.DoctorAppointmentListView = new System.Windows.Forms.ListView();
             this.DoctorHomeFormAppointmentsLabel = new System.Windows.Forms.Label();
             this.DoctorHomeFormCloseButton = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // DoctorHomeFormWelcomeLabel
@@ -49,21 +53,27 @@
             // DoctorAppointmentListView
             // 
             this.DoctorAppointmentListView.BackColor = System.Drawing.Color.DimGray;
+            this.DoctorAppointmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.DoctorAppointmentListView.ForeColor = System.Drawing.Color.Aqua;
             this.DoctorAppointmentListView.HideSelection = false;
             this.DoctorAppointmentListView.Location = new System.Drawing.Point(18, 140);
             this.DoctorAppointmentListView.Name = "DoctorAppointmentListView";
             this.DoctorAppointmentListView.Size = new System.Drawing.Size(414, 483);
             this.DoctorAppointmentListView.TabIndex = 1;
+            this.DoctorAppointmentListView.TileSize = new System.Drawing.Size(150, 80);
             this.DoctorAppointmentListView.UseCompatibleStateImageBehavior = false;
             // 
             // DoctorHomeFormAppointmentsLabel
             // 
             this.DoctorHomeFormAppointmentsLabel.AutoSize = true;
-            this.DoctorHomeFormAppointmentsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DoctorHomeFormAppointmentsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DoctorHomeFormAppointmentsLabel.Location = new System.Drawing.Point(18, 114);
             this.DoctorHomeFormAppointmentsLabel.Name = "DoctorHomeFormAppointmentsLabel";
-            this.DoctorHomeFormAppointmentsLabel.Size = new System.Drawing.Size(188, 20);
+            this.DoctorHomeFormAppointmentsLabel.Size = new System.Drawing.Size(210, 20);
             this.DoctorHomeFormAppointmentsLabel.TabIndex = 2;
             this.DoctorHomeFormAppointmentsLabel.Text = "Upcoming Appointments:";
             // 
@@ -105,5 +115,9 @@
         private System.Windows.Forms.ListView DoctorAppointmentListView;
         private System.Windows.Forms.Label DoctorHomeFormAppointmentsLabel;
         private System.Windows.Forms.Button DoctorHomeFormCloseButton;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

@@ -132,7 +132,7 @@ namespace AzureDentalDev.Classes
             return blnWasUserCreated;
         }
         
-        public static List<AppointmentClass> getAppointments(String strUserName)
+        public static List<AppointmentClass> getAppointmentsWithCustomerName(String strUserName)
         {
             //get all appointments associated with the given username
             List<AppointmentClass> appointments = new List<AppointmentClass>();
@@ -155,6 +155,43 @@ namespace AzureDentalDev.Classes
                         while (reader.Read())
                         {
                             appointments.Add( new AppointmentClass(reader.GetString(0),
+                                                         reader.GetString(1),
+                                                         reader.GetString(2),
+                                                         reader.GetString(3),
+                                                         reader.GetDateTime(4),
+                                                         reader.GetDateTime(5),
+                                                         reader.GetSqlChars(6)));
+                        }
+                    }
+                }
+            }
+
+            return appointments;
+        }
+
+        public static List<AppointmentClass> getAppointmentsWithDentistName(String strUserName)
+        {
+            //get all appointments associated with the given username
+            List<AppointmentClass> appointments = new List<AppointmentClass>();
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append("SELECT * ");
+                sb.Append("FROM Appointments ");
+                sb.Append($"WHERE DentistName = '{strUserName}' ");
+                sb.Append("ORDER BY AppointmentDate");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            appointments.Add(new AppointmentClass(reader.GetString(0),
                                                          reader.GetString(1),
                                                          reader.GetString(2),
                                                          reader.GetString(3),

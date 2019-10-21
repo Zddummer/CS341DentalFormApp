@@ -19,7 +19,7 @@ namespace AzureDentalDev.Forms
             UserClass ucDoctorUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
             DoctorHomeFormWelcomeLabel.Text = $"Welcome Dr. {ucDoctorUser.m_strFirstName} {ucDoctorUser.m_strLastName}";
 
-            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointments(strUserName);
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithDentistName(strUserName);
 
             int i = 1;
             foreach(AppointmentClass appointment in lstAppointments)

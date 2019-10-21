@@ -74,7 +74,7 @@ namespace AzureDentalDev.Forms
             }
 
             //Retrieve and display appointments associated with current user
-            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointments(strUserName);
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(strUserName);
             int i = 1;
             foreach(AppointmentClass acAppointment in lstAppointments)
             {
