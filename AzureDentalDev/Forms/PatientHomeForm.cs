@@ -16,11 +16,13 @@ namespace AzureDentalDev.Forms
     {
         private List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
         private String m_strUserName = "";
+        private String m_strPassword = "";
 
         public PatientHomeForm(String strUserName, String strPassword)
         {
             InitializeComponent();
             m_strUserName = strUserName;
+            m_strPassword = strPassword;
             //Add user's first and last name to welcome label
             UserClass ucUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
             PatientHomeFormWelcome.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
@@ -120,6 +122,8 @@ namespace AzureDentalDev.Forms
 
         private void ScheduleAppointmentButton_Click(object sender, EventArgs e)
         {
+            ScheduleDescriptionTextBox.ForeColor = Color.Gray;
+            ErrorMessageLabel.Visible = false;
             AppointmentTypeComboBox.Visible = true;
             dateTimePicker1.Visible = true;
             PickTimeComboBox.Visible = true;
@@ -139,7 +143,14 @@ namespace AzureDentalDev.Forms
         private void AppointmentConfirmationButton_Click(object sender, EventArgs e)
         {
             //Validity Check
-            String appointmentTime = dateTimePicker1.Value.ToShortTimeString();
+            String appointmentTime = "";
+            if(PickTimeComboBox.Text.Substring(0,1) == "9")
+            {
+                appointmentTime = " " + PickTimeComboBox.Text.Substring(0, 4);
+            } else
+            {
+                appointmentTime = " " + PickTimeComboBox.Text.Substring(0, 5);
+            }
             String appointmentDate = dateTimePicker1.Value.ToShortDateString();
             String appointmentDentistName = DentistHygeinistComboBox.Text.ToString();
             UserClass appointmentDentist = null;
@@ -151,16 +162,18 @@ namespace AzureDentalDev.Forms
                     appointmentDentist = user;
                 }
             }
+            String appointmentDescription = ScheduleDescriptionTextBox.Text.ToString();
 
             //store appointment in database
             int responseCode = DataAccessClass.createAppointment(DateTime.Parse(appointmentDate + appointmentTime),
                         m_strUserName,
                         appointmentDentist.m_strUsername,
                         AppointmentTypeComboBox.Text.ToString(),
-                        ScheduleDescriptionTextBox.Text.ToString(),
+                        appointmentDescription,
                         DateTime.Now);
 
             ErrorMessageLabel.Visible = true;
+            ErrorMessageLabel.ForeColor = System.Drawing.Color.Red;
             switch (responseCode)
             {
                 case -1:
@@ -179,7 +192,7 @@ namespace AzureDentalDev.Forms
                     ErrorMessageLabel.Text = "The worker you selected is not available at that time";
                     break;
                 case -6:
-                    ErrorMessageLabel.Text = "Appoitment must be scheduled at least 24 hours in advance";
+                    ErrorMessageLabel.Text = "Appoitments must be scheduled at least 24 hours in advance";
                     break;
                 default:
                     break;
@@ -207,6 +220,14 @@ namespace AzureDentalDev.Forms
 
                 AppointmentConfirmationPanel.Visible = false;
 
+                ListViewItem item = new ListViewItem("New Appointment");
+                item.SubItems.Add(appointmentDate);
+                item.SubItems.Add(appointmentTime);
+                item.SubItems.Add(appointmentDentistName);
+                item.SubItems.Add(appointmentDescription);
+                item.ForeColor = Color.LightSkyBlue;
+                item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                AppointmentsList.Items.Add(item);
             }  
         }
 
@@ -232,6 +253,7 @@ namespace AzureDentalDev.Forms
 
         private void AppointmentsList_ItemActivate(object sender, EventArgs e)
         {
+            ErrorMessageLabel.Visible = false;
             ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
 
             String date = items[1].Text.ToString();
@@ -264,6 +286,12 @@ namespace AzureDentalDev.Forms
             sb.Append($"{dentist} \nDescription: ");
             sb.Append(description);
             MessageBox.Show(sb.ToString());
+        }
+
+        private void ScheduleDescriptionTextBox_Click(object sender, EventArgs e)
+        {
+            ScheduleDescriptionTextBox.Clear();
+            ScheduleDescriptionTextBox.ForeColor = Color.Aqua;
         }
     }
 }

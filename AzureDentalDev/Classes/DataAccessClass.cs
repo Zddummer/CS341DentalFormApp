@@ -81,8 +81,8 @@ namespace AzureDentalDev.Classes
             OfficeHoursClass ohcReturnOfficeHours = null;
             String strReturnDayOfWeek;
             DateTime dtDate;
-            DateTime dtTimeOpen;
-            DateTime dtTimeClose;
+            TimeSpan dtTimeOpen;
+            TimeSpan dtTimeClose;
             System.Data.SqlTypes.SqlChars chrStatus;
 
 
@@ -104,8 +104,8 @@ namespace AzureDentalDev.Classes
                         {
                             strReturnDayOfWeek = reader.GetString(0);
                             dtDate = reader.GetDateTime(1);
-                            dtTimeOpen = reader.GetDateTime(2);
-                            dtTimeClose = reader.GetDateTime(3);
+                            dtTimeOpen = reader.GetTimeSpan(2);
+                            dtTimeClose = reader.GetTimeSpan(3);
                             chrStatus = reader.GetSqlChars(4);
 
                             ohcReturnOfficeHours = new OfficeHoursClass(strReturnDayOfWeek,
@@ -286,11 +286,12 @@ namespace AzureDentalDev.Classes
             }
 
             //Error checking for scheduling during a time when the office is closed
-            if(dtDateTime < ohcDayOfAppointment.m_dtOpenTime || dtDateTime > ohcDayOfAppointment.m_dtCloseTime)
+            /*
+            if (dtDateTime < ohcDayOfAppointment.m_dtOpenTime || dtDateTime > ohcDayOfAppointment.m_dtCloseTime)
             {
                 return -3;
             }
-
+            */
 
             //Error checking for if patient has another appointment at that time
             List<AppointmentClass> lsacPatientAppts = getAppointmentsWithCustomerName(strPatientUserName);

@@ -11,14 +11,14 @@ namespace AzureDentalDev.Classes
         public string m_strDayOfWeek;
         //public System.Data.SqlTypes.SqlDateTime m_date;
         public DateTime m_dtdate;
-        public DateTime m_dtOpenTime;
-        public DateTime m_dtCloseTime;
+        public TimeSpan m_dtOpenTime;
+        public TimeSpan m_dtCloseTime;
         public System.Data.SqlTypes.SqlChars m_chrStatus;
 
         public OfficeHoursClass(String dayOfTheWeek,
                                     DateTime date,
-                                    DateTime openTime,
-                                    DateTime closeTime,
+                                    TimeSpan openTime,
+                                    TimeSpan closeTime,
                                     System.Data.SqlTypes.SqlChars status)
         {
             m_strDayOfWeek = dayOfTheWeek;
