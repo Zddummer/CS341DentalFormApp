@@ -151,31 +151,63 @@ namespace AzureDentalDev.Forms
                     appointmentDentist = user;
                 }
             }
-            DataAccessClass.createAppointment(DateTime.Parse(appointmentDate + appointmentTime),
+
+            //store appointment in database
+            int responseCode = DataAccessClass.createAppointment(DateTime.Parse(appointmentDate + appointmentTime),
                         m_strUserName,
                         appointmentDentist.m_strUsername,
                         AppointmentTypeComboBox.Text.ToString(),
                         ScheduleDescriptionTextBox.Text.ToString(),
                         DateTime.Now);
 
-            //store appointment in database
+            ErrorMessageLabel.Visible = true;
+            switch (responseCode)
+            {
+                case -1:
+                    ErrorMessageLabel.Text = "The selected appointment is in the past";
+                    break;
+                case -2:
+                    ErrorMessageLabel.Text = "The office is closed that day";
+                    break;
+                case -3:
+                    ErrorMessageLabel.Text = "The office is open that day, but not during that time";
+                    break;
+                case -4:
+                    ErrorMessageLabel.Text = "You already have an appointment during that time";
+                    break;
+                case -5:
+                    ErrorMessageLabel.Text = "The worker you selected is not available at that time";
+                    break;
+                case -6:
+                    ErrorMessageLabel.Text = "Appoitment must be scheduled at least 24 hours in advance";
+                    break;
+                default:
+                    break;
+            }
 
-            AppointmentTypeComboBox.Visible = false;
-            AppointmentTypeComboBox.Text = "Select Appointment Type";
+            if(responseCode == 1)
+            {
+                ErrorMessageLabel.ForeColor = System.Drawing.Color.Green;
+                ErrorMessageLabel.Text = "Your appointment has been created";
 
-            PickTimeComboBox.Visible = false;
-            PickTimeComboBox.Text = "Select Appointment Time";
+                AppointmentTypeComboBox.Visible = false;
+                AppointmentTypeComboBox.Text = "Select Appointment Type";
 
-            DentistHygeinistComboBox.Visible = false;
-            DentistHygeinistComboBox.Text = "Select Dentist/Hygeinist";
+                PickTimeComboBox.Visible = false;
+                PickTimeComboBox.Text = "Select Appointment Time";
 
-            dateTimePicker1.Visible = false;
-            dateTimePicker1.Value = DateTime.Today;
+                DentistHygeinistComboBox.Visible = false;
+                DentistHygeinistComboBox.Text = "Select Dentist/Hygeinist";
 
-            ScheduleDescriptionTextBox.Visible = false;
-            ScheduleDescriptionTextBox.Text = "Description of Appointment";
+                dateTimePicker1.Visible = false;
+                dateTimePicker1.Value = DateTime.Today;
 
-            AppointmentConfirmationPanel.Visible = false;
+                ScheduleDescriptionTextBox.Visible = false;
+                ScheduleDescriptionTextBox.Text = "Description of Appointment";
+
+                AppointmentConfirmationPanel.Visible = false;
+
+            }  
         }
 
         private void DenyConfirmationButton_Click(object sender, EventArgs e)
