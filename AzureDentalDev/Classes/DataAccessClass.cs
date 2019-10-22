@@ -344,8 +344,7 @@ namespace AzureDentalDev.Classes
                 sb.Append($"'{strAppointmentType}', ");
                 sb.Append($"'{strDescription}', ");
                 sb.Append($"'{dtCreatedDate}', ");
-                sb.Append($"'{dtDateTime}', ");
-                sb.Append($"'{status}')");
+                sb.Append($"'{dtDateTime}', 'A')");
                 String sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
