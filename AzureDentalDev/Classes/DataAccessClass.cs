@@ -269,10 +269,8 @@ namespace AzureDentalDev.Classes
                         String strDentistUserName,
                         String strAppointmentType,
                         String strDescription,
-                        DateTime dtCreatedDate,
-                        System.Data.SqlTypes.SqlChars status)
+                        DateTime dtCreatedDate)
         {
-            
             //validate appointment time (make Office Hours class and query database for hours info)
             using (SqlConnection connection = getConnection())
             {
@@ -300,8 +298,7 @@ namespace AzureDentalDev.Classes
                 sb.Append($"'{strAppointmentType}', ");
                 sb.Append($"'{strDescription}', ");
                 sb.Append($"'{dtCreatedDate}', ");
-                sb.Append($"'{dtDateTime}', ");
-                sb.Append($"'{status}')");
+                sb.Append($"'{dtDateTime}', 'A')");
                 String sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))

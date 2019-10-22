@@ -14,11 +14,13 @@ namespace AzureDentalDev.Forms
 {
     public partial class PatientHomeForm : Form
     {
-        List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
+        private List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
+        private String m_strUserName = "";
 
         public PatientHomeForm(String strUserName, String strPassword)
         {
             InitializeComponent();
+            m_strUserName = strUserName;
             //Add user's first and last name to welcome label
             UserClass ucUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
             PatientHomeFormWelcome.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
@@ -137,7 +139,24 @@ namespace AzureDentalDev.Forms
         private void AppointmentConfirmationButton_Click(object sender, EventArgs e)
         {
             //Validity Check
-
+            String appointmentTime = dateTimePicker1.Value.ToShortTimeString();
+            String appointmentDate = dateTimePicker1.Value.ToShortDateString();
+            String appointmentDentistName = DentistHygeinistComboBox.Text.ToString();
+            UserClass appointmentDentist = null;
+            foreach (UserClass user in m_lstDentistsHygeinists)
+            {
+                String name = user.m_strFirstName + " " + user.m_strLastName;
+                if (name.Equals(appointmentDentistName))
+                {
+                    appointmentDentist = user;
+                }
+            }
+            DataAccessClass.createAppointment(DateTime.Parse(appointmentDate + appointmentTime),
+                        m_strUserName,
+                        appointmentDentist.m_strUsername,
+                        AppointmentTypeComboBox.Text.ToString(),
+                        ScheduleDescriptionTextBox.Text.ToString(),
+                        DateTime.Now);
 
             //store appointment in database
 
