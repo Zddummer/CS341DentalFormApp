@@ -145,6 +145,7 @@ namespace AzureDentalDev.Classes
                 sb.Append("SELECT * ");
                 sb.Append("FROM Appointments ");
                 sb.Append($"WHERE CustomerName = '{strUserName}' ");
+                sb.Append("AND Status = 'A' ");
                 sb.Append("ORDER BY AppointmentDate");
                 String sql = sb.ToString();
 
@@ -206,7 +207,17 @@ namespace AzureDentalDev.Classes
             return appointments;
         }
 
-        public static Boolean createAppointment(DateTime dtDateTime,
+        /*
+         * Returns an integer corresponding to success or failure of appointment creation
+         * 1 = appointment added successfully
+         * -1 = the given appointment date is in the past
+         * -2 = The office is closed that day
+         * -3 = the office is open that day but closed during that time
+         * -4 = You already have an appointment during that time
+         * -5 = The requested dentist is unavailable
+         * -6 = The appointment was within 24 hours of createdDate
+         */
+        public static int createAppointment(DateTime dtDateTime,
                         String strPatientUserName,
                         String strDentistUserName,
                         String strAppointmentType,
@@ -214,7 +225,7 @@ namespace AzureDentalDev.Classes
                         DateTime dtCreatedDate,
                         System.Data.SqlTypes.SqlChars status)
         {
-
+            
             //validate appointment time (make Office Hours class and query database for hours info)
             using (SqlConnection connection = getConnection())
             {
@@ -222,9 +233,9 @@ namespace AzureDentalDev.Classes
                 String sql = "";
                 SqlCommand command = new SqlCommand(sql, connection);
             }
-            if (dtDateTime > DateTimeOffset.Now.AddDays(1))
+            if (dtDateTime < DateTimeOffset.Now.AddDays(1))
             {
-
+                return -6;
             }
             //add appointment to database
             Boolean blnWasAppointmentCreated = false;
@@ -237,13 +248,13 @@ namespace AzureDentalDev.Classes
                 StringBuilder sb = new StringBuilder();
                 
                 sb.Append("Insert into Appointments Values(");
-                sb.Append($"{strPatientUserName}, ");
-                sb.Append($"{strDentistUserName}, ");
-                sb.Append($"{strAppointmentType}, ");
-                sb.Append($"{strDescription}, ");
-                sb.Append($"{dtCreatedDate}, ");
-                sb.Append($"{dtDateTime}, ");
-                sb.Append($"{status})");
+                sb.Append($"'{strPatientUserName}', ");
+                sb.Append($"'{strDentistUserName}', ");
+                sb.Append($"'{strAppointmentType}', ");
+                sb.Append($"'{strDescription}', ");
+                sb.Append($"'{dtCreatedDate}', ");
+                sb.Append($"'{dtDateTime}', ");
+                sb.Append($"'{status}')");
                 String sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
@@ -257,7 +268,11 @@ namespace AzureDentalDev.Classes
                 }
             }
             //return whether the add was successful
-            return blnWasAppointmentCreated;
+            if (blnWasAppointmentCreated)
+            {
+                return 1;
+            }
+            return -4;
         }
 
         public static Boolean updateOpenOfficeHours(String strStartTime, String strCloseTime)

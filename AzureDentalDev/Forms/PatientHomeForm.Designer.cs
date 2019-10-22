@@ -45,6 +45,8 @@
             this.ClosePatientHomeFormButton = new System.Windows.Forms.Button();
             this.ScheduleDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.DentistHygeinistComboBox = new System.Windows.Forms.ComboBox();
+            this.AppointmentTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.ErrorMessageLabel = new System.Windows.Forms.Label();
             this.AppointmentConfirmationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +99,7 @@
             // 
             this.ScheduleAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ScheduleAppointmentButton.Font = new System.Drawing.Font("Arial", 12F);
-            this.ScheduleAppointmentButton.Location = new System.Drawing.Point(532, 91);
+            this.ScheduleAppointmentButton.Location = new System.Drawing.Point(552, 47);
             this.ScheduleAppointmentButton.Name = "ScheduleAppointmentButton";
             this.ScheduleAppointmentButton.Size = new System.Drawing.Size(142, 78);
             this.ScheduleAppointmentButton.TabIndex = 2;
@@ -212,12 +214,36 @@
             this.DentistHygeinistComboBox.Text = "Select Dentist/Hygeinist";
             this.DentistHygeinistComboBox.Visible = false;
             // 
+            // AppointmentTypeComboBox
+            // 
+            this.AppointmentTypeComboBox.FormattingEnabled = true;
+            this.AppointmentTypeComboBox.Location = new System.Drawing.Point(550, 153);
+            this.AppointmentTypeComboBox.Name = "AppointmentTypeComboBox";
+            this.AppointmentTypeComboBox.Size = new System.Drawing.Size(144, 21);
+            this.AppointmentTypeComboBox.TabIndex = 9;
+            this.AppointmentTypeComboBox.Text = "Select Appointment Type";
+            this.AppointmentTypeComboBox.Visible = false;
+            // 
+            // ErrorMessageLabel
+            // 
+            this.ErrorMessageLabel.AutoSize = true;
+            this.ErrorMessageLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ErrorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.ErrorMessageLabel.Location = new System.Drawing.Point(433, 392);
+            this.ErrorMessageLabel.Name = "ErrorMessageLabel";
+            this.ErrorMessageLabel.Size = new System.Drawing.Size(338, 16);
+            this.ErrorMessageLabel.TabIndex = 3;
+            this.ErrorMessageLabel.Text = "You tried to create an appointment but it didn\'t work";
+            this.ErrorMessageLabel.Visible = false;
+            // 
             // PatientHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ErrorMessageLabel);
+            this.Controls.Add(this.AppointmentTypeComboBox);
             this.Controls.Add(this.DentistHygeinistComboBox);
             this.Controls.Add(this.ScheduleDescriptionTextBox);
             this.Controls.Add(this.ClosePatientHomeFormButton);
@@ -258,5 +284,7 @@
         private System.Windows.Forms.TextBox ScheduleDescriptionTextBox;
         private System.Windows.Forms.ComboBox DentistHygeinistComboBox;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ComboBox AppointmentTypeComboBox;
+        private System.Windows.Forms.Label ErrorMessageLabel;
     }
 }

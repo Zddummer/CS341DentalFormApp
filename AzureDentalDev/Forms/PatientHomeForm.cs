@@ -22,6 +22,12 @@ namespace AzureDentalDev.Forms
             //Add user's first and last name to welcome label
             UserClass ucUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
             PatientHomeFormWelcome.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
+
+            //Fill AppointmentType
+            AppointmentTypeComboBox.Items.Add("Cleaning");
+            AppointmentTypeComboBox.Items.Add("Checkup");
+            AppointmentTypeComboBox.Items.Add("Surgery");
+
             //Fill pickTimeComboBox
             PickTimeComboBox.Items.Add("9:00-10:00");
             PickTimeComboBox.Items.Add("10:00-11:00");
@@ -112,6 +118,7 @@ namespace AzureDentalDev.Forms
 
         private void ScheduleAppointmentButton_Click(object sender, EventArgs e)
         {
+            AppointmentTypeComboBox.Visible = true;
             dateTimePicker1.Visible = true;
             PickTimeComboBox.Visible = true;
             ScheduleDescriptionTextBox.Visible = true;
@@ -134,6 +141,8 @@ namespace AzureDentalDev.Forms
 
             //store appointment in database
 
+            AppointmentTypeComboBox.Visible = false;
+            AppointmentTypeComboBox.Text = "Select Appointment Type";
 
             PickTimeComboBox.Visible = false;
             PickTimeComboBox.Text = "Select Appointment Time";
@@ -152,6 +161,9 @@ namespace AzureDentalDev.Forms
 
         private void DenyConfirmationButton_Click(object sender, EventArgs e)
         {
+            AppointmentTypeComboBox.Visible = false;
+            AppointmentTypeComboBox.Text = "Select Appointment Type";
+
             PickTimeComboBox.Visible = false;
             PickTimeComboBox.Text = "Select Appointment Time";
 
