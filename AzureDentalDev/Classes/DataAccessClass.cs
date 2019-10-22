@@ -269,8 +269,7 @@ namespace AzureDentalDev.Classes
                         String strDentistUserName,
                         String strAppointmentType,
                         String strDescription,
-                        DateTime dtCreatedDate,
-                        System.Data.SqlTypes.SqlChars status)
+                        DateTime dtCreatedDate)
         {
             //Error checking for scheduling in the past
             if(dtDateTime < DateTime.Now)
