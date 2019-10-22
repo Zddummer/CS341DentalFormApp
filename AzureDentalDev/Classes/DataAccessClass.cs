@@ -75,6 +75,53 @@ namespace AzureDentalDev.Classes
 
         }
 
+
+        public static OfficeHoursClass QueryDatabaseForOfficeHours(DateTime dtAppointmentDate)
+        {
+            OfficeHoursClass ohcReturnOfficeHours = null;
+            String strReturnDayOfWeek;
+            DateTime dtDate;
+            DateTime dtTimeOpen;
+            DateTime dtTimeClose;
+            System.Data.SqlTypes.SqlChars chrStatus;
+
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append("SELECT TOP 1 * ");
+                sb.Append("FROM OfficeHours O ");
+                sb.Append($"WHERE O.Date = '{dtAppointmentDate}' ");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            strReturnDayOfWeek = reader.GetString(0);
+                            dtDate = reader.GetDateTime(1);
+                            dtTimeOpen = reader.GetDateTime(2);
+                            dtTimeClose = reader.GetDateTime(3);
+                            chrStatus = reader.GetSqlChars(4);
+
+                            ohcReturnOfficeHours = new OfficeHoursClass(strReturnDayOfWeek,
+                                                         dtDate,
+                                                         dtTimeOpen,
+                                                         dtTimeClose,
+                                                         chrStatus);
+                            return ohcReturnOfficeHours;
+                        }
+                    }
+                }
+            }
+            return ohcReturnOfficeHours;
+
+        }
+
         public static Boolean registerNewUser(String strFirstName,
                                               String strLastName,
                                               String strUserName,

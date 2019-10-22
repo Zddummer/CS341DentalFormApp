@@ -13,7 +13,7 @@ namespace AzureDentalDev.Classes
         public DateTime m_dtdate;
         public DateTime m_dtOpenTime;
         public DateTime m_dtCloseTime;
-        public System.Data.SqlTypes.SqlChars m_chStatus;
+        public System.Data.SqlTypes.SqlChars m_chrStatus;
 
         public OfficeHoursClass(String dayOfTheWeek,
                                     DateTime date,
@@ -25,7 +25,7 @@ namespace AzureDentalDev.Classes
             m_dtdate = date;
             m_dtOpenTime = openTime;
             m_dtCloseTime = closeTime;
-            m_chStatus = status;
+            m_chrStatus = status;
         }
     }
 }
