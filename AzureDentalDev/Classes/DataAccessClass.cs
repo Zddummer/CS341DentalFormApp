@@ -269,8 +269,58 @@ namespace AzureDentalDev.Classes
                         String strDentistUserName,
                         String strAppointmentType,
                         String strDescription,
-                        DateTime dtCreatedDate)
+                        DateTime dtCreatedDate,
+                        System.Data.SqlTypes.SqlChars status)
         {
+            //Error checking for scheduling in the past
+            if(dtDateTime < DateTime.Now)
+            {
+                return -1;
+            }
+
+            //Error checking for scheduling not during Office hours
+            OfficeHoursClass ohcDayOfAppointment = QueryDatabaseForOfficeHours(dtDateTime);
+            
+            if(ohcDayOfAppointment == null)
+            {
+                return -2;
+            }
+
+            //Error checking for scheduling during a time when the office is closed
+            if(dtDateTime < ohcDayOfAppointment.m_dtOpenTime || dtDateTime > ohcDayOfAppointment.m_dtCloseTime)
+            {
+                return -3;
+            }
+
+
+            //Error checking for if patient has another appointment at that time
+            List<AppointmentClass> lsacPatientAppts = getAppointmentsWithCustomerName(strPatientUserName);
+            foreach(AppointmentClass appointment in lsacPatientAppts)
+            {
+                if(appointment.m_dtDateTime == dtDateTime)
+                {
+                    return -4;
+                }
+            }
+
+            //Error checking for if the dentist has another appointment at that time
+            List<AppointmentClass> lsacDentistAppts = getAppointmentsWithDentistName(strDentistUserName);
+            foreach (AppointmentClass appointment in lsacDentistAppts)
+            {
+                if (appointment.m_dtDateTime == dtDateTime)
+                {
+                    return -5;
+                }
+            }
+
+
+            //error checking for if appointment is being scheduled for within the next 24 hours
+            if (dtDateTime < DateTimeOffset.Now.AddDays(1))
+            {
+                return -6;
+            }
+
+
             //validate appointment time (make Office Hours class and query database for hours info)
             using (SqlConnection connection = getConnection())
             {
@@ -278,10 +328,7 @@ namespace AzureDentalDev.Classes
                 String sql = "";
                 SqlCommand command = new SqlCommand(sql, connection);
             }
-            if (dtDateTime < DateTimeOffset.Now.AddDays(1))
-            {
-                return -6;
-            }
+            
             //add appointment to database
             Boolean blnWasAppointmentCreated = false;
             int intNumberOfRowsAffected = 0;
@@ -298,7 +345,8 @@ namespace AzureDentalDev.Classes
                 sb.Append($"'{strAppointmentType}', ");
                 sb.Append($"'{strDescription}', ");
                 sb.Append($"'{dtCreatedDate}', ");
-                sb.Append($"'{dtDateTime}', 'A')");
+                sb.Append($"'{dtDateTime}', ");
+                sb.Append($"'{status}')");
                 String sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
