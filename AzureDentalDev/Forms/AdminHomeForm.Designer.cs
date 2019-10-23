@@ -38,6 +38,8 @@
             this.AdminHomeFormUpdateButton = new System.Windows.Forms.Button();
             this.AdminFormCreateButton = new System.Windows.Forms.Button();
             this.ScheduleTabPage = new System.Windows.Forms.TabPage();
+            this.AdminOpenDayLabel = new System.Windows.Forms.Label();
+            this.AdminCloseDayLabel = new System.Windows.Forms.Label();
             this.AdminCloseDayButton = new System.Windows.Forms.Button();
             this.AdminOpenDayButton = new System.Windows.Forms.Button();
             this.HoursUpdatedLabel = new System.Windows.Forms.Label();
@@ -50,8 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.HoursLabel = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.AdminCloseDayLabel = new System.Windows.Forms.Label();
-            this.AdminOpenDayLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.AdminHomeFormTabControl.SuspendLayout();
@@ -178,10 +178,34 @@
             this.ScheduleTabPage.TabIndex = 1;
             this.ScheduleTabPage.Text = "Schedule";
             // 
+            // AdminOpenDayLabel
+            // 
+            this.AdminOpenDayLabel.AutoSize = true;
+            this.AdminOpenDayLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminOpenDayLabel.ForeColor = System.Drawing.Color.Lime;
+            this.AdminOpenDayLabel.Location = new System.Drawing.Point(401, 113);
+            this.AdminOpenDayLabel.Name = "AdminOpenDayLabel";
+            this.AdminOpenDayLabel.Size = new System.Drawing.Size(180, 16);
+            this.AdminOpenDayLabel.TabIndex = 12;
+            this.AdminOpenDayLabel.Text = "We are now open on this day!";
+            this.AdminOpenDayLabel.Visible = false;
+            // 
+            // AdminCloseDayLabel
+            // 
+            this.AdminCloseDayLabel.AutoSize = true;
+            this.AdminCloseDayLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminCloseDayLabel.ForeColor = System.Drawing.Color.Red;
+            this.AdminCloseDayLabel.Location = new System.Drawing.Point(401, 135);
+            this.AdminCloseDayLabel.Name = "AdminCloseDayLabel";
+            this.AdminCloseDayLabel.Size = new System.Drawing.Size(192, 16);
+            this.AdminCloseDayLabel.TabIndex = 11;
+            this.AdminCloseDayLabel.Text = "We are now closed on this Day!";
+            this.AdminCloseDayLabel.Visible = false;
+            // 
             // AdminCloseDayButton
             // 
             this.AdminCloseDayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.AdminCloseDayButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AdminCloseDayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AdminCloseDayButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminCloseDayButton.ForeColor = System.Drawing.Color.Aqua;
             this.AdminCloseDayButton.Location = new System.Drawing.Point(536, 154);
@@ -320,30 +344,6 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(901, 23);
             this.materialTabSelector1.TabIndex = 5;
             this.materialTabSelector1.Text = "materialTabSelector1";
-            // 
-            // AdminCloseDayLabel
-            // 
-            this.AdminCloseDayLabel.AutoSize = true;
-            this.AdminCloseDayLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminCloseDayLabel.ForeColor = System.Drawing.Color.Red;
-            this.AdminCloseDayLabel.Location = new System.Drawing.Point(401, 135);
-            this.AdminCloseDayLabel.Name = "AdminCloseDayLabel";
-            this.AdminCloseDayLabel.Size = new System.Drawing.Size(192, 16);
-            this.AdminCloseDayLabel.TabIndex = 11;
-            this.AdminCloseDayLabel.Text = "We are now closed on this Day!";
-            this.AdminCloseDayLabel.Visible = false;
-            // 
-            // AdminOpenDayLabel
-            // 
-            this.AdminOpenDayLabel.AutoSize = true;
-            this.AdminOpenDayLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminOpenDayLabel.ForeColor = System.Drawing.Color.Lime;
-            this.AdminOpenDayLabel.Location = new System.Drawing.Point(401, 113);
-            this.AdminOpenDayLabel.Name = "AdminOpenDayLabel";
-            this.AdminOpenDayLabel.Size = new System.Drawing.Size(180, 16);
-            this.AdminOpenDayLabel.TabIndex = 12;
-            this.AdminOpenDayLabel.Text = "We are now open on this day!";
-            this.AdminOpenDayLabel.Visible = false;
             // 
             // AdminHomeForm
             // 

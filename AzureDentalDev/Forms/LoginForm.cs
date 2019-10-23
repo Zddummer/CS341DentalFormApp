@@ -131,7 +131,7 @@ namespace AzureDentalDev
         private void Timer2_Tick(object sender, EventArgs e)
         {
             childSignUpForm.Left -= 10;
-            if (childSignUpForm.Left <= 700)
+            if (childSignUpForm.Left <= this.Left)
             {
                 timer2.Stop();
             }

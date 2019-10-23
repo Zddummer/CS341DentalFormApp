@@ -160,7 +160,7 @@ namespace AzureDentalDev.Forms
         private void Timer2_Tick(object sender, EventArgs e)
         {
             this.Left += 10;
-            if (this.Left >= 690)
+            if (this.Left >= Application.OpenForms[0].Left)
             {
                 timer2.Stop();
             }
