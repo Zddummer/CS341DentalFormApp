@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AzureDentalDev.Classes
 {
     class DataAccessClass
     {
+        /**
+         * Creates an SqlConnection with the credentials for the company's database
+         * 
+         * returns: SqlConnection
+         */
         private static SqlConnection getConnection()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -20,6 +23,13 @@ namespace AzureDentalDev.Classes
             return new SqlConnection(builder.ConnectionString);
         }
 
+        /**
+         * Uses and in-line SQL statement to create a UserClass object with a given
+         * Username and password
+         * 
+         * parameters: String Username, String Password
+         * returns: UserClass object
+         */
         public static UserClass QueryDatabaseForUser(String strUserName, String strPassword)
         {
             UserClass ucReturnUser = null;
@@ -30,13 +40,7 @@ namespace AzureDentalDev.Classes
             System.Data.SqlTypes.SqlChars chrUserType;
             System.Data.SqlTypes.SqlChars chrAccessType;
 
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "cs341azuredb.database.windows.net";
-            builder.UserID = "adminonly";
-            builder.Password = "CS341dbNULL";
-            builder.InitialCatalog = "DentalDev";
-
-            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            using (SqlConnection connection = getConnection())
             {
                 
                 connection.Open();
@@ -122,6 +126,12 @@ namespace AzureDentalDev.Classes
 
         }
 
+        /**
+         * Overloaded method which registers a user as a patient
+         * 
+         * parameters: String FirstName, String LastName, String UserName, String Password
+         * returns: Boolean
+         */
         public static Boolean registerNewUser(String strFirstName,
                                               String strLastName,
                                               String strUserName,
@@ -134,6 +144,12 @@ namespace AzureDentalDev.Classes
                                    "P");
         }
 
+        /**
+         * Base overloaded method which registers a user according to the Usertype passed in
+         * 
+         * parameters: String FirstName, String LastName, String UserName, String Password, String UserType
+         * returns: Boolean
+         */
         public static Boolean registerNewUser(String strFirstName,
                                               String strLastName,
                                               String strUserName,
@@ -143,13 +159,7 @@ namespace AzureDentalDev.Classes
             Boolean blnWasUserCreated = false;
             int intNumberOfRowsAffected = 0;
 
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "cs341azuredb.database.windows.net";
-            builder.UserID = "adminonly";
-            builder.Password = "CS341dbNULL";
-            builder.InitialCatalog = "DentalDev";
-
-            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            using (SqlConnection connection = getConnection())
             {
 
                 connection.Open();
@@ -366,18 +376,18 @@ namespace AzureDentalDev.Classes
             return -4;
         }
 
+        /**
+         * Changes the open hours of the company to the times passed in
+         * 
+         * parameters: String StartTime, String CloseTime
+         * returns: Boolean
+         */
         public static Boolean updateOpenOfficeHours(String strStartTime, String strCloseTime)
         {
             Boolean blnWereHoursUpdated = false;
             int intNumberOfRowsAffected = 0;
 
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "cs341azuredb.database.windows.net";
-            builder.UserID = "adminonly";
-            builder.Password = "CS341dbNULL";
-            builder.InitialCatalog = "DentalDev";
-
-            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            using (SqlConnection connection = getConnection())
             {
 
                 connection.Open();
@@ -399,6 +409,13 @@ namespace AzureDentalDev.Classes
             return blnWereHoursUpdated;
         }
 
+
+        /**
+         * Updates the database to show we are closed on a specified day
+         * 
+         * parameters: String DateToClose
+         * returns: Boolean
+         */
         public static Boolean closeDay(String strDateToClose)
         {
             Boolean blnWasDayClosed = false;
@@ -406,13 +423,7 @@ namespace AzureDentalDev.Classes
 
             strDateToClose = strDateToClose.Split(' ')[0];
 
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "cs341azuredb.database.windows.net";
-            builder.UserID = "adminonly";
-            builder.Password = "CS341dbNULL";
-            builder.InitialCatalog = "DentalDev";
-
-            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            using (SqlConnection connection = getConnection())
             {
 
                 connection.Open();
@@ -434,6 +445,12 @@ namespace AzureDentalDev.Classes
             return blnWasDayClosed;
         }
 
+        /**
+         * Updates the database to show we are open on a specified day
+         * 
+         * parameters: String DateToOpen
+         * returns: Boolean
+         */
         public static Boolean openDay(String strDateToOpen)
         {
             Boolean blnWasDayClosed = false;
@@ -441,13 +458,7 @@ namespace AzureDentalDev.Classes
 
             strDateToOpen = strDateToOpen.Split(' ')[0];
 
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "cs341azuredb.database.windows.net";
-            builder.UserID = "adminonly";
-            builder.Password = "CS341dbNULL";
-            builder.InitialCatalog = "DentalDev";
-
-            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            using (SqlConnection connection = getConnection())
             {
 
                 connection.Open();
