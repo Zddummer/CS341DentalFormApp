@@ -210,6 +210,7 @@
             this.Text = "Log in";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.VisibleChanged += new System.EventHandler(this.LoginForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormMainPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormUserPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormPassPictureBox)).EndInit();

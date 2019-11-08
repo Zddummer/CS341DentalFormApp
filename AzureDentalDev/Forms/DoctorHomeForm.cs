@@ -53,5 +53,11 @@ namespace AzureDentalDev.Forms
             Close();
             Application.Exit();
         }
+
+        private void DoctorHomeLogoutLabel_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            Close();
+        }
     }
 }

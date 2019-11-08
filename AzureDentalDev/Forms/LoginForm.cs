@@ -108,6 +108,7 @@ namespace AzureDentalDev
 
         private void LoginFormSignUpButton_Click(object sender, EventArgs e)
         {
+            childSignUpForm.Visible = true;
             timer1.Start();
         }
 
@@ -145,6 +146,15 @@ namespace AzureDentalDev
         private void LoginFormCloseLabel_MouseLeave(object sender, EventArgs e)
         {
             LoginFormCloseLabel.ForeColor = Color.Gray;
+        }
+
+        private void LoginForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (LoginFormUserTextBox.Text != "Username" && LoginFormPassTextBox.Text != "Password") {
+                LoginFormUserTextBox.Text = String.Empty;
+                LoginFormPassTextBox.Text = String.Empty;
+            }
+            LoginFormErrorLabel.Visible = false;
         }
     }
 }

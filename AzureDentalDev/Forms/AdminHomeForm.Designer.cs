@@ -52,6 +52,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.HoursLabel = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.AdminHomeLogoutLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.AdminHomeFormTabControl.SuspendLayout();
@@ -95,6 +97,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.AdminHomeLogoutLabel);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.AdminHomeFormMainPictureBox);
             this.panel1.Controls.Add(this.AdminHomeFormWelcomeLabel);
             this.panel1.Controls.Add(this.AdminHomeFormCloseLabel);
@@ -345,6 +349,27 @@
             this.materialTabSelector1.TabIndex = 5;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.Location = new System.Drawing.Point(877, 8);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(2, 18);
+            this.panel2.TabIndex = 3;
+            // 
+            // AdminHomeLogoutLabel
+            // 
+            this.AdminHomeLogoutLabel.AutoSize = true;
+            this.AdminHomeLogoutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AdminHomeLogoutLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminHomeLogoutLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AdminHomeLogoutLabel.Location = new System.Drawing.Point(814, 10);
+            this.AdminHomeLogoutLabel.Name = "AdminHomeLogoutLabel";
+            this.AdminHomeLogoutLabel.Size = new System.Drawing.Size(57, 16);
+            this.AdminHomeLogoutLabel.TabIndex = 4;
+            this.AdminHomeLogoutLabel.Text = "Logout";
+            this.AdminHomeLogoutLabel.Click += new System.EventHandler(this.AdminHomeLogoutLabel_Click);
+            // 
             // AdminHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,5 +420,7 @@
         private System.Windows.Forms.Button AdminOpenDayButton;
         private System.Windows.Forms.Label AdminOpenDayLabel;
         private System.Windows.Forms.Label AdminCloseDayLabel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label AdminHomeLogoutLabel;
     }
 }

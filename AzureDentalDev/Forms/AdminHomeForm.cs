@@ -85,5 +85,11 @@ namespace AzureDentalDev.Forms
                 AdminOpenDayLabel.Visible = false;
             }
         }
+
+        private void AdminHomeLogoutLabel_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            Close();
+        }
     }
 }

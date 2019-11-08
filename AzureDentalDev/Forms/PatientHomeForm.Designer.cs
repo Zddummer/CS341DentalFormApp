@@ -48,6 +48,8 @@
             this.AppointmentTypeComboBox = new System.Windows.Forms.ComboBox();
             this.ErrorMessageLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.PatientHomeLogoutLabel = new System.Windows.Forms.Label();
             this.AppointmentConfirmationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +73,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.AppointmentsList.HideSelection = false;
             this.AppointmentsList.Location = new System.Drawing.Point(12, 91);
             this.AppointmentsList.Name = "AppointmentsList";
             this.AppointmentsList.Size = new System.Drawing.Size(308, 336);
@@ -249,12 +252,35 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Your Upcoming Appointments";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Aqua;
+            this.panel2.Location = new System.Drawing.Point(704, 13);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(2, 35);
+            this.panel2.TabIndex = 11;
+            // 
+            // PatientHomeLogoutLabel
+            // 
+            this.PatientHomeLogoutLabel.AutoSize = true;
+            this.PatientHomeLogoutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PatientHomeLogoutLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientHomeLogoutLabel.ForeColor = System.Drawing.Color.Aqua;
+            this.PatientHomeLogoutLabel.Location = new System.Drawing.Point(642, 20);
+            this.PatientHomeLogoutLabel.Name = "PatientHomeLogoutLabel";
+            this.PatientHomeLogoutLabel.Size = new System.Drawing.Size(56, 18);
+            this.PatientHomeLogoutLabel.TabIndex = 12;
+            this.PatientHomeLogoutLabel.Text = "Logout";
+            this.PatientHomeLogoutLabel.Click += new System.EventHandler(this.PatientHomeLogoutLabel_Click);
+            // 
             // PatientHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.PatientHomeLogoutLabel);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ErrorMessageLabel);
             this.Controls.Add(this.AppointmentTypeComboBox);
@@ -301,5 +327,7 @@
         private System.Windows.Forms.ComboBox AppointmentTypeComboBox;
         private System.Windows.Forms.Label ErrorMessageLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label PatientHomeLogoutLabel;
     }
 }

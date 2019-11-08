@@ -293,5 +293,11 @@ namespace AzureDentalDev.Forms
             ScheduleDescriptionTextBox.Clear();
             ScheduleDescriptionTextBox.ForeColor = Color.Aqua;
         }
+
+        private void PatientHomeLogoutLabel_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            Close();
+        }
     }
 }
