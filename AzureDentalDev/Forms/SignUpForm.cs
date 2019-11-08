@@ -128,7 +128,7 @@ namespace AzureDentalDev.Forms
                 return;
             }
 
-            Boolean blnWasAccountCreated = DataAccessClass.registerNewUser(SignUpFormFirstTextBox.Text, 
+            Boolean blnWasAccountCreated = BusinessLogicClass.registerNewUser(SignUpFormFirstTextBox.Text, 
                                                                            SignUpFormLastTextBox.Text,
                                                                            SignUpFormUserTextBox.Text,
                                                                            SignUpFormPassTextBox.Text);

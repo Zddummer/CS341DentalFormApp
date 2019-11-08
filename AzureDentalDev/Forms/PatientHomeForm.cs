@@ -24,7 +24,7 @@ namespace AzureDentalDev.Forms
             m_strUserName = strUserName;
             m_strPassword = strPassword;
             //Add user's first and last name to welcome label
-            UserClass ucUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
+            UserClass ucUser = BusinessLogicClass.QueryDatabaseForUser(strUserName, strPassword);
             PatientHomeFormWelcome.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
 
             //Fill AppointmentType

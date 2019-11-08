@@ -22,7 +22,7 @@ namespace AzureDentalDev.Forms
 
         private void AdminHomeFormCode(String strUserName, String strPassword)
         {
-            UserClass ucUser = DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
+            UserClass ucUser = BusinessLogicClass.QueryDatabaseForUser(strUserName, strPassword);
 
             AdminHomeFormWelcomeLabel.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
 

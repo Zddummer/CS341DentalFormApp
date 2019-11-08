@@ -28,7 +28,7 @@ namespace AzureDentalDev
 
         private void LoginFormLoginButton_Click(object sender, EventArgs e)
         {
-            UserClass ucUser = DataAccessClass.QueryDatabaseForUser(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
+            UserClass ucUser = BusinessLogicClass.QueryDatabaseForUser(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
 
             if(ucUser != null)
             {

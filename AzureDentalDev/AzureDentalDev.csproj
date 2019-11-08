@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AppointmentClass.cs" />
+    <Compile Include="Classes\BusinessLogicClass.cs" />
     <Compile Include="Classes\DataAccessClass.cs" />
     <Compile Include="Classes\OfficeHoursClass.cs" />
     <Compile Include="Classes\UserClass.cs" />
@@ -131,6 +132,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\lock-icon-free-download-png-an.png" />
+    <Content Include="Images\lock-icon-free-download-png-and-vector_l_13761-01.png" />
+    <Content Include="Images\logo-dentistry-tooth-surgery-d.jpg" />
+    <Content Include="Images\logo-dentistry-tooth-surgery-dental-logo-Reverse.jpg" />
+    <Content Include="Images\logo-dentistry-tooth-surgery-dental-logo.jpg" />
+    <Content Include="Images\logo_dentistry_tooth_surgery_dental_logo_KQq_icon.ico" />
+    <Content Include="Images\Users-Name-icon.png" />
+    <Content Include="Images\users-name-icon2 %281%29.png" />
+    <Content Include="Images\Users-Name-icon2.png" />
+    <Content Include="Images\Webp.net-resizeimage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
