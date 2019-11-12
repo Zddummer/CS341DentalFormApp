@@ -15,6 +15,7 @@ namespace AzureDentalDev.Forms
     public partial class PatientHomeForm : Form
     {
         private List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
+        private List<AppointmentClass> m_lstAppointments = new List<AppointmentClass>();
         private String m_strUserName = "";
         private String m_strPassword = "";
 
@@ -84,9 +85,9 @@ namespace AzureDentalDev.Forms
             }
 
             //Retrieve and display appointments associated with current user
-            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(strUserName);
+            m_lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(strUserName);
             int i = 1;
-            foreach(AppointmentClass acAppointment in lstAppointments)
+            foreach(AppointmentClass acAppointment in m_lstAppointments)
             {
                 UserClass appointmentDentist = null;
                 foreach (UserClass user in m_lstDentistsHygeinists)
@@ -292,7 +293,8 @@ namespace AzureDentalDev.Forms
             }
             sb.Append($"{dentist} \nDescription: ");
             sb.Append(description);
-            MessageBox.Show(sb.ToString());
+            AppointmentDetailsLabel.Text = sb.ToString();
+            AppointmentDetailsPanel.Visible = true;
         }
 
         private void ScheduleDescriptionTextBox_Click(object sender, EventArgs e)
@@ -305,6 +307,27 @@ namespace AzureDentalDev.Forms
         {
             Application.OpenForms[0].Visible = true;
             Close();
+        }
+
+        private void CloseAppointmentDetailsButton_Click(object sender, EventArgs e)
+        {
+            AppointmentDetailsPanel.Visible = false;
+            ConfirmCancelAppointmentPanel.Visible = false;
+        }
+
+        private void CancelAppointmentButton_Click(object sender, EventArgs e)
+        {
+            ConfirmCancelAppointmentPanel.Visible = true;
+        }
+
+        private void DenyCancelAppointmentButton_Click(object sender, EventArgs e)
+        {
+            ConfirmCancelAppointmentPanel.Visible = false;
+        }
+
+        private void ConfirmCancelAppointmentButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
