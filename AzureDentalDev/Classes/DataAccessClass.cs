@@ -479,5 +479,33 @@ namespace AzureDentalDev.Classes
 
             return blnWasDayClosed;
         }
+
+        public static Boolean updateAppointmentStatus(AppointmentClass apt, char status)
+        {
+            Boolean blnWasApptUpdated = false;
+            int intNumberOfRowsAffected = 0;
+            if(status != 'C' || status != 'I')
+            {
+                return false;
+            }
+
+            using (SqlConnection connection = getConnection())
+            {
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"Update Appointments Set Status = '{status}' Where AppointmentDate = '{apt.m_dtDateTime}' AND CustomerName = '{apt.m_strPatientName}'");
+                String sql = sb.ToString();
+                using(SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        blnWasApptUpdated = true;
+                    }
+                }
+                return blnWasApptUpdated;
+            }
+        }
     }
 }
