@@ -249,13 +249,26 @@ namespace AzureDentalDev.Classes
                     {
                         while (reader.Read())
                         {
-                            appointments.Add(new AppointmentClass(reader.GetString(0),
-                                                         reader.GetString(1),
-                                                         reader.GetString(2),
-                                                         reader.GetString(3),
-                                                         reader.GetDateTime(4),
-                                                         reader.GetDateTime(5),
-                                                         reader.GetSqlChars(6)));
+                            if (reader.GetDateTime(5) < DateTime.Now && reader.GetSqlChars(6)[0] != 'I')
+                            {
+                                updateAppointmentStatus(new AppointmentClass(reader.GetString(0),
+                                                                    reader.GetString(1),
+                                                                    reader.GetString(2),
+                                                                    reader.GetString(3),
+                                                                    reader.GetDateTime(4),
+                                                                    reader.GetDateTime(5),
+                                                                    reader.GetSqlChars(6)), 'I');
+                            }
+                            else if (reader.GetSqlChars(6)[0] != 'I')
+                            {
+                                appointments.Add(new AppointmentClass(reader.GetString(0),
+                                                             reader.GetString(1),
+                                                             reader.GetString(2),
+                                                             reader.GetString(3),
+                                                             reader.GetDateTime(4),
+                                                             reader.GetDateTime(5),
+                                                             reader.GetSqlChars(6)));
+                            }
                         }
                     }
                 }
