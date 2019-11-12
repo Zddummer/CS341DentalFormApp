@@ -31,8 +31,15 @@ namespace AzureDentalDev.Forms
                 item.SubItems.Add(appointment.m_strPatientName);
                 item.SubItems.Add(appointment.m_strDescription);
                 item.ForeColor = Color.LightSkyBlue;
-                item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-                DoctorAppointmentListView.Items.Add(item);
+                if (appointment.m_chrStatus[0] == 'C')
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+                }
+                else
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                }
+                 DoctorAppointmentListView.Items.Add(item);
                 i++;
 
             }
