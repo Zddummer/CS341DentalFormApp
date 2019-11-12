@@ -103,7 +103,14 @@ namespace AzureDentalDev.Forms
                 item.SubItems.Add(appointmentDentist.m_strFirstName + " " + appointmentDentist.m_strLastName);
                 item.SubItems.Add(acAppointment.m_strDescription);
                 item.ForeColor = Color.LightSkyBlue;
-                item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                if(acAppointment.m_chrStatus[0] == 'C')
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+                }
+                else
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                }
                 AppointmentsList.Items.Add(item);
                 i++;
             }
@@ -144,7 +151,7 @@ namespace AzureDentalDev.Forms
         {
             //Validity Check
             String appointmentTime = "";
-            if(PickTimeComboBox.Text.Substring(0,1) == "9")
+            if(PickTimeComboBox.Text.Substring(0,1) != "1")
             {
                 appointmentTime = " " + PickTimeComboBox.Text.Substring(0, 4);
             } else
@@ -275,7 +282,7 @@ namespace AzureDentalDev.Forms
             sb.Append($"\nDate of Appointment: {date}");
             sb.Append($"\nTime of Appointment: {time}");
             
-            if (appointmentDentist.m_chrUserType.ToString() == "H")
+            if (appointmentDentist.m_chrUserType[0] == 'H')
             {
                 sb.Append("\nYour Hygeinist: ");
             } 
