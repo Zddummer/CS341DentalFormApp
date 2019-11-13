@@ -181,7 +181,7 @@ namespace AzureDentalDev.Forms
                         DateTime.Now);
 
             ErrorMessageLabel.Visible = true;
-            ErrorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            ErrorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(255, 55, 55);
             switch (responseCode)
             {
                 case -1:
@@ -327,7 +327,24 @@ namespace AzureDentalDev.Forms
 
         private void ConfirmCancelAppointmentButton_Click(object sender, EventArgs e)
         {
+            ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
 
+            String date = items[1].Text.ToString();
+            String time = items[2].Text.ToString();
+            DateTime dateAndTime = DateTime.Parse(date + " " + time);
+            AppointmentClass selectedAppointment = null;
+            foreach (AppointmentClass appointment in m_lstAppointments)
+            {
+                if (appointment.m_dtDateTime == dateAndTime)
+                {
+                    selectedAppointment = appointment;
+                }
+            }
+
+            DataAccessClass.updateAppointmentStatus(selectedAppointment, 'C');
+            AppointmentsList.FocusedItem.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+            AppointmentDetailsPanel.Visible = false;
+            ConfirmCancelAppointmentPanel.Visible = false;
         }
     }
 }
