@@ -50,7 +50,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PatientHomeLogoutLabel = new System.Windows.Forms.Label();
+            this.AppointmentDetailsPanel = new System.Windows.Forms.Panel();
+            this.ConfirmCancelAppointmentPanel = new System.Windows.Forms.Panel();
+            this.ConfirmCancelAppointmentButton = new System.Windows.Forms.Button();
+            this.DenyCancelAppointmentButton = new System.Windows.Forms.Button();
+            this.CancelAppointmentConfirmationLabel = new System.Windows.Forms.Label();
+            this.CloseAppointmentDetailsButton = new System.Windows.Forms.Button();
+            this.CancelAppointmentButton = new System.Windows.Forms.Button();
+            this.AppointmentDetailsLabel = new System.Windows.Forms.Label();
             this.AppointmentConfirmationPanel.SuspendLayout();
+            this.AppointmentDetailsPanel.SuspendLayout();
+            this.ConfirmCancelAppointmentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PatientHomeFormWelcome
@@ -101,14 +111,17 @@
             // 
             // ScheduleAppointmentButton
             // 
+            this.ScheduleAppointmentButton.BackColor = System.Drawing.Color.Aqua;
             this.ScheduleAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ScheduleAppointmentButton.Font = new System.Drawing.Font("Arial", 12F);
-            this.ScheduleAppointmentButton.Location = new System.Drawing.Point(552, 47);
+            this.ScheduleAppointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ScheduleAppointmentButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScheduleAppointmentButton.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.ScheduleAppointmentButton.Location = new System.Drawing.Point(552, 69);
             this.ScheduleAppointmentButton.Name = "ScheduleAppointmentButton";
             this.ScheduleAppointmentButton.Size = new System.Drawing.Size(142, 78);
             this.ScheduleAppointmentButton.TabIndex = 2;
             this.ScheduleAppointmentButton.Text = "Schedule Appointment";
-            this.ScheduleAppointmentButton.UseVisualStyleBackColor = true;
+            this.ScheduleAppointmentButton.UseVisualStyleBackColor = false;
             this.ScheduleAppointmentButton.Click += new System.EventHandler(this.ScheduleAppointmentButton_Click);
             // 
             // dateTimePicker1
@@ -120,13 +133,13 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(242, 21);
             this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.Value = new System.DateTime(2019, 10, 19, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(2019, 11, 12, 0, 0, 0, 0);
             this.dateTimePicker1.Visible = false;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // AppointmentConfirmationPanel
             // 
-            this.AppointmentConfirmationPanel.BackColor = System.Drawing.Color.Silver;
+            this.AppointmentConfirmationPanel.BackColor = System.Drawing.Color.DarkSlateGray;
             this.AppointmentConfirmationPanel.Controls.Add(this.DenyConfirmationButton);
             this.AppointmentConfirmationPanel.Controls.Add(this.ConfirmationMessage);
             this.AppointmentConfirmationPanel.Controls.Add(this.AppointmentConfirmationButton);
@@ -138,33 +151,43 @@
             // 
             // DenyConfirmationButton
             // 
+            this.DenyConfirmationButton.BackColor = System.Drawing.Color.Aqua;
             this.DenyConfirmationButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DenyConfirmationButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DenyConfirmationButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DenyConfirmationButton.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.DenyConfirmationButton.Location = new System.Drawing.Point(17, 63);
             this.DenyConfirmationButton.Name = "DenyConfirmationButton";
             this.DenyConfirmationButton.Size = new System.Drawing.Size(75, 23);
             this.DenyConfirmationButton.TabIndex = 2;
             this.DenyConfirmationButton.Text = "Cancel";
-            this.DenyConfirmationButton.UseVisualStyleBackColor = true;
+            this.DenyConfirmationButton.UseVisualStyleBackColor = false;
             this.DenyConfirmationButton.Click += new System.EventHandler(this.DenyConfirmationButton_Click);
             // 
             // ConfirmationMessage
             // 
             this.ConfirmationMessage.AutoSize = true;
-            this.ConfirmationMessage.Location = new System.Drawing.Point(53, 16);
+            this.ConfirmationMessage.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmationMessage.ForeColor = System.Drawing.Color.Aqua;
+            this.ConfirmationMessage.Location = new System.Drawing.Point(23, 16);
             this.ConfirmationMessage.Name = "ConfirmationMessage";
-            this.ConfirmationMessage.Size = new System.Drawing.Size(104, 13);
+            this.ConfirmationMessage.Size = new System.Drawing.Size(156, 18);
             this.ConfirmationMessage.TabIndex = 1;
             this.ConfirmationMessage.Text = "Confirm Appointment";
             // 
             // AppointmentConfirmationButton
             // 
+            this.AppointmentConfirmationButton.BackColor = System.Drawing.Color.Aqua;
             this.AppointmentConfirmationButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AppointmentConfirmationButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AppointmentConfirmationButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppointmentConfirmationButton.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.AppointmentConfirmationButton.Location = new System.Drawing.Point(113, 63);
             this.AppointmentConfirmationButton.Name = "AppointmentConfirmationButton";
             this.AppointmentConfirmationButton.Size = new System.Drawing.Size(75, 23);
             this.AppointmentConfirmationButton.TabIndex = 0;
             this.AppointmentConfirmationButton.Text = "Okay";
-            this.AppointmentConfirmationButton.UseVisualStyleBackColor = true;
+            this.AppointmentConfirmationButton.UseVisualStyleBackColor = false;
             this.AppointmentConfirmationButton.Click += new System.EventHandler(this.AppointmentConfirmationButton_Click);
             // 
             // PickTimeComboBox
@@ -185,8 +208,8 @@
             this.ClosePatientHomeFormButton.BackColor = System.Drawing.Color.DimGray;
             this.ClosePatientHomeFormButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ClosePatientHomeFormButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ClosePatientHomeFormButton.Font = new System.Drawing.Font("Arial", 12F);
-            this.ClosePatientHomeFormButton.ForeColor = System.Drawing.Color.Black;
+            this.ClosePatientHomeFormButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClosePatientHomeFormButton.ForeColor = System.Drawing.Color.Aqua;
             this.ClosePatientHomeFormButton.Location = new System.Drawing.Point(713, 13);
             this.ClosePatientHomeFormButton.Name = "ClosePatientHomeFormButton";
             this.ClosePatientHomeFormButton.Size = new System.Drawing.Size(52, 32);
@@ -233,7 +256,7 @@
             // 
             this.ErrorMessageLabel.AutoSize = true;
             this.ErrorMessageLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.ErrorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.ErrorMessageLabel.Location = new System.Drawing.Point(369, 392);
             this.ErrorMessageLabel.Name = "ErrorMessageLabel";
             this.ErrorMessageLabel.Size = new System.Drawing.Size(338, 16);
@@ -273,12 +296,120 @@
             this.PatientHomeLogoutLabel.Text = "Logout";
             this.PatientHomeLogoutLabel.Click += new System.EventHandler(this.PatientHomeLogoutLabel_Click);
             // 
+            // AppointmentDetailsPanel
+            // 
+            this.AppointmentDetailsPanel.BackColor = System.Drawing.Color.DimGray;
+            this.AppointmentDetailsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.AppointmentDetailsPanel.Controls.Add(this.ConfirmCancelAppointmentPanel);
+            this.AppointmentDetailsPanel.Controls.Add(this.CloseAppointmentDetailsButton);
+            this.AppointmentDetailsPanel.Controls.Add(this.CancelAppointmentButton);
+            this.AppointmentDetailsPanel.Controls.Add(this.AppointmentDetailsLabel);
+            this.AppointmentDetailsPanel.Location = new System.Drawing.Point(326, 51);
+            this.AppointmentDetailsPanel.Name = "AppointmentDetailsPanel";
+            this.AppointmentDetailsPanel.Size = new System.Drawing.Size(462, 377);
+            this.AppointmentDetailsPanel.TabIndex = 13;
+            this.AppointmentDetailsPanel.Visible = false;
+            // 
+            // ConfirmCancelAppointmentPanel
+            // 
+            this.ConfirmCancelAppointmentPanel.BackColor = System.Drawing.Color.Aqua;
+            this.ConfirmCancelAppointmentPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConfirmCancelAppointmentPanel.Controls.Add(this.ConfirmCancelAppointmentButton);
+            this.ConfirmCancelAppointmentPanel.Controls.Add(this.DenyCancelAppointmentButton);
+            this.ConfirmCancelAppointmentPanel.Controls.Add(this.CancelAppointmentConfirmationLabel);
+            this.ConfirmCancelAppointmentPanel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmCancelAppointmentPanel.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.ConfirmCancelAppointmentPanel.Location = new System.Drawing.Point(239, 266);
+            this.ConfirmCancelAppointmentPanel.Name = "ConfirmCancelAppointmentPanel";
+            this.ConfirmCancelAppointmentPanel.Size = new System.Drawing.Size(200, 100);
+            this.ConfirmCancelAppointmentPanel.TabIndex = 14;
+            this.ConfirmCancelAppointmentPanel.Visible = false;
+            // 
+            // ConfirmCancelAppointmentButton
+            // 
+            this.ConfirmCancelAppointmentButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.ConfirmCancelAppointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ConfirmCancelAppointmentButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmCancelAppointmentButton.ForeColor = System.Drawing.Color.Aqua;
+            this.ConfirmCancelAppointmentButton.Location = new System.Drawing.Point(109, 65);
+            this.ConfirmCancelAppointmentButton.Name = "ConfirmCancelAppointmentButton";
+            this.ConfirmCancelAppointmentButton.Size = new System.Drawing.Size(75, 23);
+            this.ConfirmCancelAppointmentButton.TabIndex = 2;
+            this.ConfirmCancelAppointmentButton.Text = "Yes";
+            this.ConfirmCancelAppointmentButton.UseVisualStyleBackColor = false;
+            this.ConfirmCancelAppointmentButton.Click += new System.EventHandler(this.ConfirmCancelAppointmentButton_Click);
+            // 
+            // DenyCancelAppointmentButton
+            // 
+            this.DenyCancelAppointmentButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.DenyCancelAppointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DenyCancelAppointmentButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DenyCancelAppointmentButton.ForeColor = System.Drawing.Color.Aqua;
+            this.DenyCancelAppointmentButton.Location = new System.Drawing.Point(19, 65);
+            this.DenyCancelAppointmentButton.Name = "DenyCancelAppointmentButton";
+            this.DenyCancelAppointmentButton.Size = new System.Drawing.Size(75, 23);
+            this.DenyCancelAppointmentButton.TabIndex = 1;
+            this.DenyCancelAppointmentButton.Text = "No";
+            this.DenyCancelAppointmentButton.UseVisualStyleBackColor = false;
+            this.DenyCancelAppointmentButton.Click += new System.EventHandler(this.DenyCancelAppointmentButton_Click);
+            // 
+            // CancelAppointmentConfirmationLabel
+            // 
+            this.CancelAppointmentConfirmationLabel.AutoSize = true;
+            this.CancelAppointmentConfirmationLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelAppointmentConfirmationLabel.Location = new System.Drawing.Point(5, 9);
+            this.CancelAppointmentConfirmationLabel.Name = "CancelAppointmentConfirmationLabel";
+            this.CancelAppointmentConfirmationLabel.Size = new System.Drawing.Size(187, 30);
+            this.CancelAppointmentConfirmationLabel.TabIndex = 0;
+            this.CancelAppointmentConfirmationLabel.Text = "Are you sure you would\r\nlike to cancel this appointment?";
+            this.CancelAppointmentConfirmationLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // CloseAppointmentDetailsButton
+            // 
+            this.CloseAppointmentDetailsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.CloseAppointmentDetailsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CloseAppointmentDetailsButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseAppointmentDetailsButton.ForeColor = System.Drawing.Color.Aqua;
+            this.CloseAppointmentDetailsButton.Location = new System.Drawing.Point(424, 3);
+            this.CloseAppointmentDetailsButton.Name = "CloseAppointmentDetailsButton";
+            this.CloseAppointmentDetailsButton.Size = new System.Drawing.Size(31, 31);
+            this.CloseAppointmentDetailsButton.TabIndex = 2;
+            this.CloseAppointmentDetailsButton.Text = " X";
+            this.CloseAppointmentDetailsButton.UseVisualStyleBackColor = false;
+            this.CloseAppointmentDetailsButton.Click += new System.EventHandler(this.CloseAppointmentDetailsButton_Click);
+            // 
+            // CancelAppointmentButton
+            // 
+            this.CancelAppointmentButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.CancelAppointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelAppointmentButton.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelAppointmentButton.ForeColor = System.Drawing.Color.Aqua;
+            this.CancelAppointmentButton.Location = new System.Drawing.Point(79, 291);
+            this.CancelAppointmentButton.Name = "CancelAppointmentButton";
+            this.CancelAppointmentButton.Size = new System.Drawing.Size(112, 45);
+            this.CancelAppointmentButton.TabIndex = 1;
+            this.CancelAppointmentButton.Text = "Cancel Appointment";
+            this.CancelAppointmentButton.UseVisualStyleBackColor = false;
+            this.CancelAppointmentButton.Click += new System.EventHandler(this.CancelAppointmentButton_Click);
+            // 
+            // AppointmentDetailsLabel
+            // 
+            this.AppointmentDetailsLabel.AutoSize = true;
+            this.AppointmentDetailsLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppointmentDetailsLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.AppointmentDetailsLabel.Location = new System.Drawing.Point(22, 20);
+            this.AppointmentDetailsLabel.Name = "AppointmentDetailsLabel";
+            this.AppointmentDetailsLabel.Size = new System.Drawing.Size(139, 15);
+            this.AppointmentDetailsLabel.TabIndex = 0;
+            this.AppointmentDetailsLabel.Text = "Appointment Details";
+            // 
             // PatientHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AppointmentDetailsPanel);
             this.Controls.Add(this.PatientHomeLogoutLabel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
@@ -300,6 +431,10 @@
             this.Load += new System.EventHandler(this.CustomerHomeForm_Load);
             this.AppointmentConfirmationPanel.ResumeLayout(false);
             this.AppointmentConfirmationPanel.PerformLayout();
+            this.AppointmentDetailsPanel.ResumeLayout(false);
+            this.AppointmentDetailsPanel.PerformLayout();
+            this.ConfirmCancelAppointmentPanel.ResumeLayout(false);
+            this.ConfirmCancelAppointmentPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +464,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label PatientHomeLogoutLabel;
+        private System.Windows.Forms.Panel AppointmentDetailsPanel;
+        private System.Windows.Forms.Label AppointmentDetailsLabel;
+        private System.Windows.Forms.Button CloseAppointmentDetailsButton;
+        private System.Windows.Forms.Button CancelAppointmentButton;
+        private System.Windows.Forms.Panel ConfirmCancelAppointmentPanel;
+        private System.Windows.Forms.Label CancelAppointmentConfirmationLabel;
+        private System.Windows.Forms.Button ConfirmCancelAppointmentButton;
+        private System.Windows.Forms.Button DenyCancelAppointmentButton;
     }
 }

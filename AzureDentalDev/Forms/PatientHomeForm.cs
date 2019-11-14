@@ -15,6 +15,7 @@ namespace AzureDentalDev.Forms
     public partial class PatientHomeForm : Form
     {
         private List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
+        private List<AppointmentClass> m_lstAppointments = new List<AppointmentClass>();
         private String m_strUserName = "";
         private String m_strPassword = "";
 
@@ -84,9 +85,9 @@ namespace AzureDentalDev.Forms
             }
 
             //Retrieve and display appointments associated with current user
-            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(strUserName);
+            m_lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(strUserName);
             int i = 1;
-            foreach(AppointmentClass acAppointment in lstAppointments)
+            foreach(AppointmentClass acAppointment in m_lstAppointments)
             {
                 UserClass appointmentDentist = null;
                 foreach (UserClass user in m_lstDentistsHygeinists)
@@ -103,7 +104,14 @@ namespace AzureDentalDev.Forms
                 item.SubItems.Add(appointmentDentist.m_strFirstName + " " + appointmentDentist.m_strLastName);
                 item.SubItems.Add(acAppointment.m_strDescription);
                 item.ForeColor = Color.LightSkyBlue;
-                item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                if(acAppointment.m_chrStatus[0] == 'C')
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+                }
+                else
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                }
                 AppointmentsList.Items.Add(item);
                 i++;
             }
@@ -144,7 +152,7 @@ namespace AzureDentalDev.Forms
         {
             //Validity Check
             String appointmentTime = "";
-            if(PickTimeComboBox.Text.Substring(0,1) == "9")
+            if(PickTimeComboBox.Text.Substring(0,1) != "1")
             {
                 appointmentTime = " " + PickTimeComboBox.Text.Substring(0, 4);
             } else
@@ -173,7 +181,7 @@ namespace AzureDentalDev.Forms
                         DateTime.Now);
 
             ErrorMessageLabel.Visible = true;
-            ErrorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            ErrorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(255, 55, 55);
             switch (responseCode)
             {
                 case -1:
@@ -275,7 +283,7 @@ namespace AzureDentalDev.Forms
             sb.Append($"\nDate of Appointment: {date}");
             sb.Append($"\nTime of Appointment: {time}");
             
-            if (appointmentDentist.m_chrUserType.ToString() == "H")
+            if (appointmentDentist.m_chrUserType[0] == 'H')
             {
                 sb.Append("\nYour Hygeinist: ");
             } 
@@ -285,7 +293,8 @@ namespace AzureDentalDev.Forms
             }
             sb.Append($"{dentist} \nDescription: ");
             sb.Append(description);
-            MessageBox.Show(sb.ToString());
+            AppointmentDetailsLabel.Text = sb.ToString();
+            AppointmentDetailsPanel.Visible = true;
         }
 
         private void ScheduleDescriptionTextBox_Click(object sender, EventArgs e)
@@ -298,6 +307,44 @@ namespace AzureDentalDev.Forms
         {
             Application.OpenForms[0].Visible = true;
             Close();
+        }
+
+        private void CloseAppointmentDetailsButton_Click(object sender, EventArgs e)
+        {
+            AppointmentDetailsPanel.Visible = false;
+            ConfirmCancelAppointmentPanel.Visible = false;
+        }
+
+        private void CancelAppointmentButton_Click(object sender, EventArgs e)
+        {
+            ConfirmCancelAppointmentPanel.Visible = true;
+        }
+
+        private void DenyCancelAppointmentButton_Click(object sender, EventArgs e)
+        {
+            ConfirmCancelAppointmentPanel.Visible = false;
+        }
+
+        private void ConfirmCancelAppointmentButton_Click(object sender, EventArgs e)
+        {
+            ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
+
+            String date = items[1].Text.ToString();
+            String time = items[2].Text.ToString();
+            DateTime dateAndTime = DateTime.Parse(date + " " + time);
+            AppointmentClass selectedAppointment = null;
+            foreach (AppointmentClass appointment in m_lstAppointments)
+            {
+                if (appointment.m_dtDateTime == dateAndTime)
+                {
+                    selectedAppointment = appointment;
+                }
+            }
+
+            DataAccessClass.updateAppointmentStatus(selectedAppointment, 'C');
+            AppointmentsList.FocusedItem.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+            AppointmentDetailsPanel.Visible = false;
+            ConfirmCancelAppointmentPanel.Visible = false;
         }
     }
 }

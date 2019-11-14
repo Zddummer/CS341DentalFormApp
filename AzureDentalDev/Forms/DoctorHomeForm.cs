@@ -31,8 +31,15 @@ namespace AzureDentalDev.Forms
                 item.SubItems.Add(appointment.m_strPatientName);
                 item.SubItems.Add(appointment.m_strDescription);
                 item.ForeColor = Color.LightSkyBlue;
-                item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-                DoctorAppointmentListView.Items.Add(item);
+                if (appointment.m_chrStatus[0] == 'C')
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+                }
+                else
+                {
+                    item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                }
+                 DoctorAppointmentListView.Items.Add(item);
                 i++;
 
             }
@@ -58,6 +65,27 @@ namespace AzureDentalDev.Forms
         {
             Application.OpenForms[0].Visible = true;
             Close();
+        }
+
+        private void DoctorAppointmentListView_ItemActivate(object sender, EventArgs e)
+        {
+            
+            ListViewItem.ListViewSubItemCollection items = DoctorAppointmentListView.FocusedItem.SubItems;
+
+            String date = items[1].Text.ToString();
+            String time = items[2].Text.ToString();
+            String patient = items[3].Text.ToString();
+            String description = items[4].Text.ToString();
+
+            
+            StringBuilder sb = new StringBuilder();
+            sb.Append(DoctorAppointmentListView.FocusedItem.Text.ToString());
+            sb.Append($"\nDate of Appointment: {date}");
+            sb.Append($"\nTime of Appointment: {time}");
+            sb.Append("\nPatient: ");
+            sb.Append($"{patient} \nDescription: ");
+            sb.Append(description);
+            MessageBox.Show(sb.ToString());
         }
     }
 }
