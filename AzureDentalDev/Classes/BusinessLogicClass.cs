@@ -3,7 +3,9 @@
  */
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +15,14 @@ namespace AzureDentalDev.Classes
     {
         public static UserClass QueryDatabaseForUser(String strUserName, String strPassword)
         {
-            strPassword = strPassword.GetHashCode().ToString();
+            // convert string to stream
+            byte[] byteArray = Encoding.UTF8.GetBytes(strPassword);
+            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            var sha1 = new SHA1CryptoServiceProvider();
+            var sha1data = sha1.ComputeHash(stream);
+            strPassword = System.Text.Encoding.Default.GetString(sha1data);
 
             return DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
         }
@@ -23,7 +32,16 @@ namespace AzureDentalDev.Classes
                                               String strUserName,
                                               String strPassword)
         {
-            strPassword = strPassword.GetHashCode().ToString();
+
+
+            // convert string to stream
+            byte[] byteArray = Encoding.UTF8.GetBytes(strPassword);
+            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            var sha1 = new SHA1CryptoServiceProvider();
+            var sha1data = sha1.ComputeHash(stream);
+            strPassword = System.Text.Encoding.Default.GetString(sha1data);
 
             return DataAccessClass.registerNewUser(strFirstName,
                                                    strLastName,
@@ -37,7 +55,14 @@ namespace AzureDentalDev.Classes
                                               String strPassword,
                                               String chrUserType)
         {
-            strPassword = strPassword.GetHashCode().ToString();
+            // convert string to stream
+            byte[] byteArray = Encoding.UTF8.GetBytes(strPassword);
+            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            var sha1 = new SHA1CryptoServiceProvider();
+            var sha1data = sha1.ComputeHash(stream);
+            strPassword = System.Text.Encoding.Default.GetString(sha1data);
 
             return DataAccessClass.registerNewUser(strFirstName,
                                                    strLastName,

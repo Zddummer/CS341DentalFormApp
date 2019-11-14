@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace AzureDentalDev.Classes
@@ -21,6 +23,36 @@ namespace AzureDentalDev.Classes
             builder.InitialCatalog = "DentalDev";
 
             return new SqlConnection(builder.ConnectionString);
+        }
+
+        // FOR DEVELOPMENT ONLY, DO NOT USE!!!
+        private static void HashPasswords()
+        {
+            using (SqlConnection connection = getConnection())
+            {
+                // convert string to stream
+                byte[] byteArray = Encoding.UTF8.GetBytes("password1");
+                //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
+                MemoryStream stream = new MemoryStream(byteArray);
+
+                var sha1 = new SHA1CryptoServiceProvider();
+                var sha1data = sha1.ComputeHash(stream);
+                String strPassword = System.Text.Encoding.Default.GetString(sha1data);
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"Update Users SET password = '{strPassword}' ");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    int intNumberOfRowsAffected = command.ExecuteNonQuery();
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        
+                    }
+                }
+            }
         }
 
         /**
