@@ -54,7 +54,10 @@ namespace AzureDentalDev
                         childSignUpForm.Visible = false;
                         break;
                     case 'H':
-
+                        HygienistHomeForm oHygenistHomeForm = new HygienistHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
+                        oHygenistHomeForm.Show();
+                        this.Visible = false;
+                        childSignUpForm.Visible = false;
                         break;
                     default:
                         LoginFormErrorLabel.Visible = true;
