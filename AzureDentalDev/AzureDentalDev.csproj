@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AzureDentalDev</RootNamespace>
     <AssemblyName>AzureDentalDev</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -66,6 +67,12 @@
     <Compile Include="Forms\AdminHomeForm.Designer.cs">
       <DependentUpon>AdminHomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HygienistHomeForm .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HygienistHomeForm .Designer.cs">
+      <DependentUpon>HygienistHomeForm .cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PatientHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +105,9 @@
     <EmbeddedResource Include="Forms\AdminHomeForm.resx">
       <DependentUpon>AdminHomeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HygienistHomeForm .resx">
+      <DependentUpon>HygienistHomeForm .cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PatientHomeForm.resx">
       <DependentUpon>PatientHomeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
