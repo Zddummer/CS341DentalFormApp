@@ -49,9 +49,9 @@
             this.DoctorHomeFormWelcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DoctorHomeFormWelcomeLabel.MinimumSize = new System.Drawing.Size(67, 26);
             this.DoctorHomeFormWelcomeLabel.Name = "DoctorHomeFormWelcomeLabel";
-            this.DoctorHomeFormWelcomeLabel.Size = new System.Drawing.Size(260, 32);
+            this.DoctorHomeFormWelcomeLabel.Size = new System.Drawing.Size(130, 32);
             this.DoctorHomeFormWelcomeLabel.TabIndex = 0;
-            this.DoctorHomeFormWelcomeLabel.Text = "Welcome Hygenist. ";
+            this.DoctorHomeFormWelcomeLabel.Text = "Welcome";
             this.DoctorHomeFormWelcomeLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // DoctorAppointmentListView
@@ -66,7 +66,7 @@
             this.DoctorAppointmentListView.ForeColor = System.Drawing.Color.Aqua;
             this.DoctorAppointmentListView.HideSelection = false;
             this.DoctorAppointmentListView.Location = new System.Drawing.Point(12, 91);
-            this.DoctorAppointmentListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DoctorAppointmentListView.Margin = new System.Windows.Forms.Padding(2);
             this.DoctorAppointmentListView.Name = "DoctorAppointmentListView";
             this.DoctorAppointmentListView.Size = new System.Drawing.Size(432, 315);
             this.DoctorAppointmentListView.TabIndex = 1;
@@ -90,7 +90,7 @@
             // 
             this.DoctorHomeFormCloseButton.ForeColor = System.Drawing.Color.Red;
             this.DoctorHomeFormCloseButton.Location = new System.Drawing.Point(760, 1);
-            this.DoctorHomeFormCloseButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DoctorHomeFormCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.DoctorHomeFormCloseButton.Name = "DoctorHomeFormCloseButton";
             this.DoctorHomeFormCloseButton.Size = new System.Drawing.Size(27, 26);
             this.DoctorHomeFormCloseButton.TabIndex = 3;
@@ -132,7 +132,7 @@
             this.Controls.Add(this.DoctorHomeFormWelcomeLabel);
             this.ForeColor = System.Drawing.Color.Aqua;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HygienistHomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DoctorHomeForm";

@@ -17,7 +17,7 @@ namespace AzureDentalDev.Forms
         public HygienistHomeForm(String strUserName, String strPassword)
         {           InitializeComponent();
             UserClass ucDoctorUser = BusinessLogicClass.QueryDatabaseForUser(strUserName, strPassword);
-            DoctorHomeFormWelcomeLabel.Text = $"Welcome Hygenist. {ucDoctorUser.m_strFirstName} {ucDoctorUser.m_strLastName}";
+            DoctorHomeFormWelcomeLabel.Text = $"Welcome {ucDoctorUser.m_strFirstName} {ucDoctorUser.m_strLastName}";
 
             List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithDentistName(strUserName);
 
