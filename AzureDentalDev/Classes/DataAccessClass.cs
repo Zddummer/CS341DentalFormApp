@@ -375,7 +375,7 @@ namespace AzureDentalDev.Classes
             List<AppointmentClass> lsacDentistAppts = getAppointmentsWithDentistName(strDentistUserName);
             foreach (AppointmentClass appointment in lsacDentistAppts)
             {
-                if (appointment.m_dtDateTime == dtDateTime)
+                if (appointment.m_dtDateTime == dtDateTime && appointment.m_chrStatus[0] == 'A')
                 {
                     return -5;
                 }
