@@ -15,7 +15,6 @@ namespace AzureDentalDev.Forms
     public partial class PatientHomeForm : Form
     {
         private List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
-        private List<AppointmentClass> m_lstAppointments = new List<AppointmentClass>();
         private String m_strUserName = "";
         private String m_strPassword = "";
 
@@ -85,9 +84,9 @@ namespace AzureDentalDev.Forms
             }
 
             //Retrieve and display appointments associated with current user
-            m_lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(strUserName);
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(strUserName);
             int i = 1;
-            foreach(AppointmentClass acAppointment in m_lstAppointments)
+            foreach(AppointmentClass acAppointment in lstAppointments)
             {
                 UserClass appointmentDentist = null;
                 foreach (UserClass user in m_lstDentistsHygeinists)
@@ -194,7 +193,7 @@ namespace AzureDentalDev.Forms
                     ErrorMessageLabel.Text = "The office is open that day, but not during that time";
                     break;
                 case -4:
-                    ErrorMessageLabel.Text = "You already have an appointment during that time";
+                    ErrorMessageLabel.Text = "This appointment time is unavailable";
                     break;
                 case -5:
                     ErrorMessageLabel.Text = "The worker you selected is not available at that time";
@@ -328,12 +327,13 @@ namespace AzureDentalDev.Forms
         private void ConfirmCancelAppointmentButton_Click(object sender, EventArgs e)
         {
             ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(m_strUserName);
 
             String date = items[1].Text.ToString();
             String time = items[2].Text.ToString();
             DateTime dateAndTime = DateTime.Parse(date + " " + time);
             AppointmentClass selectedAppointment = null;
-            foreach (AppointmentClass appointment in m_lstAppointments)
+            foreach (AppointmentClass appointment in lstAppointments)
             {
                 if (appointment.m_dtDateTime == dateAndTime)
                 {
