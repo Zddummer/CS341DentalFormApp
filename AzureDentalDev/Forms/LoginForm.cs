@@ -196,7 +196,8 @@ namespace AzureDentalDev
 
         private void HelpPictureBox_Click(object sender, EventArgs e)
         {
-            string path = "C:\\Users\\Zach\\Source\\Repos\\Zddummer\\CS341DentalFormApp\\AzureDentalDev\\HelpFiles\\Dental_Login_Signup_help.pdf";
+            string path = System.IO.Directory.GetCurrentDirectory();
+            path = path.Replace("bin\\Debug", "HelpFiles\\Dental_Login_Signup_help.pdf");
             System.Diagnostics.Process.Start(path);
         }
 
