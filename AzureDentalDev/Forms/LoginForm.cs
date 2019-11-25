@@ -193,5 +193,17 @@ namespace AzureDentalDev
                 LoginFormErrorPanel.Top += 7;
             }
         }
+
+        private void HelpPictureBox_Click(object sender, EventArgs e)
+        {
+            string path = "C:\\Users\\Zach\\Source\\Repos\\Zddummer\\CS341DentalFormApp\\AzureDentalDev\\HelpFiles\\Dental_Login_Signup_help.pdf";
+            System.Diagnostics.Process.Start(path);
+        }
+
+        private void LoginFormMinLabel_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            childSignUpForm.Visible = false;
+        }
     }
 }
