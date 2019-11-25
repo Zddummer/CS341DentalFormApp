@@ -171,7 +171,7 @@ namespace AzureDentalDev
         {
             if(LoginFormErrorPanel.Bottom > 500)
             {
-                LoginFormErrorPanel.Top -= 5;
+                LoginFormErrorPanel.Top -= 7;
             }
             else if(LoginFormErrorPanel.Bottom <= 500)
             {
@@ -190,7 +190,7 @@ namespace AzureDentalDev
             }
             if (LoginFormErrorPanel.Top <= 500)
             {
-                LoginFormErrorPanel.Top += 5;
+                LoginFormErrorPanel.Top += 7;
             }
         }
     }

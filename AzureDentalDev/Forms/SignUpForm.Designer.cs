@@ -30,13 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpForm));
-            this.SignUpFormMainPictureBox = new System.Windows.Forms.PictureBox();
             this.SignUpFormUserTextBox = new System.Windows.Forms.TextBox();
             this.SignUpFormUserPanel = new System.Windows.Forms.Panel();
             this.SignUpFormPassTextBox = new System.Windows.Forms.TextBox();
             this.SignUpFormPassPanel = new System.Windows.Forms.Panel();
             this.SignUpFormRegisterButton = new System.Windows.Forms.Button();
-            this.SignUpFormErrorLabel = new System.Windows.Forms.Label();
             this.SignUpFormBackLabel = new System.Windows.Forms.Label();
             this.SignUpFormPassLabel = new System.Windows.Forms.Label();
             this.SignUpFormUserLabel = new System.Windows.Forms.Label();
@@ -48,18 +46,25 @@
             this.SignUpFormFirstPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.SignUpFormValidLabel = new System.Windows.Forms.Label();
+            this.SignUpFormCompanyLabel1 = new System.Windows.Forms.Label();
+            this.SignUpFormNameLabel2 = new System.Windows.Forms.Label();
+            this.SignUpErrorPanel = new System.Windows.Forms.Panel();
+            this.SignUpErrorLabel = new System.Windows.Forms.Label();
+            this.ErrorTimer = new System.Windows.Forms.Timer(this.components);
+            this.ErrorTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.SignUpConfirmPanel = new System.Windows.Forms.Panel();
+            this.SignUpConfirmLabel = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SignUpFormMainPictureBox = new System.Windows.Forms.PictureBox();
+            this.ConfirmTimer = new System.Windows.Forms.Timer(this.components);
+            this.ConfirmTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.SignUpErrorPanel.SuspendLayout();
+            this.SignUpConfirmPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SignUpFormMainPictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // SignUpFormMainPictureBox
-            // 
-            this.SignUpFormMainPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SignUpFormMainPictureBox.BackgroundImage")));
-            this.SignUpFormMainPictureBox.Location = new System.Drawing.Point(169, 75);
-            this.SignUpFormMainPictureBox.Name = "SignUpFormMainPictureBox";
-            this.SignUpFormMainPictureBox.Size = new System.Drawing.Size(64, 62);
-            this.SignUpFormMainPictureBox.TabIndex = 1;
-            this.SignUpFormMainPictureBox.TabStop = false;
             // 
             // SignUpFormUserTextBox
             // 
@@ -113,25 +118,13 @@
             this.SignUpFormRegisterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SignUpFormRegisterButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUpFormRegisterButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SignUpFormRegisterButton.Location = new System.Drawing.Point(76, 439);
+            this.SignUpFormRegisterButton.Location = new System.Drawing.Point(76, 408);
             this.SignUpFormRegisterButton.Name = "SignUpFormRegisterButton";
             this.SignUpFormRegisterButton.Size = new System.Drawing.Size(250, 35);
             this.SignUpFormRegisterButton.TabIndex = 10;
             this.SignUpFormRegisterButton.Text = "Register";
             this.SignUpFormRegisterButton.UseVisualStyleBackColor = false;
             this.SignUpFormRegisterButton.Click += new System.EventHandler(this.SignUpFormRegisterButton_Click);
-            // 
-            // SignUpFormErrorLabel
-            // 
-            this.SignUpFormErrorLabel.AutoSize = true;
-            this.SignUpFormErrorLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignUpFormErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.SignUpFormErrorLabel.Location = new System.Drawing.Point(112, 395);
-            this.SignUpFormErrorLabel.Name = "SignUpFormErrorLabel";
-            this.SignUpFormErrorLabel.Size = new System.Drawing.Size(193, 16);
-            this.SignUpFormErrorLabel.TabIndex = 15;
-            this.SignUpFormErrorLabel.Text = "That username is already taken!";
-            this.SignUpFormErrorLabel.Visible = false;
             // 
             // SignUpFormBackLabel
             // 
@@ -246,17 +239,114 @@
             this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
-            // SignUpFormValidLabel
+            // SignUpFormCompanyLabel1
             // 
-            this.SignUpFormValidLabel.AutoSize = true;
-            this.SignUpFormValidLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignUpFormValidLabel.ForeColor = System.Drawing.Color.Lime;
-            this.SignUpFormValidLabel.Location = new System.Drawing.Point(115, 415);
-            this.SignUpFormValidLabel.Name = "SignUpFormValidLabel";
-            this.SignUpFormValidLabel.Size = new System.Drawing.Size(179, 15);
-            this.SignUpFormValidLabel.TabIndex = 25;
-            this.SignUpFormValidLabel.Text = "Your account has been created!";
-            this.SignUpFormValidLabel.Visible = false;
+            this.SignUpFormCompanyLabel1.AutoSize = true;
+            this.SignUpFormCompanyLabel1.Font = new System.Drawing.Font("Californian FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUpFormCompanyLabel1.ForeColor = System.Drawing.Color.Aqua;
+            this.SignUpFormCompanyLabel1.Location = new System.Drawing.Point(85, 93);
+            this.SignUpFormCompanyLabel1.Name = "SignUpFormCompanyLabel1";
+            this.SignUpFormCompanyLabel1.Size = new System.Drawing.Size(78, 24);
+            this.SignUpFormCompanyLabel1.TabIndex = 26;
+            this.SignUpFormCompanyLabel1.Text = "Tru Blu";
+            // 
+            // SignUpFormNameLabel2
+            // 
+            this.SignUpFormNameLabel2.AutoSize = true;
+            this.SignUpFormNameLabel2.Font = new System.Drawing.Font("Californian FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUpFormNameLabel2.ForeColor = System.Drawing.Color.Aqua;
+            this.SignUpFormNameLabel2.Location = new System.Drawing.Point(239, 93);
+            this.SignUpFormNameLabel2.Name = "SignUpFormNameLabel2";
+            this.SignUpFormNameLabel2.Size = new System.Drawing.Size(69, 24);
+            this.SignUpFormNameLabel2.TabIndex = 27;
+            this.SignUpFormNameLabel2.Text = "Dental";
+            // 
+            // SignUpErrorPanel
+            // 
+            this.SignUpErrorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(64)))), ((int)(((byte)(52)))));
+            this.SignUpErrorPanel.Controls.Add(this.pictureBox1);
+            this.SignUpErrorPanel.Controls.Add(this.SignUpErrorLabel);
+            this.SignUpErrorPanel.Location = new System.Drawing.Point(0, 482);
+            this.SignUpErrorPanel.Name = "SignUpErrorPanel";
+            this.SignUpErrorPanel.Size = new System.Drawing.Size(400, 33);
+            this.SignUpErrorPanel.TabIndex = 28;
+            this.SignUpErrorPanel.Visible = false;
+            // 
+            // SignUpErrorLabel
+            // 
+            this.SignUpErrorLabel.AutoSize = true;
+            this.SignUpErrorLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUpErrorLabel.ForeColor = System.Drawing.Color.White;
+            this.SignUpErrorLabel.Location = new System.Drawing.Point(112, 9);
+            this.SignUpErrorLabel.Name = "SignUpErrorLabel";
+            this.SignUpErrorLabel.Size = new System.Drawing.Size(158, 16);
+            this.SignUpErrorLabel.TabIndex = 0;
+            this.SignUpErrorLabel.Text = "THAT USERNAME IS TAKEN!";
+            // 
+            // ErrorTimer
+            // 
+            this.ErrorTimer.Tick += new System.EventHandler(this.ErrorTimer_Tick);
+            // 
+            // ErrorTimer2
+            // 
+            this.ErrorTimer2.Tick += new System.EventHandler(this.ErrorTimer2_Tick);
+            // 
+            // SignUpConfirmPanel
+            // 
+            this.SignUpConfirmPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
+            this.SignUpConfirmPanel.Controls.Add(this.pictureBox2);
+            this.SignUpConfirmPanel.Controls.Add(this.SignUpConfirmLabel);
+            this.SignUpConfirmPanel.Location = new System.Drawing.Point(0, 447);
+            this.SignUpConfirmPanel.Name = "SignUpConfirmPanel";
+            this.SignUpConfirmPanel.Size = new System.Drawing.Size(400, 33);
+            this.SignUpConfirmPanel.TabIndex = 29;
+            this.SignUpConfirmPanel.Visible = false;
+            // 
+            // SignUpConfirmLabel
+            // 
+            this.SignUpConfirmLabel.AutoSize = true;
+            this.SignUpConfirmLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUpConfirmLabel.ForeColor = System.Drawing.Color.White;
+            this.SignUpConfirmLabel.Location = new System.Drawing.Point(101, 8);
+            this.SignUpConfirmLabel.Name = "SignUpConfirmLabel";
+            this.SignUpConfirmLabel.Size = new System.Drawing.Size(212, 16);
+            this.SignUpConfirmLabel.TabIndex = 0;
+            this.SignUpConfirmLabel.Text = "YOUR ACCOUNT HAS BEEN CREATED!";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::AzureDentalDev.Properties.Resources.check_32x32;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::AzureDentalDev.Properties.Resources.error_1_32x32;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // SignUpFormMainPictureBox
+            // 
+            this.SignUpFormMainPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SignUpFormMainPictureBox.BackgroundImage")));
+            this.SignUpFormMainPictureBox.Location = new System.Drawing.Point(169, 75);
+            this.SignUpFormMainPictureBox.Name = "SignUpFormMainPictureBox";
+            this.SignUpFormMainPictureBox.Size = new System.Drawing.Size(64, 62);
+            this.SignUpFormMainPictureBox.TabIndex = 1;
+            this.SignUpFormMainPictureBox.TabStop = false;
+            // 
+            // ConfirmTimer
+            // 
+            this.ConfirmTimer.Tick += new System.EventHandler(this.ConfirmTimer_Tick);
+            // 
+            // ConfirmTimer2
+            // 
+            this.ConfirmTimer2.Tick += new System.EventHandler(this.ConfirmTimer2_Tick);
             // 
             // SignUpForm
             // 
@@ -264,7 +354,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(400, 500);
-            this.Controls.Add(this.SignUpFormValidLabel);
+            this.Controls.Add(this.SignUpConfirmPanel);
+            this.Controls.Add(this.SignUpErrorPanel);
+            this.Controls.Add(this.SignUpFormNameLabel2);
+            this.Controls.Add(this.SignUpFormCompanyLabel1);
             this.Controls.Add(this.SignUpFormFirstLabel);
             this.Controls.Add(this.SignUpFormFirstTextBox);
             this.Controls.Add(this.SignUpFormFirstPanel);
@@ -274,7 +367,6 @@
             this.Controls.Add(this.SignUpFormUserLabel);
             this.Controls.Add(this.SignUpFormPassLabel);
             this.Controls.Add(this.SignUpFormBackLabel);
-            this.Controls.Add(this.SignUpFormErrorLabel);
             this.Controls.Add(this.SignUpFormRegisterButton);
             this.Controls.Add(this.SignUpFormPassTextBox);
             this.Controls.Add(this.SignUpFormPassPanel);
@@ -286,6 +378,12 @@
             this.Name = "SignUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign Up!";
+            this.SignUpErrorPanel.ResumeLayout(false);
+            this.SignUpErrorPanel.PerformLayout();
+            this.SignUpConfirmPanel.ResumeLayout(false);
+            this.SignUpConfirmPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SignUpFormMainPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -300,7 +398,6 @@
         private System.Windows.Forms.TextBox SignUpFormPassTextBox;
         private System.Windows.Forms.Panel SignUpFormPassPanel;
         private System.Windows.Forms.Button SignUpFormRegisterButton;
-        private System.Windows.Forms.Label SignUpFormErrorLabel;
         private System.Windows.Forms.Label SignUpFormBackLabel;
         private System.Windows.Forms.Label SignUpFormPassLabel;
         private System.Windows.Forms.Label SignUpFormUserLabel;
@@ -312,6 +409,17 @@
         private System.Windows.Forms.Panel SignUpFormFirstPanel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Label SignUpFormValidLabel;
+        private System.Windows.Forms.Label SignUpFormCompanyLabel1;
+        private System.Windows.Forms.Label SignUpFormNameLabel2;
+        private System.Windows.Forms.Panel SignUpErrorPanel;
+        private System.Windows.Forms.Label SignUpErrorLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer ErrorTimer;
+        private System.Windows.Forms.Timer ErrorTimer2;
+        private System.Windows.Forms.Panel SignUpConfirmPanel;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label SignUpConfirmLabel;
+        private System.Windows.Forms.Timer ConfirmTimer;
+        private System.Windows.Forms.Timer ConfirmTimer2;
     }
 }

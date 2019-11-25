@@ -63,6 +63,16 @@ namespace AzureDentalDev.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("check_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap error_1_32x32 {
             get {
                 object obj = ResourceManager.GetObject("error_1_32x32", resourceCulture);

@@ -135,12 +135,10 @@ namespace AzureDentalDev.Forms
 
             if (blnWasAccountCreated)
             {
-                SignUpFormValidLabel.Visible = true;
-                SignUpFormErrorLabel.Visible = false;
+                DisplayConfirmation();
             } else
             {
-                SignUpFormValidLabel.Visible = false;
-                SignUpFormErrorLabel.Visible = true;
+                DisplayError();
             }
 
         }
@@ -163,6 +161,74 @@ namespace AzureDentalDev.Forms
             if (this.Left >= Application.OpenForms[0].Left)
             {
                 timer2.Stop();
+            }
+        }
+
+        private void DisplayError()
+        {
+            SignUpErrorPanel.Visible = true;
+            SignUpErrorPanel.Top = 500;
+            ErrorTimer.Start();
+        }
+
+        private void DisplayConfirmation()
+        {
+            SignUpConfirmPanel.Visible = true;
+            SignUpConfirmPanel.Top = 500;
+            ConfirmTimer.Start();
+        }
+
+        private void ErrorTimer_Tick(object sender, EventArgs e)
+        {
+            if (SignUpErrorPanel.Bottom > 500)
+            {
+                SignUpErrorPanel.Top -= 7;
+            }
+            else if (SignUpErrorPanel.Bottom <= 500)
+            {
+                ErrorTimer.Stop();
+                System.Threading.Thread.Sleep(1000);
+                ErrorTimer2.Start();
+            }
+        }
+
+        private void ErrorTimer2_Tick(object sender, EventArgs e)
+        {
+            if (SignUpErrorPanel.Top == 500)
+            {
+                ErrorTimer2.Stop();
+                SignUpErrorPanel.Visible = false;
+            }
+            if (SignUpErrorPanel.Top <= 500)
+            {
+                SignUpErrorPanel.Top += 7;
+            }
+        }
+
+        private void ConfirmTimer_Tick(object sender, EventArgs e)
+        {
+            if (SignUpConfirmPanel.Bottom > 500)
+            {
+                SignUpConfirmPanel.Top -= 7;
+            }
+            else if (SignUpConfirmPanel.Bottom <= 500)
+            {
+                ConfirmTimer.Stop();
+                System.Threading.Thread.Sleep(1000);
+                ConfirmTimer2.Start();
+            }
+        }
+
+        private void ConfirmTimer2_Tick(object sender, EventArgs e)
+        {
+            if (SignUpConfirmPanel.Top == 500)
+            {
+                ConfirmTimer2.Stop();
+                SignUpConfirmPanel.Visible = false;
+            }
+            if (SignUpConfirmPanel.Top <= 500)
+            {
+                SignUpConfirmPanel.Top += 7;
             }
         }
     }
