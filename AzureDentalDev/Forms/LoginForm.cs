@@ -65,7 +65,7 @@ namespace AzureDentalDev
                 }
             } else
             {
-                LoginFormErrorLabel.Visible = true;
+                DisplayError();
             }
         }
 
@@ -158,6 +158,40 @@ namespace AzureDentalDev
                 LoginFormPassTextBox.Text = String.Empty;
             }
             LoginFormErrorLabel.Visible = false;
+        }
+
+        private void DisplayError()
+        {
+            LoginFormErrorPanel.Visible = true;
+            LoginFormErrorPanel.Top = 500;
+            ErrorTimer.Start();
+        }
+
+        private void ErrorTimer_Tick(object sender, EventArgs e)
+        {
+            if(LoginFormErrorPanel.Bottom > 500)
+            {
+                LoginFormErrorPanel.Top -= 5;
+            }
+            else if(LoginFormErrorPanel.Bottom <= 500)
+            {
+                ErrorTimer.Stop();
+                System.Threading.Thread.Sleep(1000);
+                ErrorTimer2.Start();
+            }
+        }
+
+        private void ErrorTimer2_Tick(object sender, EventArgs e)
+        {
+            if(LoginFormErrorPanel.Top == 500)
+            {
+                ErrorTimer2.Stop();
+                LoginFormErrorPanel.Visible = false;
+            }
+            if (LoginFormErrorPanel.Top <= 500)
+            {
+                LoginFormErrorPanel.Top += 5;
+            }
         }
     }
 }

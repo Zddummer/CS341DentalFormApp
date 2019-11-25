@@ -145,6 +145,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\error_1_32x32.png" />
     <Content Include="Images\lock-icon-free-download-png-an.png" />
     <Content Include="Images\lock-icon-free-download-png-and-vector_l_13761-01.png" />
     <Content Include="Images\logo-dentistry-tooth-surgery-d.jpg" />
@@ -155,6 +156,7 @@
     <Content Include="Images\users-name-icon2 %281%29.png" />
     <Content Include="Images\Users-Name-icon2.png" />
     <Content Include="Images\Webp.net-resizeimage.jpg" />
+    <None Include="Resources\error_1_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

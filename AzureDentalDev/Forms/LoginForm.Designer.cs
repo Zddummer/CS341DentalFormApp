@@ -43,9 +43,18 @@
             this.LoginFormErrorLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.LoginFormCompanyLabel1 = new System.Windows.Forms.Label();
+            this.LoginFormNameLabel2 = new System.Windows.Forms.Label();
+            this.LoginFormErrorPanel = new System.Windows.Forms.Panel();
+            this.ErrorLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ErrorTimer = new System.Windows.Forms.Timer(this.components);
+            this.ErrorTimer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormMainPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormUserPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormPassPictureBox)).BeginInit();
+            this.LoginFormErrorPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LoginFormMainPictureBox
@@ -171,9 +180,8 @@
             this.LoginFormErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.LoginFormErrorLabel.Location = new System.Drawing.Point(112, 330);
             this.LoginFormErrorLabel.Name = "LoginFormErrorLabel";
-            this.LoginFormErrorLabel.Size = new System.Drawing.Size(182, 16);
+            this.LoginFormErrorLabel.Size = new System.Drawing.Size(0, 16);
             this.LoginFormErrorLabel.TabIndex = 10;
-            this.LoginFormErrorLabel.Text = "Invalid Username or Password";
             this.LoginFormErrorLabel.Visible = false;
             // 
             // timer1
@@ -186,12 +194,77 @@
             this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
+            // LoginFormCompanyLabel1
+            // 
+            this.LoginFormCompanyLabel1.AutoSize = true;
+            this.LoginFormCompanyLabel1.Font = new System.Drawing.Font("Californian FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginFormCompanyLabel1.ForeColor = System.Drawing.Color.Aqua;
+            this.LoginFormCompanyLabel1.Location = new System.Drawing.Point(85, 94);
+            this.LoginFormCompanyLabel1.Name = "LoginFormCompanyLabel1";
+            this.LoginFormCompanyLabel1.Size = new System.Drawing.Size(78, 24);
+            this.LoginFormCompanyLabel1.TabIndex = 11;
+            this.LoginFormCompanyLabel1.Text = "Tru Blu";
+            // 
+            // LoginFormNameLabel2
+            // 
+            this.LoginFormNameLabel2.AutoSize = true;
+            this.LoginFormNameLabel2.Font = new System.Drawing.Font("Californian FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginFormNameLabel2.ForeColor = System.Drawing.Color.Aqua;
+            this.LoginFormNameLabel2.Location = new System.Drawing.Point(239, 94);
+            this.LoginFormNameLabel2.Name = "LoginFormNameLabel2";
+            this.LoginFormNameLabel2.Size = new System.Drawing.Size(69, 24);
+            this.LoginFormNameLabel2.TabIndex = 12;
+            this.LoginFormNameLabel2.Text = "Dental";
+            // 
+            // LoginFormErrorPanel
+            // 
+            this.LoginFormErrorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(64)))), ((int)(((byte)(52)))));
+            this.LoginFormErrorPanel.Controls.Add(this.pictureBox1);
+            this.LoginFormErrorPanel.Controls.Add(this.ErrorLabel);
+            this.LoginFormErrorPanel.Location = new System.Drawing.Point(1, 487);
+            this.LoginFormErrorPanel.Name = "LoginFormErrorPanel";
+            this.LoginFormErrorPanel.Size = new System.Drawing.Size(400, 33);
+            this.LoginFormErrorPanel.TabIndex = 13;
+            this.LoginFormErrorPanel.Visible = false;
+            // 
+            // ErrorLabel
+            // 
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ErrorLabel.ForeColor = System.Drawing.Color.White;
+            this.ErrorLabel.Location = new System.Drawing.Point(102, 4);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(205, 16);
+            this.ErrorLabel.TabIndex = 0;
+            this.ErrorLabel.Text = "INVALID USERNAME OR PASSWORD";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::AzureDentalDev.Properties.Resources.error_1_32x32;
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(11, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ErrorTimer
+            // 
+            this.ErrorTimer.Tick += new System.EventHandler(this.ErrorTimer_Tick);
+            // 
+            // ErrorTimer2
+            // 
+            this.ErrorTimer2.Tick += new System.EventHandler(this.ErrorTimer2_Tick);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(400, 500);
+            this.Controls.Add(this.LoginFormErrorPanel);
+            this.Controls.Add(this.LoginFormNameLabel2);
+            this.Controls.Add(this.LoginFormCompanyLabel1);
             this.Controls.Add(this.LoginFormErrorLabel);
             this.Controls.Add(this.LoginFormSignUpButton);
             this.Controls.Add(this.LoginFormLoginButton);
@@ -214,6 +287,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormMainPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormUserPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormPassPictureBox)).EndInit();
+            this.LoginFormErrorPanel.ResumeLayout(false);
+            this.LoginFormErrorPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,6 +310,13 @@
         private System.Windows.Forms.Label LoginFormErrorLabel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label LoginFormCompanyLabel1;
+        private System.Windows.Forms.Label LoginFormNameLabel2;
+        private System.Windows.Forms.Panel LoginFormErrorPanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label ErrorLabel;
+        private System.Windows.Forms.Timer ErrorTimer;
+        private System.Windows.Forms.Timer ErrorTimer2;
     }
 }
 
