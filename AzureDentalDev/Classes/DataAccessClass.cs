@@ -81,6 +81,55 @@ namespace AzureDentalDev.Classes
                 sb.Append("FROM Users U ");
                 sb.Append($"WHERE U.Username = '{strUserName}' ");
                 sb.Append($"AND U.Password = '{strPassword}' ");
+                sb.Append("AND U.AccessType = 'A'");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            strReturnUserName = reader.GetString(0);
+                            strReturnPassword = reader.GetString(1);
+                            strFirstName = reader.GetString(2);
+                            strLastName = reader.GetString(3);
+                            chrUserType = reader.GetSqlChars(4);
+                            chrAccessType = reader.GetSqlChars(5);
+
+                            ucReturnUser = new UserClass(strReturnUserName,
+                                                         strReturnPassword,
+                                                         strFirstName,
+                                                         strLastName,
+                                                         chrUserType,
+                                                         chrAccessType);
+                            return ucReturnUser;
+                        }
+                    }
+                }
+            }
+            return ucReturnUser;
+
+        }
+
+        public static UserClass QueryDatabaseForUser(String strUserName)
+        {
+            UserClass ucReturnUser = null;
+            String strReturnUserName;
+            String strReturnPassword;
+            String strFirstName;
+            String strLastName;
+            System.Data.SqlTypes.SqlChars chrUserType;
+            System.Data.SqlTypes.SqlChars chrAccessType;
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append("SELECT TOP 1 * ");
+                sb.Append("FROM Users U ");
+                sb.Append($"WHERE U.Username = '{strUserName}' ");
                 String sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))

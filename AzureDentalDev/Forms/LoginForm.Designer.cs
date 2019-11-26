@@ -43,19 +43,19 @@
             this.LoginFormCompanyLabel1 = new System.Windows.Forms.Label();
             this.LoginFormNameLabel2 = new System.Windows.Forms.Label();
             this.LoginFormErrorPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ErrorLabel = new System.Windows.Forms.Label();
             this.ErrorTimer = new System.Windows.Forms.Timer(this.components);
             this.ErrorTimer2 = new System.Windows.Forms.Timer(this.components);
             this.HelpToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HelpPictureBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LoginFormPassPictureBox = new System.Windows.Forms.PictureBox();
             this.LoginFormUserPictureBox = new System.Windows.Forms.PictureBox();
             this.LoginFormMainPictureBox = new System.Windows.Forms.PictureBox();
             this.LoginFormMinLabel = new System.Windows.Forms.Label();
             this.LoginFormErrorPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormPassPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormUserPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormMainPictureBox)).BeginInit();
@@ -197,11 +197,21 @@
             this.LoginFormErrorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(64)))), ((int)(((byte)(52)))));
             this.LoginFormErrorPanel.Controls.Add(this.pictureBox1);
             this.LoginFormErrorPanel.Controls.Add(this.ErrorLabel);
-            this.LoginFormErrorPanel.Location = new System.Drawing.Point(1, 487);
+            this.LoginFormErrorPanel.Location = new System.Drawing.Point(1, 465);
             this.LoginFormErrorPanel.Name = "LoginFormErrorPanel";
             this.LoginFormErrorPanel.Size = new System.Drawing.Size(400, 33);
             this.LoginFormErrorPanel.TabIndex = 13;
             this.LoginFormErrorPanel.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::AzureDentalDev.Properties.Resources.error_1_32x32;
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(11, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // ErrorLabel
             // 
@@ -230,22 +240,12 @@
             // 
             this.HelpPictureBox.BackColor = System.Drawing.Color.Cyan;
             this.HelpPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("HelpPictureBox.BackgroundImage")));
-            this.HelpPictureBox.Location = new System.Drawing.Point(360, 460);
+            this.HelpPictureBox.Location = new System.Drawing.Point(1, 3);
             this.HelpPictureBox.Name = "HelpPictureBox";
             this.HelpPictureBox.Size = new System.Drawing.Size(28, 28);
             this.HelpPictureBox.TabIndex = 14;
             this.HelpPictureBox.TabStop = false;
             this.HelpPictureBox.Click += new System.EventHandler(this.HelpPictureBox_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::AzureDentalDev.Properties.Resources.error_1_32x32;
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(11, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // LoginFormPassPictureBox
             // 
@@ -320,8 +320,8 @@
             this.VisibleChanged += new System.EventHandler(this.LoginForm_VisibleChanged);
             this.LoginFormErrorPanel.ResumeLayout(false);
             this.LoginFormErrorPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormPassPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormUserPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginFormMainPictureBox)).EndInit();
