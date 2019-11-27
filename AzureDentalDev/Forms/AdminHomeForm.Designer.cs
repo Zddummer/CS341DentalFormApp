@@ -397,6 +397,7 @@
             this.AdminHomeSearchTextBox.TabIndex = 2;
             this.AdminHomeSearchTextBox.Text = "Enter a Username";
             this.AdminHomeSearchTextBox.Enter += new System.EventHandler(this.AdminHomeSearchTextBox_Enter);
+            this.AdminHomeSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AdminHomeSearchTextBox_KeyDown);
             this.AdminHomeSearchTextBox.Leave += new System.EventHandler(this.AdminHomeSearchTextBox_Leave);
             // 
             // AdminHomeUserSearch
@@ -696,6 +697,7 @@
             this.AdminSearchDateTimePicker.Name = "AdminSearchDateTimePicker";
             this.AdminSearchDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.AdminSearchDateTimePicker.TabIndex = 6;
+            this.AdminSearchDateTimePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AdminSearchDateTimePicker_KeyDown);
             // 
             // label3
             // 
@@ -742,6 +744,7 @@
             this.AdminApptSearchTextBox.TabIndex = 10;
             this.AdminApptSearchTextBox.Text = "Enter a Username";
             this.AdminApptSearchTextBox.Enter += new System.EventHandler(this.AdminApptSearchTextBox_Enter);
+            this.AdminApptSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AdminApptSearchTextBox_KeyDown);
             this.AdminApptSearchTextBox.Leave += new System.EventHandler(this.AdminApptSearchTextBox_Leave);
             // 
             // label2

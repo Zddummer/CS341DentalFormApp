@@ -311,5 +311,35 @@ namespace AzureDentalDev.Forms
                 AdminApptSearchTextBox.Text = "Enter a Username";
             }
         }
+
+        private void AdminApptSearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AdminApptSearchButton.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
+
+        private void AdminSearchDateTimePicker_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AdminApptSearchButton.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
+
+        private void AdminHomeSearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AdminHomeUserSearchButton.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
     }
 }
