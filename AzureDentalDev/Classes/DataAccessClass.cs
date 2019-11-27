@@ -290,11 +290,29 @@ namespace AzureDentalDev.Classes
                     if (intNumberOfRowsAffected > 0)
                     {
                         blnWasUserDeleted = true;
+                        deleteAllAppointmentsWhenUserIsDeleted(strUserName);
                     }
                 }
             }
 
             return blnWasUserDeleted;
+        }
+
+        private static void deleteAllAppointmentsWhenUserIsDeleted(String strUserName)
+        {
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"UPDATE Appointments SET Status = 'C' WHERE (CustomerName = '{strUserName}' OR DentistName = '{strUserName}') AND Status = 'A'");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public static Boolean activateUser(String strUserName)
