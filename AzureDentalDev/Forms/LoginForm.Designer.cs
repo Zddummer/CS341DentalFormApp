@@ -197,7 +197,7 @@
             this.LoginFormErrorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(64)))), ((int)(((byte)(52)))));
             this.LoginFormErrorPanel.Controls.Add(this.pictureBox1);
             this.LoginFormErrorPanel.Controls.Add(this.ErrorLabel);
-            this.LoginFormErrorPanel.Location = new System.Drawing.Point(1, 465);
+            this.LoginFormErrorPanel.Location = new System.Drawing.Point(0, 467);
             this.LoginFormErrorPanel.Name = "LoginFormErrorPanel";
             this.LoginFormErrorPanel.Size = new System.Drawing.Size(400, 33);
             this.LoginFormErrorPanel.TabIndex = 13;
@@ -240,7 +240,7 @@
             // 
             this.HelpPictureBox.BackColor = System.Drawing.Color.Cyan;
             this.HelpPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("HelpPictureBox.BackgroundImage")));
-            this.HelpPictureBox.Location = new System.Drawing.Point(1, 3);
+            this.HelpPictureBox.Location = new System.Drawing.Point(369, 472);
             this.HelpPictureBox.Name = "HelpPictureBox";
             this.HelpPictureBox.Size = new System.Drawing.Size(28, 28);
             this.HelpPictureBox.TabIndex = 14;

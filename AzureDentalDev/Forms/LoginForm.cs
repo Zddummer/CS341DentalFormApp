@@ -163,6 +163,7 @@ namespace AzureDentalDev
         private void DisplayError()
         {
             LoginFormErrorPanel.Visible = true;
+            LoginFormErrorPanel.BringToFront();
             LoginFormErrorPanel.Top = 500;
             ErrorTimer.Start();
         }
