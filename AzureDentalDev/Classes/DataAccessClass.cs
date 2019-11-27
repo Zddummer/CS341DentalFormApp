@@ -269,7 +269,61 @@ namespace AzureDentalDev.Classes
 
             return blnWasUserCreated;
         }
-        
+
+        public static Boolean deleteUser(String strUserName)
+        {
+            Boolean blnWasUserDeleted = false;
+            int intNumberOfRowsAffected = 0;
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"UPDATE Users SET accessType = 'D' WHERE userName = '{strUserName}' AND accessType = 'A'");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        blnWasUserDeleted = true;
+                    }
+                }
+            }
+
+            return blnWasUserDeleted;
+        }
+
+        public static Boolean activateUser(String strUserName)
+        {
+            Boolean blnWasUserActivated = false;
+            int intNumberOfRowsAffected = 0;
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"UPDATE Users SET accessType = 'A' WHERE userName = '{strUserName}' AND accessType = 'D'");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    intNumberOfRowsAffected = command.ExecuteNonQuery();
+
+                    if (intNumberOfRowsAffected > 0)
+                    {
+                        blnWasUserActivated = true;
+                    }
+                }
+            }
+
+            return blnWasUserActivated;
+        }
+
         public static List<AppointmentClass> getAppointmentsWithCustomerName(String strUserName)
         {
             //get all appointments associated with the given username

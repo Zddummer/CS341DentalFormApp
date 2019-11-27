@@ -99,10 +99,11 @@ namespace AzureDentalDev.Forms
                 AdminHomeStatusLabel.Text = g_ucUserReturnedFromSearch.m_chrAccessType[0].ToString();
             } else
             {
-               AdminHomeErrorPanel.Visible = true;
-               AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Visible = true;
+                AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Top = 575 - 33;
                 AdminErrorMessageLabel.Text = "THAT USER DOES NOT EXIT";
-               timer1.Start();
+                timer1.Start();
             }
         }
 
@@ -125,12 +126,89 @@ namespace AzureDentalDev.Forms
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            AdminHomeErrorPanel.Left -= 300;
-            if (AdminHomeErrorPanel.Left <= 0)
+            if (AdminWarnPanel.Visible)
+            {
+                AdminWarnPanel.Left -= 300;
+            } else if (AdminHomeErrorPanel.Visible)
+            {
+                AdminHomeErrorPanel.Left -= 300;
+            } else if (AdminConfirmPanel.Visible)
+            {
+                AdminConfirmPanel.Left -= 300;
+            }
+
+
+
+            if (AdminHomeErrorPanel.Left <= 0 && AdminHomeErrorPanel.Visible)
             {
                 timer1.Stop();
                 System.Threading.Thread.Sleep(1500);
                 AdminHomeErrorPanel.Visible = false;
+            } else if(AdminWarnPanel.Left <= 0 && AdminWarnPanel.Visible)
+            {
+                timer1.Stop();
+            }
+            else if (AdminConfirmPanel.Left <= 0 && AdminConfirmPanel.Visible)
+            {
+                timer1.Stop();
+                System.Threading.Thread.Sleep(1500);
+                AdminConfirmPanel.Visible = false;
+            }
+        }
+
+        private void AdminHomeDeleteButton_Click(object sender, EventArgs e)
+        {
+            AdminWarnPanel.Visible = true;
+            AdminWarnPanel.Left = 900;
+            AdminWarnPanel.Top = 575 - 33;
+            timer1.Start();
+        }
+
+        private void AdminWarnCancelButton_Click(object sender, EventArgs e)
+        {
+            AdminWarnPanel.Visible = false;
+        }
+
+        private void AdminWarnAcceptButton_Click(object sender, EventArgs e)
+        {
+            AdminWarnPanel.Visible = false;
+            if (DataAccessClass.deleteUser(AdminUserNameLabel.Text))
+            {
+                AdminConfirmPanel.Visible = true;
+                AdminConfirmPanel.Left = 900;
+                AdminConfirmPanel.Top = 575 - 33;
+                AdminConfirmLabel.Text = "THE USER HAS BEEN DELETED";
+                timer1.Start();
+                DataAccessClass.QueryDatabaseForUser(AdminUserNameLabel.Text);
+                AdminHomeUserSearchButton_Click(sender, e);
+            } else
+            {
+                AdminHomeErrorPanel.Visible = true;
+                AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Top = 575 - 33;
+                AdminErrorMessageLabel.Text = "THAT IS NOT AN ACTIVE USER";
+                timer1.Start();
+            }
+        }
+
+        private void AdminActiveButton_Click(object sender, EventArgs e)
+        {
+            if (DataAccessClass.activateUser(AdminUserNameLabel.Text))
+            {
+                AdminConfirmPanel.Visible = true;
+                AdminConfirmPanel.Left = 900;
+                AdminConfirmPanel.Top = 575 - 33;
+                AdminConfirmLabel.Text = "THE USER HAS BEEN ACTIVATED";
+                timer1.Start();
+                DataAccessClass.QueryDatabaseForUser(AdminUserNameLabel.Text);
+                AdminHomeUserSearchButton_Click(sender, e);
+            } else
+            {
+                AdminHomeErrorPanel.Visible = true;
+                AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Top = 575 - 33;
+                AdminErrorMessageLabel.Text = "THE USER IS ALREADY ACTIVE";
+                timer1.Start();
             }
         }
     }

@@ -159,6 +159,7 @@
     <Content Include="Images\users-name-icon2 %281%29.png" />
     <Content Include="Images\Users-Name-icon2.png" />
     <Content Include="Images\Webp.net-resizeimage.jpg" />
+    <None Include="Resources\sign_warning_32x32.png" />
     <None Include="Resources\info_512pxGREY_2_28x28.png" />
     <None Include="Resources\check_32x32.png" />
     <None Include="Resources\error_1_32x32.png" />
