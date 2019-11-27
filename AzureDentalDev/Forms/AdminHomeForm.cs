@@ -158,10 +158,16 @@ namespace AzureDentalDev.Forms
 
         private void AdminHomeDeleteButton_Click(object sender, EventArgs e)
         {
-            AdminWarnPanel.Visible = true;
-            AdminWarnPanel.Left = 900;
-            AdminWarnPanel.Top = 575 - 33;
-            timer1.Start();
+            if(AdminHomeStatusLabel.Text == "D")
+            {
+                AdminWarnAcceptButton_Click(sender, e);
+            } else
+            {
+                AdminWarnPanel.Visible = true;
+                AdminWarnPanel.Left = 900;
+                AdminWarnPanel.Top = 575 - 33;
+                timer1.Start();
+            }
         }
 
         private void AdminWarnCancelButton_Click(object sender, EventArgs e)
