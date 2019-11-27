@@ -71,34 +71,50 @@
             this.label1 = new System.Windows.Forms.Label();
             this.HoursLabel = new System.Windows.Forms.Label();
             this.AppointmentTab = new System.Windows.Forms.TabPage();
+            this.AppointmentListView = new System.Windows.Forms.ListView();
+            this.AdminInstructionLabel = new System.Windows.Forms.Label();
+            this.AdminDateSearchCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.AdminUserSearchCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.AdminSearchDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.AdminApptSearchButton = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.AdminApptSearchTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.AdminHomeErrorPanel = new System.Windows.Forms.Panel();
             this.AdminErrorMessageLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.AdminWarnPanel = new System.Windows.Forms.Panel();
+            this.AdminWarnAcceptButton = new System.Windows.Forms.Button();
+            this.AdminWarnCancelButton = new System.Windows.Forms.Button();
             this.AdminWarnLabel = new System.Windows.Forms.Label();
+            this.AdminConfirmPanel = new System.Windows.Forms.Panel();
+            this.AdminConfirmLabel = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AdminConfirmPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminWarnPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminErrorPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminHomeHelpPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminHomeFormMainPictureBox = new System.Windows.Forms.PictureBox();
-            this.AdminWarnCancelButton = new System.Windows.Forms.Button();
-            this.AdminWarnAcceptButton = new System.Windows.Forms.Button();
-            this.AdminConfirmPanel = new System.Windows.Forms.Panel();
-            this.AdminConfirmLabel = new System.Windows.Forms.Label();
-            this.AdminConfirmPictureBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.AdminHomeFormTabControl.SuspendLayout();
             this.AccountsTabPage.SuspendLayout();
             this.AdminSearchPanel.SuspendLayout();
             this.ScheduleTabPage.SuspendLayout();
+            this.AppointmentTab.SuspendLayout();
             this.AdminHomeErrorPanel.SuspendLayout();
             this.AdminWarnPanel.SuspendLayout();
+            this.AdminConfirmPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminConfirmPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminWarnPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminErrorPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeHelpPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).BeginInit();
-            this.AdminConfirmPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminConfirmPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // AdminHomeFormWelcomeLabel
@@ -589,12 +605,153 @@
             // AppointmentTab
             // 
             this.AppointmentTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AppointmentTab.Controls.Add(this.AppointmentListView);
+            this.AppointmentTab.Controls.Add(this.AdminInstructionLabel);
+            this.AppointmentTab.Controls.Add(this.AdminDateSearchCheckBox);
+            this.AppointmentTab.Controls.Add(this.AdminUserSearchCheckBox);
+            this.AppointmentTab.Controls.Add(this.AdminSearchDateTimePicker);
+            this.AppointmentTab.Controls.Add(this.label3);
+            this.AppointmentTab.Controls.Add(this.AdminApptSearchButton);
+            this.AppointmentTab.Controls.Add(this.panel4);
+            this.AppointmentTab.Controls.Add(this.AdminApptSearchTextBox);
+            this.AppointmentTab.Controls.Add(this.label2);
             this.AppointmentTab.Location = new System.Drawing.Point(4, 22);
             this.AppointmentTab.Name = "AppointmentTab";
             this.AppointmentTab.Padding = new System.Windows.Forms.Padding(3);
             this.AppointmentTab.Size = new System.Drawing.Size(908, 402);
             this.AppointmentTab.TabIndex = 2;
             this.AppointmentTab.Text = "Appointments";
+            // 
+            // AppointmentListView
+            // 
+            this.AppointmentListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.AppointmentListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AppointmentListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AppointmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.AppointmentListView.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppointmentListView.ForeColor = System.Drawing.Color.Aqua;
+            this.AppointmentListView.FullRowSelect = true;
+            this.AppointmentListView.HideSelection = false;
+            this.AppointmentListView.HotTracking = true;
+            this.AppointmentListView.HoverSelection = true;
+            this.AppointmentListView.Location = new System.Drawing.Point(9, 88);
+            this.AppointmentListView.Name = "AppointmentListView";
+            this.AppointmentListView.Size = new System.Drawing.Size(642, 308);
+            this.AppointmentListView.TabIndex = 14;
+            this.AppointmentListView.TileSize = new System.Drawing.Size(150, 80);
+            this.AppointmentListView.UseCompatibleStateImageBehavior = false;
+            this.AppointmentListView.View = System.Windows.Forms.View.Tile;
+            // 
+            // AdminInstructionLabel
+            // 
+            this.AdminInstructionLabel.AutoSize = true;
+            this.AdminInstructionLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminInstructionLabel.ForeColor = System.Drawing.Color.Gray;
+            this.AdminInstructionLabel.Location = new System.Drawing.Point(117, 207);
+            this.AdminInstructionLabel.Name = "AdminInstructionLabel";
+            this.AdminInstructionLabel.Size = new System.Drawing.Size(332, 19);
+            this.AdminInstructionLabel.TabIndex = 13;
+            this.AdminInstructionLabel.Text = "Select one or both fields to see appointments!";
+            // 
+            // AdminDateSearchCheckBox
+            // 
+            this.AdminDateSearchCheckBox.AutoSize = true;
+            this.AdminDateSearchCheckBox.Depth = 0;
+            this.AdminDateSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.AdminDateSearchCheckBox.Location = new System.Drawing.Point(341, 2);
+            this.AdminDateSearchCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.AdminDateSearchCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.AdminDateSearchCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AdminDateSearchCheckBox.Name = "AdminDateSearchCheckBox";
+            this.AdminDateSearchCheckBox.Ripple = true;
+            this.AdminDateSearchCheckBox.Size = new System.Drawing.Size(26, 30);
+            this.AdminDateSearchCheckBox.TabIndex = 12;
+            this.AdminDateSearchCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // AdminUserSearchCheckBox
+            // 
+            this.AdminUserSearchCheckBox.AutoSize = true;
+            this.AdminUserSearchCheckBox.Depth = 0;
+            this.AdminUserSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.AdminUserSearchCheckBox.Location = new System.Drawing.Point(121, 3);
+            this.AdminUserSearchCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.AdminUserSearchCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.AdminUserSearchCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AdminUserSearchCheckBox.Name = "AdminUserSearchCheckBox";
+            this.AdminUserSearchCheckBox.Ripple = true;
+            this.AdminUserSearchCheckBox.Size = new System.Drawing.Size(26, 30);
+            this.AdminUserSearchCheckBox.TabIndex = 11;
+            this.AdminUserSearchCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // AdminSearchDateTimePicker
+            // 
+            this.AdminSearchDateTimePicker.CalendarForeColor = System.Drawing.Color.Aqua;
+            this.AdminSearchDateTimePicker.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AdminSearchDateTimePicker.Location = new System.Drawing.Point(230, 45);
+            this.AdminSearchDateTimePicker.Name = "AdminSearchDateTimePicker";
+            this.AdminSearchDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.AdminSearchDateTimePicker.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Aqua;
+            this.label3.Location = new System.Drawing.Point(227, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 18);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Search by date";
+            // 
+            // AdminApptSearchButton
+            // 
+            this.AdminApptSearchButton.BackColor = System.Drawing.Color.Cyan;
+            this.AdminApptSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminApptSearchButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminApptSearchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AdminApptSearchButton.Location = new System.Drawing.Point(436, 42);
+            this.AdminApptSearchButton.Name = "AdminApptSearchButton";
+            this.AdminApptSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.AdminApptSearchButton.TabIndex = 8;
+            this.AdminApptSearchButton.Text = "Search";
+            this.AdminApptSearchButton.UseVisualStyleBackColor = false;
+            this.AdminApptSearchButton.Click += new System.EventHandler(this.AdminApptSearchButton_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Cyan;
+            this.panel4.Location = new System.Drawing.Point(9, 64);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(164, 1);
+            this.panel4.TabIndex = 7;
+            // 
+            // AdminApptSearchTextBox
+            // 
+            this.AdminApptSearchTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AdminApptSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AdminApptSearchTextBox.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminApptSearchTextBox.ForeColor = System.Drawing.Color.DarkGray;
+            this.AdminApptSearchTextBox.Location = new System.Drawing.Point(9, 36);
+            this.AdminApptSearchTextBox.Name = "AdminApptSearchTextBox";
+            this.AdminApptSearchTextBox.Size = new System.Drawing.Size(164, 22);
+            this.AdminApptSearchTextBox.TabIndex = 6;
+            this.AdminApptSearchTextBox.Text = "Enter a Username";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Aqua;
+            this.label2.Location = new System.Drawing.Point(6, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 18);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Search by user";
             // 
             // materialTabSelector1
             // 
@@ -647,6 +804,30 @@
             this.AdminWarnPanel.TabIndex = 6;
             this.AdminWarnPanel.Visible = false;
             // 
+            // AdminWarnAcceptButton
+            // 
+            this.AdminWarnAcceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.AdminWarnAcceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminWarnAcceptButton.Location = new System.Drawing.Point(719, 5);
+            this.AdminWarnAcceptButton.Name = "AdminWarnAcceptButton";
+            this.AdminWarnAcceptButton.Size = new System.Drawing.Size(75, 23);
+            this.AdminWarnAcceptButton.TabIndex = 3;
+            this.AdminWarnAcceptButton.Text = "Delete";
+            this.AdminWarnAcceptButton.UseVisualStyleBackColor = false;
+            this.AdminWarnAcceptButton.Click += new System.EventHandler(this.AdminWarnAcceptButton_Click);
+            // 
+            // AdminWarnCancelButton
+            // 
+            this.AdminWarnCancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.AdminWarnCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminWarnCancelButton.Location = new System.Drawing.Point(638, 5);
+            this.AdminWarnCancelButton.Name = "AdminWarnCancelButton";
+            this.AdminWarnCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.AdminWarnCancelButton.TabIndex = 2;
+            this.AdminWarnCancelButton.Text = "Cancel";
+            this.AdminWarnCancelButton.UseVisualStyleBackColor = false;
+            this.AdminWarnCancelButton.Click += new System.EventHandler(this.AdminWarnCancelButton_Click);
+            // 
             // AdminWarnLabel
             // 
             this.AdminWarnLabel.AutoSize = true;
@@ -657,6 +838,41 @@
             this.AdminWarnLabel.Size = new System.Drawing.Size(332, 20);
             this.AdminWarnLabel.TabIndex = 0;
             this.AdminWarnLabel.Text = "ARE YOU SURE YOU WANT TO DELETE ACCOUNT?";
+            // 
+            // AdminConfirmPanel
+            // 
+            this.AdminConfirmPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
+            this.AdminConfirmPanel.Controls.Add(this.AdminConfirmPictureBox);
+            this.AdminConfirmPanel.Controls.Add(this.AdminConfirmLabel);
+            this.AdminConfirmPanel.Location = new System.Drawing.Point(0, 532);
+            this.AdminConfirmPanel.Name = "AdminConfirmPanel";
+            this.AdminConfirmPanel.Size = new System.Drawing.Size(916, 33);
+            this.AdminConfirmPanel.TabIndex = 6;
+            this.AdminConfirmPanel.Visible = false;
+            // 
+            // AdminConfirmLabel
+            // 
+            this.AdminConfirmLabel.AutoSize = true;
+            this.AdminConfirmLabel.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminConfirmLabel.ForeColor = System.Drawing.Color.White;
+            this.AdminConfirmLabel.Location = new System.Drawing.Point(355, 4);
+            this.AdminConfirmLabel.Name = "AdminConfirmLabel";
+            this.AdminConfirmLabel.Size = new System.Drawing.Size(245, 23);
+            this.AdminConfirmLabel.TabIndex = 0;
+            this.AdminConfirmLabel.Text = "THE USER HAS BEEN DELETED";
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 173;
+            // 
+            // AdminConfirmPictureBox
+            // 
+            this.AdminConfirmPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.check_32x32;
+            this.AdminConfirmPictureBox.Location = new System.Drawing.Point(16, 1);
+            this.AdminConfirmPictureBox.Name = "AdminConfirmPictureBox";
+            this.AdminConfirmPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.AdminConfirmPictureBox.TabIndex = 1;
+            this.AdminConfirmPictureBox.TabStop = false;
             // 
             // AdminWarnPictureBox
             // 
@@ -694,61 +910,6 @@
             this.AdminHomeFormMainPictureBox.TabIndex = 2;
             this.AdminHomeFormMainPictureBox.TabStop = false;
             // 
-            // AdminWarnCancelButton
-            // 
-            this.AdminWarnCancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.AdminWarnCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdminWarnCancelButton.Location = new System.Drawing.Point(638, 5);
-            this.AdminWarnCancelButton.Name = "AdminWarnCancelButton";
-            this.AdminWarnCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.AdminWarnCancelButton.TabIndex = 2;
-            this.AdminWarnCancelButton.Text = "Cancel";
-            this.AdminWarnCancelButton.UseVisualStyleBackColor = false;
-            this.AdminWarnCancelButton.Click += new System.EventHandler(this.AdminWarnCancelButton_Click);
-            // 
-            // AdminWarnAcceptButton
-            // 
-            this.AdminWarnAcceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.AdminWarnAcceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdminWarnAcceptButton.Location = new System.Drawing.Point(719, 5);
-            this.AdminWarnAcceptButton.Name = "AdminWarnAcceptButton";
-            this.AdminWarnAcceptButton.Size = new System.Drawing.Size(75, 23);
-            this.AdminWarnAcceptButton.TabIndex = 3;
-            this.AdminWarnAcceptButton.Text = "Delete";
-            this.AdminWarnAcceptButton.UseVisualStyleBackColor = false;
-            this.AdminWarnAcceptButton.Click += new System.EventHandler(this.AdminWarnAcceptButton_Click);
-            // 
-            // AdminConfirmPanel
-            // 
-            this.AdminConfirmPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
-            this.AdminConfirmPanel.Controls.Add(this.AdminConfirmPictureBox);
-            this.AdminConfirmPanel.Controls.Add(this.AdminConfirmLabel);
-            this.AdminConfirmPanel.Location = new System.Drawing.Point(0, 532);
-            this.AdminConfirmPanel.Name = "AdminConfirmPanel";
-            this.AdminConfirmPanel.Size = new System.Drawing.Size(916, 33);
-            this.AdminConfirmPanel.TabIndex = 6;
-            this.AdminConfirmPanel.Visible = false;
-            // 
-            // AdminConfirmLabel
-            // 
-            this.AdminConfirmLabel.AutoSize = true;
-            this.AdminConfirmLabel.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminConfirmLabel.ForeColor = System.Drawing.Color.White;
-            this.AdminConfirmLabel.Location = new System.Drawing.Point(355, 4);
-            this.AdminConfirmLabel.Name = "AdminConfirmLabel";
-            this.AdminConfirmLabel.Size = new System.Drawing.Size(245, 23);
-            this.AdminConfirmLabel.TabIndex = 0;
-            this.AdminConfirmLabel.Text = "THE USER HAS BEEN DELETED";
-            // 
-            // AdminConfirmPictureBox
-            // 
-            this.AdminConfirmPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.check_32x32;
-            this.AdminConfirmPictureBox.Location = new System.Drawing.Point(16, 1);
-            this.AdminConfirmPictureBox.Name = "AdminConfirmPictureBox";
-            this.AdminConfirmPictureBox.Size = new System.Drawing.Size(32, 32);
-            this.AdminConfirmPictureBox.TabIndex = 1;
-            this.AdminConfirmPictureBox.TabStop = false;
-            // 
             // AdminHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -776,17 +937,19 @@
             this.AdminSearchPanel.PerformLayout();
             this.ScheduleTabPage.ResumeLayout(false);
             this.ScheduleTabPage.PerformLayout();
+            this.AppointmentTab.ResumeLayout(false);
+            this.AppointmentTab.PerformLayout();
             this.AdminHomeErrorPanel.ResumeLayout(false);
             this.AdminHomeErrorPanel.PerformLayout();
             this.AdminWarnPanel.ResumeLayout(false);
             this.AdminWarnPanel.PerformLayout();
+            this.AdminConfirmPanel.ResumeLayout(false);
+            this.AdminConfirmPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminConfirmPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminWarnPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminErrorPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeHelpPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).EndInit();
-            this.AdminConfirmPanel.ResumeLayout(false);
-            this.AdminConfirmPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminConfirmPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -849,5 +1012,20 @@
         private System.Windows.Forms.Panel AdminConfirmPanel;
         private System.Windows.Forms.PictureBox AdminConfirmPictureBox;
         private System.Windows.Forms.Label AdminConfirmLabel;
+        private System.Windows.Forms.DateTimePicker AdminSearchDateTimePicker;
+        private System.Windows.Forms.Button AdminApptSearchButton;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox AdminApptSearchTextBox;
+        private MaterialSkin.Controls.MaterialCheckBox AdminUserSearchCheckBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private MaterialSkin.Controls.MaterialCheckBox AdminDateSearchCheckBox;
+        private System.Windows.Forms.ListView AppointmentListView;
+        private System.Windows.Forms.Label AdminInstructionLabel;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

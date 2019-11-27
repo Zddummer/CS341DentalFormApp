@@ -217,5 +217,83 @@ namespace AzureDentalDev.Forms
                 timer1.Start();
             }
         }
+
+        private void AdminApptSearchButton_Click(object sender, EventArgs e)
+        {
+
+
+            List<AppointmentClass> lstAppointments;
+            DateTime dtDate = AdminSearchDateTimePicker.Value;
+
+            AdminInstructionLabel.Text = "There were no results";
+            foreach (ListViewItem listitem in AppointmentListView.Items)
+            {
+                AppointmentListView.Items.Remove(listitem);
+            }
+
+            if (AdminUserSearchCheckBox.Checked && (AdminApptSearchTextBox.Text == "" || AdminApptSearchTextBox.Text == "Enter a Username"))
+            {
+                AdminHomeErrorPanel.Visible = true;
+                AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Top = 575 - 33;
+                AdminErrorMessageLabel.Text = "UNCHECK OR ENTER USER";
+                timer1.Start();
+            } else if(!AdminUserSearchCheckBox.Checked && !AdminDateSearchCheckBox.Checked)
+            {
+                AdminHomeErrorPanel.Visible = true;
+                AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Top = 575 - 33;
+                AdminErrorMessageLabel.Text = "CHECK ONE OR BOTH BOXES";
+                timer1.Start();
+            } else
+            {
+                if (!AdminDateSearchCheckBox.Checked)
+                {
+                    dtDate = new DateTime(2000, 1, 1);
+                }
+                lstAppointments = DataAccessClass.getAppointments_Admin(AdminApptSearchTextBox.Text, dtDate);
+                if(lstAppointments.Count == 0)
+                {
+                    AppointmentListView.Visible = false;
+                } else
+                {
+                    AppointmentListView.Visible = true;
+                    int i = 1;
+                    foreach (AppointmentClass acAppointment in lstAppointments)
+                    {
+                        ListViewItem item = new ListViewItem("Appointment " + i);
+                        UserClass ucDentist = DataAccessClass.QueryDatabaseForUser(acAppointment.m_strDentistName);
+
+                        
+                        ListViewItem.ListViewSubItem subitem = new ListViewItem.ListViewSubItem(item, acAppointment.m_dtDateTime.Date.ToShortDateString());
+                        item.SubItems.Add(subitem);
+                        ListViewItem.ListViewSubItem subitem1 = new ListViewItem.ListViewSubItem(item, acAppointment.m_dtDateTime.TimeOfDay.ToString());
+                        item.SubItems.Add(subitem1);
+                        ListViewItem.ListViewSubItem subitem2 = new ListViewItem.ListViewSubItem(item, ucDentist.m_strFirstName + " " + ucDentist.m_strLastName);
+                        item.SubItems.Add(subitem2);
+                        ListViewItem.ListViewSubItem subitem3 = new ListViewItem.ListViewSubItem(item, acAppointment.m_strDescription);
+                        item.SubItems.Add(subitem3);
+                        item.ForeColor = Color.LightSkyBlue;
+                        if (acAppointment.m_chrStatus[0] == 'C')
+                        {
+                            item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+                        }
+                        else
+                        {
+                            item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        }
+                        item.UseItemStyleForSubItems = true;
+
+                        AppointmentListView.Items.Add(item);
+                        i++;
+                    }
+                }
+            }
+        }
+
+        private void AppointmentListView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

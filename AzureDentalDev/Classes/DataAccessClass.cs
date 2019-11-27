@@ -686,5 +686,49 @@ namespace AzureDentalDev.Classes
                 return blnWasApptUpdated;
             }
         }
+
+        public static List<AppointmentClass> getAppointments_Admin(String strUserName, DateTime dtDate)
+        {
+            List<AppointmentClass> lstAppointmentList = new List<AppointmentClass>();
+            DateTime dtDefault = new DateTime(2000, 1, 1);
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append("SELECT * ");
+                sb.Append("FROM Appointments A ");
+                sb.Append($"WHERE A.Status <> 'I'");
+                if(strUserName != "" && strUserName != "Enter a Username")
+                {
+                    sb.Append($" AND (A.CustomerName = '{strUserName}' OR A.DentistName = '{strUserName}')");
+                }
+                if(dtDate != dtDefault)
+                {
+                    sb.Append($" AND A.AppointmentDate BETWEEN '{dtDate.ToShortDateString()}' AND '{dtDate.ToShortDateString() + " 23:59:59"}'");
+                }
+                sb.Append(" ORDER BY A.AppointmentDate");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lstAppointmentList.Add(new AppointmentClass(reader.GetString(0),
+                                                                        reader.GetString(1),
+                                                                        reader.GetString(2),
+                                                                        reader.GetString(3),
+                                                                        reader.GetDateTime(4),
+                                                                        reader.GetDateTime(5),
+                                                                        reader.GetSqlChars(6)));
+                        }
+                    }
+                }
+            }
+            return lstAppointmentList;
+        }
     }
 }
