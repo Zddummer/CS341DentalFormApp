@@ -708,7 +708,7 @@ namespace AzureDentalDev.Classes
                 {
                     sb.Append($" AND A.AppointmentDate BETWEEN '{dtDate.ToShortDateString()}' AND '{dtDate.ToShortDateString() + " 23:59:59"}'");
                 }
-                sb.Append(" ORDER BY A.AppointmentDate");
+                sb.Append(" ORDER BY A.Status, A.AppointmentDate");
                 String sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))

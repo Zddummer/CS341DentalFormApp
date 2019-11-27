@@ -695,7 +695,7 @@
             this.AdminSearchDateTimePicker.Location = new System.Drawing.Point(230, 45);
             this.AdminSearchDateTimePicker.Name = "AdminSearchDateTimePicker";
             this.AdminSearchDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.AdminSearchDateTimePicker.TabIndex = 10;
+            this.AdminSearchDateTimePicker.TabIndex = 6;
             // 
             // label3
             // 
@@ -739,8 +739,10 @@
             this.AdminApptSearchTextBox.Location = new System.Drawing.Point(9, 36);
             this.AdminApptSearchTextBox.Name = "AdminApptSearchTextBox";
             this.AdminApptSearchTextBox.Size = new System.Drawing.Size(164, 22);
-            this.AdminApptSearchTextBox.TabIndex = 6;
+            this.AdminApptSearchTextBox.TabIndex = 10;
             this.AdminApptSearchTextBox.Text = "Enter a Username";
+            this.AdminApptSearchTextBox.Enter += new System.EventHandler(this.AdminApptSearchTextBox_Enter);
+            this.AdminApptSearchTextBox.Leave += new System.EventHandler(this.AdminApptSearchTextBox_Leave);
             // 
             // label2
             // 

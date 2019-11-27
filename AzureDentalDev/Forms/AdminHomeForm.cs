@@ -295,5 +295,21 @@ namespace AzureDentalDev.Forms
         {
             throw new NotImplementedException();
         }
+
+        private void AdminApptSearchTextBox_Enter(object sender, EventArgs e)
+        {
+            if(AdminApptSearchTextBox.Text == "Enter a Username")
+            {
+                AdminApptSearchTextBox.Text = String.Empty;
+            }
+        }
+
+        private void AdminApptSearchTextBox_Leave(object sender, EventArgs e)
+        {
+            if(AdminApptSearchTextBox.Text == String.Empty)
+            {
+                AdminApptSearchTextBox.Text = "Enter a Username";
+            }
+        }
     }
 }
