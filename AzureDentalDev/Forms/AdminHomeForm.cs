@@ -412,7 +412,9 @@ namespace AzureDentalDev.Forms
 
         private void AdminHomeHelpPictureBox_Click(object sender, EventArgs e)
         {
-            
+            string path = System.IO.Directory.GetCurrentDirectory();
+            path = path.Replace("bin\\Debug", "HelpFiles\\Dental_Admin_help.pdf");
+            System.Diagnostics.Process.Start(path);
         }
     }
 }

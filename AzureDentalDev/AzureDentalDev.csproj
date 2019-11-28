@@ -132,6 +132,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="HelpFiles\Dental_Admin_help.pdf" />
     <None Include="HelpFiles\Dental_Login_Signup_help.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
