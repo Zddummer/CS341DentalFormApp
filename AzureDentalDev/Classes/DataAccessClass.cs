@@ -49,7 +49,7 @@ namespace AzureDentalDev.Classes
                     int intNumberOfRowsAffected = command.ExecuteNonQuery();
                     if (intNumberOfRowsAffected > 0)
                     {
-                        
+                        Console.WriteLine("ALL PASSWORDS CHANGED TO password1");
                     }
                 }
             }
@@ -110,6 +110,39 @@ namespace AzureDentalDev.Classes
             }
             return ucReturnUser;
 
+        }
+
+        public static AppointmentClass QueryDatabaseForAppointmentWithDateTime(String strDateTimeOfAppointment)
+        {
+            AppointmentClass acAppointmentToReturn = null;
+
+            using (SqlConnection connection = getConnection())
+            {
+
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"SELECT TOP 1 * FROM Appointments As A WHERE A.AppointmentDate = '{strDateTimeOfAppointment}' AND A.Status = 'A'");
+                String sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            acAppointmentToReturn = new AppointmentClass(reader.GetString(0),
+                                                                        reader.GetString(1),
+                                                                        reader.GetString(2),
+                                                                        reader.GetString(3),
+                                                                        reader.GetDateTime(4),
+                                                                        reader.GetDateTime(5),
+                                                                        reader.GetSqlChars(6));
+                            return acAppointmentToReturn;
+                        }
+                    }
+                }
+            }
+            return acAppointmentToReturn;
         }
 
         public static UserClass QueryDatabaseForUser(String strUserName)

@@ -1,12 +1,7 @@
 ﻿using AzureDentalDev.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AzureDentalDev.Forms
@@ -14,6 +9,7 @@ namespace AzureDentalDev.Forms
     public partial class AdminHomeForm : Form
     {
         UserClass g_ucUserReturnedFromSearch = null;
+        String g_strFocusedApptDateTime = String.Empty;
         public AdminHomeForm(String strUserName, String strPassword)
         {
             InitializeComponent();
@@ -55,11 +51,11 @@ namespace AzureDentalDev.Forms
         {
             if (DataAccessClass.updateOpenOfficeHours(StartTimeComboBox.Text, CloseTimeComboBox.Text))
             {
-                HoursUpdatedLabel.Visible = true;
-            }
-            else
-            {
-                HoursUpdatedLabel.Visible = false;
+                AdminConfirmPanel.Visible = true;
+                AdminConfirmPanel.Left = 900;
+                AdminConfirmPanel.Top = 575 - 33;
+                AdminConfirmLabel.Text = "HOURS UPDATED";
+                timer1.Start();
             }
         }
 
@@ -67,8 +63,11 @@ namespace AzureDentalDev.Forms
         {
             if (DataAccessClass.openDay(AdminDateTimePicker.Value.Date.Date.ToString()))
             {
-                AdminOpenDayLabel.Visible = true;
-                AdminCloseDayLabel.Visible = false;
+                AdminConfirmPanel.Visible = true;
+                AdminConfirmPanel.Left = 900;
+                AdminConfirmPanel.Top = 575 - 33;
+                AdminConfirmLabel.Text = "THAT DAY IS NOW OPEN";
+                timer1.Start();
             }
         }
 
@@ -76,8 +75,11 @@ namespace AzureDentalDev.Forms
         {
            if(DataAccessClass.closeDay(AdminDateTimePicker.Value.Date.ToString()))
             {
-                AdminCloseDayLabel.Visible = true;
-                AdminOpenDayLabel.Visible = false;
+                AdminConfirmPanel.Visible = true;
+                AdminConfirmPanel.Left = 900;
+                AdminConfirmPanel.Top = 575 - 33;
+                AdminConfirmLabel.Text = "THAT DAY IS NOW CLOSED";
+                timer1.Start();
             }
         }
 
@@ -166,6 +168,7 @@ namespace AzureDentalDev.Forms
                 AdminWarnPanel.Visible = true;
                 AdminWarnPanel.Left = 900;
                 AdminWarnPanel.Top = 575 - 33;
+                AdminWarnLabel.Text = "ARE YOU SURE YOU WANT TO DELETE ACCOUNT?";
                 timer1.Start();
             }
         }
@@ -178,22 +181,46 @@ namespace AzureDentalDev.Forms
         private void AdminWarnAcceptButton_Click(object sender, EventArgs e)
         {
             AdminWarnPanel.Visible = false;
-            if (DataAccessClass.deleteUser(AdminUserNameLabel.Text))
+            
+            if(AdminWarnLabel.Text == "ARE YOU SURE YOU WANT TO DELETE ACCOUNT?")
             {
-                AdminConfirmPanel.Visible = true;
-                AdminConfirmPanel.Left = 900;
-                AdminConfirmPanel.Top = 575 - 33;
-                AdminConfirmLabel.Text = "THE USER HAS BEEN DELETED";
-                timer1.Start();
-                DataAccessClass.QueryDatabaseForUser(AdminUserNameLabel.Text);
-                AdminHomeUserSearchButton_Click(sender, e);
-            } else
+                if (DataAccessClass.deleteUser(AdminUserNameLabel.Text))
+                {
+                    AdminConfirmPanel.Visible = true;
+                    AdminConfirmPanel.Left = 900;
+                    AdminConfirmPanel.Top = 575 - 33;
+                    AdminConfirmLabel.Text = "THE USER HAS BEEN DELETED";
+                    timer1.Start();
+                    DataAccessClass.QueryDatabaseForUser(AdminUserNameLabel.Text);
+                    AdminHomeUserSearchButton_Click(sender, e);
+                }
+                else
+                {
+                    AdminHomeErrorPanel.Visible = true;
+                    AdminHomeErrorPanel.Left = 900;
+                    AdminHomeErrorPanel.Top = 575 - 33;
+                    AdminErrorMessageLabel.Text = "THAT IS NOT AN ACTIVE USER";
+                    timer1.Start();
+                }
+            } else if(AdminWarnLabel.Text == "ARE YOU SURE YOU WANT TO CANCEL?")
             {
-                AdminHomeErrorPanel.Visible = true;
-                AdminHomeErrorPanel.Left = 900;
-                AdminHomeErrorPanel.Top = 575 - 33;
-                AdminErrorMessageLabel.Text = "THAT IS NOT AN ACTIVE USER";
-                timer1.Start();
+                AppointmentClass acAppointmentToCancel = DataAccessClass.QueryDatabaseForAppointmentWithDateTime(g_strFocusedApptDateTime);
+                if(acAppointmentToCancel != null && DataAccessClass.updateAppointmentStatus(acAppointmentToCancel, 'C'))
+                {
+                    AdminConfirmPanel.Visible = true;
+                    AdminConfirmPanel.Left = 900;
+                    AdminConfirmPanel.Top = 575 - 33;
+                    AdminConfirmLabel.Text = "APPOINTMENT CANCELLED";
+                    timer1.Start();
+                    AdminApptSearchButton_Click(sender, e);
+                } else
+                {
+                    AdminHomeErrorPanel.Visible = true;
+                    AdminHomeErrorPanel.Left = 900;
+                    AdminHomeErrorPanel.Top = 575 - 33;
+                    AdminErrorMessageLabel.Text = "NOT AN ACTIVE APPOINTMENT";
+                    timer1.Start();
+                }
             }
         }
 
@@ -226,6 +253,7 @@ namespace AzureDentalDev.Forms
             DateTime dtDate = AdminSearchDateTimePicker.Value;
 
             AdminInstructionLabel.Text = "There were no results";
+            AdminApptDetailLabel.Text = "Select an appointment";
             foreach (ListViewItem listitem in AppointmentListView.Items)
             {
                 AppointmentListView.Items.Remove(listitem);
@@ -255,9 +283,11 @@ namespace AzureDentalDev.Forms
                 if(lstAppointments.Count == 0)
                 {
                     AppointmentListView.Visible = false;
+                    AdminApptPanel.Visible = false;
                 } else
                 {
                     AppointmentListView.Visible = true;
+                    AdminApptPanel.Visible = true;
                     int i = 1;
                     foreach (AppointmentClass acAppointment in lstAppointments)
                     {
@@ -340,6 +370,49 @@ namespace AzureDentalDev.Forms
                 e.SuppressKeyPress = true;
                 e.Handled = true;
             }
+        }
+
+        private void AppointmentListView_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem oFocusedItem = AppointmentListView.FocusedItem;
+            String strAppointmentDetails = String.Empty;
+            int intIndexOfAppointmentItemDetails = 0;
+            g_strFocusedApptDateTime = String.Empty;
+
+            foreach (ListViewItem.ListViewSubItem oSubItems in oFocusedItem.SubItems) {
+                strAppointmentDetails += oSubItems.Text + "\n";
+                if(intIndexOfAppointmentItemDetails == 1 || intIndexOfAppointmentItemDetails == 2)
+                {
+                    g_strFocusedApptDateTime += oSubItems.Text + " ";
+                }
+                intIndexOfAppointmentItemDetails++;
+            }
+            g_strFocusedApptDateTime = g_strFocusedApptDateTime.TrimEnd(g_strFocusedApptDateTime[g_strFocusedApptDateTime.Length - 1]);
+            AdminApptDetailLabel.Text = strAppointmentDetails;
+        }
+
+        private void AdminApptCancelButton_Click(object sender, EventArgs e)
+        {
+            if(AdminApptDetailLabel.Text == "Select an appointment")
+            {
+                AdminHomeErrorPanel.Visible = true;
+                AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Top = 575 - 33;
+                AdminErrorMessageLabel.Text = "SELECT AN APPOINTMENT";
+                timer1.Start();
+            } else
+            {
+                AdminWarnPanel.Visible = true;
+                AdminWarnPanel.Left = 900;
+                AdminWarnPanel.Top = 575 - 33;
+                AdminWarnLabel.Text = "ARE YOU SURE YOU WANT TO CANCEL?";
+                timer1.Start();
+            }
+        }
+
+        private void AdminHomeHelpPictureBox_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

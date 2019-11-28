@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.AdminHomeLogoutLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.AdminHomeFormMainPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminHomeFormTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.AccountsTabPage = new System.Windows.Forms.TabPage();
             this.AdminSearchPanel = new System.Windows.Forms.Panel();
@@ -57,11 +58,8 @@
             this.AdminHomeUserSearch = new System.Windows.Forms.Label();
             this.AdminFormCreateButton = new System.Windows.Forms.Button();
             this.ScheduleTabPage = new System.Windows.Forms.TabPage();
-            this.AdminOpenDayLabel = new System.Windows.Forms.Label();
-            this.AdminCloseDayLabel = new System.Windows.Forms.Label();
             this.AdminCloseDayButton = new System.Windows.Forms.Button();
             this.AdminOpenDayButton = new System.Windows.Forms.Button();
-            this.HoursUpdatedLabel = new System.Windows.Forms.Label();
             this.HoursUpdateButton = new System.Windows.Forms.Button();
             this.CloseTimeComboBox = new System.Windows.Forms.ComboBox();
             this.ToLabel = new System.Windows.Forms.Label();
@@ -72,6 +70,11 @@
             this.HoursLabel = new System.Windows.Forms.Label();
             this.AppointmentTab = new System.Windows.Forms.TabPage();
             this.AppointmentListView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AdminInstructionLabel = new System.Windows.Forms.Label();
             this.AdminDateSearchCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.AdminUserSearchCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
@@ -83,38 +86,36 @@
             this.label2 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.AdminHomeErrorPanel = new System.Windows.Forms.Panel();
+            this.AdminErrorPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminErrorMessageLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.AdminWarnPanel = new System.Windows.Forms.Panel();
             this.AdminWarnAcceptButton = new System.Windows.Forms.Button();
             this.AdminWarnCancelButton = new System.Windows.Forms.Button();
+            this.AdminWarnPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminWarnLabel = new System.Windows.Forms.Label();
             this.AdminConfirmPanel = new System.Windows.Forms.Panel();
-            this.AdminConfirmLabel = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AdminConfirmPictureBox = new System.Windows.Forms.PictureBox();
-            this.AdminWarnPictureBox = new System.Windows.Forms.PictureBox();
-            this.AdminErrorPictureBox = new System.Windows.Forms.PictureBox();
+            this.AdminConfirmLabel = new System.Windows.Forms.Label();
             this.AdminHomeHelpPictureBox = new System.Windows.Forms.PictureBox();
-            this.AdminHomeFormMainPictureBox = new System.Windows.Forms.PictureBox();
+            this.AdminApptPanel = new System.Windows.Forms.Panel();
+            this.AdminApptCancelButton = new System.Windows.Forms.Button();
+            this.AdminApptDetailLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).BeginInit();
             this.AdminHomeFormTabControl.SuspendLayout();
             this.AccountsTabPage.SuspendLayout();
             this.AdminSearchPanel.SuspendLayout();
             this.ScheduleTabPage.SuspendLayout();
             this.AppointmentTab.SuspendLayout();
             this.AdminHomeErrorPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminErrorPictureBox)).BeginInit();
             this.AdminWarnPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminWarnPictureBox)).BeginInit();
             this.AdminConfirmPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminConfirmPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminWarnPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminErrorPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeHelpPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).BeginInit();
+            this.AdminApptPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // AdminHomeFormWelcomeLabel
@@ -174,6 +175,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 18);
             this.panel2.TabIndex = 3;
+            // 
+            // AdminHomeFormMainPictureBox
+            // 
+            this.AdminHomeFormMainPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AdminHomeFormMainPictureBox.BackgroundImage")));
+            this.AdminHomeFormMainPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.AdminHomeFormMainPictureBox.Name = "AdminHomeFormMainPictureBox";
+            this.AdminHomeFormMainPictureBox.Size = new System.Drawing.Size(64, 62);
+            this.AdminHomeFormMainPictureBox.TabIndex = 2;
+            this.AdminHomeFormMainPictureBox.TabStop = false;
             // 
             // AdminHomeFormTabControl
             // 
@@ -428,11 +438,8 @@
             // ScheduleTabPage
             // 
             this.ScheduleTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ScheduleTabPage.Controls.Add(this.AdminOpenDayLabel);
-            this.ScheduleTabPage.Controls.Add(this.AdminCloseDayLabel);
             this.ScheduleTabPage.Controls.Add(this.AdminCloseDayButton);
             this.ScheduleTabPage.Controls.Add(this.AdminOpenDayButton);
-            this.ScheduleTabPage.Controls.Add(this.HoursUpdatedLabel);
             this.ScheduleTabPage.Controls.Add(this.HoursUpdateButton);
             this.ScheduleTabPage.Controls.Add(this.CloseTimeComboBox);
             this.ScheduleTabPage.Controls.Add(this.ToLabel);
@@ -447,30 +454,6 @@
             this.ScheduleTabPage.Size = new System.Drawing.Size(908, 402);
             this.ScheduleTabPage.TabIndex = 1;
             this.ScheduleTabPage.Text = "Schedule";
-            // 
-            // AdminOpenDayLabel
-            // 
-            this.AdminOpenDayLabel.AutoSize = true;
-            this.AdminOpenDayLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminOpenDayLabel.ForeColor = System.Drawing.Color.Lime;
-            this.AdminOpenDayLabel.Location = new System.Drawing.Point(401, 113);
-            this.AdminOpenDayLabel.Name = "AdminOpenDayLabel";
-            this.AdminOpenDayLabel.Size = new System.Drawing.Size(180, 16);
-            this.AdminOpenDayLabel.TabIndex = 12;
-            this.AdminOpenDayLabel.Text = "We are now open on this day!";
-            this.AdminOpenDayLabel.Visible = false;
-            // 
-            // AdminCloseDayLabel
-            // 
-            this.AdminCloseDayLabel.AutoSize = true;
-            this.AdminCloseDayLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminCloseDayLabel.ForeColor = System.Drawing.Color.Red;
-            this.AdminCloseDayLabel.Location = new System.Drawing.Point(401, 135);
-            this.AdminCloseDayLabel.Name = "AdminCloseDayLabel";
-            this.AdminCloseDayLabel.Size = new System.Drawing.Size(192, 16);
-            this.AdminCloseDayLabel.TabIndex = 11;
-            this.AdminCloseDayLabel.Text = "We are now closed on this Day!";
-            this.AdminCloseDayLabel.Visible = false;
             // 
             // AdminCloseDayButton
             // 
@@ -499,18 +482,6 @@
             this.AdminOpenDayButton.Text = "Open Day";
             this.AdminOpenDayButton.UseVisualStyleBackColor = false;
             this.AdminOpenDayButton.Click += new System.EventHandler(this.AdminOpenDayButton_Click);
-            // 
-            // HoursUpdatedLabel
-            // 
-            this.HoursUpdatedLabel.AutoSize = true;
-            this.HoursUpdatedLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HoursUpdatedLabel.ForeColor = System.Drawing.Color.Lime;
-            this.HoursUpdatedLabel.Location = new System.Drawing.Point(168, 154);
-            this.HoursUpdatedLabel.Name = "HoursUpdatedLabel";
-            this.HoursUpdatedLabel.Size = new System.Drawing.Size(159, 16);
-            this.HoursUpdatedLabel.TabIndex = 8;
-            this.HoursUpdatedLabel.Text = "Hours have been Updated!";
-            this.HoursUpdatedLabel.Visible = false;
             // 
             // HoursUpdateButton
             // 
@@ -606,6 +577,7 @@
             // AppointmentTab
             // 
             this.AppointmentTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AppointmentTab.Controls.Add(this.AdminApptPanel);
             this.AppointmentTab.Controls.Add(this.AppointmentListView);
             this.AppointmentTab.Controls.Add(this.AdminInstructionLabel);
             this.AppointmentTab.Controls.Add(this.AdminDateSearchCheckBox);
@@ -638,8 +610,6 @@
             this.AppointmentListView.ForeColor = System.Drawing.Color.Aqua;
             this.AppointmentListView.FullRowSelect = true;
             this.AppointmentListView.HideSelection = false;
-            this.AppointmentListView.HotTracking = true;
-            this.AppointmentListView.HoverSelection = true;
             this.AppointmentListView.Location = new System.Drawing.Point(9, 88);
             this.AppointmentListView.Name = "AppointmentListView";
             this.AppointmentListView.Size = new System.Drawing.Size(642, 308);
@@ -647,6 +617,11 @@
             this.AppointmentListView.TileSize = new System.Drawing.Size(150, 80);
             this.AppointmentListView.UseCompatibleStateImageBehavior = false;
             this.AppointmentListView.View = System.Windows.Forms.View.Tile;
+            this.AppointmentListView.ItemActivate += new System.EventHandler(this.AppointmentListView_ItemActivate);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 173;
             // 
             // AdminInstructionLabel
             // 
@@ -663,7 +638,7 @@
             // 
             this.AdminDateSearchCheckBox.AutoSize = true;
             this.AdminDateSearchCheckBox.Depth = 0;
-            this.AdminDateSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.AdminDateSearchCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
             this.AdminDateSearchCheckBox.Location = new System.Drawing.Point(341, 2);
             this.AdminDateSearchCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this.AdminDateSearchCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -678,7 +653,7 @@
             // 
             this.AdminUserSearchCheckBox.AutoSize = true;
             this.AdminUserSearchCheckBox.Depth = 0;
-            this.AdminUserSearchCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.AdminUserSearchCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
             this.AdminUserSearchCheckBox.Location = new System.Drawing.Point(121, 3);
             this.AdminUserSearchCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this.AdminUserSearchCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -781,12 +756,21 @@
             this.AdminHomeErrorPanel.TabIndex = 7;
             this.AdminHomeErrorPanel.Visible = false;
             // 
+            // AdminErrorPictureBox
+            // 
+            this.AdminErrorPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.error_1_32x32;
+            this.AdminErrorPictureBox.Location = new System.Drawing.Point(16, 0);
+            this.AdminErrorPictureBox.Name = "AdminErrorPictureBox";
+            this.AdminErrorPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.AdminErrorPictureBox.TabIndex = 1;
+            this.AdminErrorPictureBox.TabStop = false;
+            // 
             // AdminErrorMessageLabel
             // 
             this.AdminErrorMessageLabel.AutoSize = true;
             this.AdminErrorMessageLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminErrorMessageLabel.ForeColor = System.Drawing.Color.White;
-            this.AdminErrorMessageLabel.Location = new System.Drawing.Point(416, 5);
+            this.AdminErrorMessageLabel.Location = new System.Drawing.Point(410, 5);
             this.AdminErrorMessageLabel.Name = "AdminErrorMessageLabel";
             this.AdminErrorMessageLabel.Size = new System.Drawing.Size(125, 20);
             this.AdminErrorMessageLabel.TabIndex = 0;
@@ -803,7 +787,7 @@
             this.AdminWarnPanel.Controls.Add(this.AdminWarnCancelButton);
             this.AdminWarnPanel.Controls.Add(this.AdminWarnPictureBox);
             this.AdminWarnPanel.Controls.Add(this.AdminWarnLabel);
-            this.AdminWarnPanel.Location = new System.Drawing.Point(0, 536);
+            this.AdminWarnPanel.Location = new System.Drawing.Point(0, 555);
             this.AdminWarnPanel.Name = "AdminWarnPanel";
             this.AdminWarnPanel.Size = new System.Drawing.Size(915, 33);
             this.AdminWarnPanel.TabIndex = 6;
@@ -833,6 +817,15 @@
             this.AdminWarnCancelButton.UseVisualStyleBackColor = false;
             this.AdminWarnCancelButton.Click += new System.EventHandler(this.AdminWarnCancelButton_Click);
             // 
+            // AdminWarnPictureBox
+            // 
+            this.AdminWarnPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.sign_warning_32x32;
+            this.AdminWarnPictureBox.Location = new System.Drawing.Point(16, 0);
+            this.AdminWarnPictureBox.Name = "AdminWarnPictureBox";
+            this.AdminWarnPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.AdminWarnPictureBox.TabIndex = 1;
+            this.AdminWarnPictureBox.TabStop = false;
+            // 
             // AdminWarnLabel
             // 
             this.AdminWarnLabel.AutoSize = true;
@@ -849,11 +842,20 @@
             this.AdminConfirmPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(186)))), ((int)(((byte)(29)))));
             this.AdminConfirmPanel.Controls.Add(this.AdminConfirmPictureBox);
             this.AdminConfirmPanel.Controls.Add(this.AdminConfirmLabel);
-            this.AdminConfirmPanel.Location = new System.Drawing.Point(0, 532);
+            this.AdminConfirmPanel.Location = new System.Drawing.Point(0, 555);
             this.AdminConfirmPanel.Name = "AdminConfirmPanel";
             this.AdminConfirmPanel.Size = new System.Drawing.Size(916, 33);
             this.AdminConfirmPanel.TabIndex = 6;
             this.AdminConfirmPanel.Visible = false;
+            // 
+            // AdminConfirmPictureBox
+            // 
+            this.AdminConfirmPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.check_32x32;
+            this.AdminConfirmPictureBox.Location = new System.Drawing.Point(16, 1);
+            this.AdminConfirmPictureBox.Name = "AdminConfirmPictureBox";
+            this.AdminConfirmPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.AdminConfirmPictureBox.TabIndex = 1;
+            this.AdminConfirmPictureBox.TabStop = false;
             // 
             // AdminConfirmLabel
             // 
@@ -866,37 +868,6 @@
             this.AdminConfirmLabel.TabIndex = 0;
             this.AdminConfirmLabel.Text = "THE USER HAS BEEN DELETED";
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Width = 173;
-            // 
-            // AdminConfirmPictureBox
-            // 
-            this.AdminConfirmPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.check_32x32;
-            this.AdminConfirmPictureBox.Location = new System.Drawing.Point(16, 1);
-            this.AdminConfirmPictureBox.Name = "AdminConfirmPictureBox";
-            this.AdminConfirmPictureBox.Size = new System.Drawing.Size(32, 32);
-            this.AdminConfirmPictureBox.TabIndex = 1;
-            this.AdminConfirmPictureBox.TabStop = false;
-            // 
-            // AdminWarnPictureBox
-            // 
-            this.AdminWarnPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.sign_warning_32x32;
-            this.AdminWarnPictureBox.Location = new System.Drawing.Point(16, 0);
-            this.AdminWarnPictureBox.Name = "AdminWarnPictureBox";
-            this.AdminWarnPictureBox.Size = new System.Drawing.Size(32, 32);
-            this.AdminWarnPictureBox.TabIndex = 1;
-            this.AdminWarnPictureBox.TabStop = false;
-            // 
-            // AdminErrorPictureBox
-            // 
-            this.AdminErrorPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.error_1_32x32;
-            this.AdminErrorPictureBox.Location = new System.Drawing.Point(16, 0);
-            this.AdminErrorPictureBox.Name = "AdminErrorPictureBox";
-            this.AdminErrorPictureBox.Size = new System.Drawing.Size(32, 32);
-            this.AdminErrorPictureBox.TabIndex = 1;
-            this.AdminErrorPictureBox.TabStop = false;
-            // 
             // AdminHomeHelpPictureBox
             // 
             this.AdminHomeHelpPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.info_512pxGREY_2_28x28;
@@ -905,15 +876,42 @@
             this.AdminHomeHelpPictureBox.Size = new System.Drawing.Size(28, 28);
             this.AdminHomeHelpPictureBox.TabIndex = 6;
             this.AdminHomeHelpPictureBox.TabStop = false;
+            this.AdminHomeHelpPictureBox.Click += new System.EventHandler(this.AdminHomeHelpPictureBox_Click);
             // 
-            // AdminHomeFormMainPictureBox
+            // AdminApptPanel
             // 
-            this.AdminHomeFormMainPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AdminHomeFormMainPictureBox.BackgroundImage")));
-            this.AdminHomeFormMainPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.AdminHomeFormMainPictureBox.Name = "AdminHomeFormMainPictureBox";
-            this.AdminHomeFormMainPictureBox.Size = new System.Drawing.Size(64, 62);
-            this.AdminHomeFormMainPictureBox.TabIndex = 2;
-            this.AdminHomeFormMainPictureBox.TabStop = false;
+            this.AdminApptPanel.Controls.Add(this.AdminApptDetailLabel);
+            this.AdminApptPanel.Controls.Add(this.AdminApptCancelButton);
+            this.AdminApptPanel.Location = new System.Drawing.Point(658, 88);
+            this.AdminApptPanel.Name = "AdminApptPanel";
+            this.AdminApptPanel.Size = new System.Drawing.Size(244, 308);
+            this.AdminApptPanel.TabIndex = 15;
+            this.AdminApptPanel.Visible = false;
+            // 
+            // AdminApptCancelButton
+            // 
+            this.AdminApptCancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.AdminApptCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminApptCancelButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminApptCancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AdminApptCancelButton.Location = new System.Drawing.Point(71, 242);
+            this.AdminApptCancelButton.Name = "AdminApptCancelButton";
+            this.AdminApptCancelButton.Size = new System.Drawing.Size(110, 50);
+            this.AdminApptCancelButton.TabIndex = 0;
+            this.AdminApptCancelButton.Text = "Cancel Appointment";
+            this.AdminApptCancelButton.UseVisualStyleBackColor = false;
+            this.AdminApptCancelButton.Click += new System.EventHandler(this.AdminApptCancelButton_Click);
+            // 
+            // AdminApptDetailLabel
+            // 
+            this.AdminApptDetailLabel.AutoSize = true;
+            this.AdminApptDetailLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminApptDetailLabel.ForeColor = System.Drawing.Color.Aqua;
+            this.AdminApptDetailLabel.Location = new System.Drawing.Point(42, 33);
+            this.AdminApptDetailLabel.Name = "AdminApptDetailLabel";
+            this.AdminApptDetailLabel.Size = new System.Drawing.Size(163, 18);
+            this.AdminApptDetailLabel.TabIndex = 1;
+            this.AdminApptDetailLabel.Text = "Select an appointment";
             // 
             // AdminHomeForm
             // 
@@ -935,6 +933,7 @@
             this.Text = "Welcome!";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).EndInit();
             this.AdminHomeFormTabControl.ResumeLayout(false);
             this.AccountsTabPage.ResumeLayout(false);
             this.AccountsTabPage.PerformLayout();
@@ -946,15 +945,16 @@
             this.AppointmentTab.PerformLayout();
             this.AdminHomeErrorPanel.ResumeLayout(false);
             this.AdminHomeErrorPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminErrorPictureBox)).EndInit();
             this.AdminWarnPanel.ResumeLayout(false);
             this.AdminWarnPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminWarnPictureBox)).EndInit();
             this.AdminConfirmPanel.ResumeLayout(false);
             this.AdminConfirmPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminConfirmPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminWarnPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminErrorPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminHomeHelpPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminHomeFormMainPictureBox)).EndInit();
+            this.AdminApptPanel.ResumeLayout(false);
+            this.AdminApptPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -978,11 +978,8 @@
         private System.Windows.Forms.ComboBox CloseTimeComboBox;
         private System.Windows.Forms.Label ToLabel;
         private System.Windows.Forms.Button HoursUpdateButton;
-        private System.Windows.Forms.Label HoursUpdatedLabel;
         private System.Windows.Forms.Button AdminCloseDayButton;
         private System.Windows.Forms.Button AdminOpenDayButton;
-        private System.Windows.Forms.Label AdminOpenDayLabel;
-        private System.Windows.Forms.Label AdminCloseDayLabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label AdminHomeLogoutLabel;
         private System.Windows.Forms.PictureBox AdminHomeHelpPictureBox;
@@ -1032,5 +1029,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Panel AdminApptPanel;
+        private System.Windows.Forms.Button AdminApptCancelButton;
+        private System.Windows.Forms.Label AdminApptDetailLabel;
     }
 }
