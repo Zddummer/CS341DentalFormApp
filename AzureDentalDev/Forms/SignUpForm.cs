@@ -1,23 +1,55 @@
-﻿using AzureDentalDev.Classes;
+﻿/**
+ * 
+ * This class handles all the logic and GUI functionality for creating a new user
+ * 
+ */
+
+using AzureDentalDev.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AzureDentalDev.Forms
 {
     public partial class SignUpForm : Form
     {
+        // constructor method for SignUp form
         public SignUpForm()
         {
             InitializeComponent();
         }
 
+        #region Sign Up Logic methods
+        // Creates the new user iff all the fields are filled in on click
+        private void SignUpFormRegisterButton_Click(object sender, EventArgs e)
+        {
+
+            if (SignUpFormFirstTextBox.Text == "Enter your first name" || SignUpFormFirstTextBox.Text == String.Empty ||
+               SignUpFormLastTextBox.Text == "Enter your last name" || SignUpFormLastTextBox.Text == String.Empty ||
+               SignUpFormUserTextBox.Text == "Create a username" || SignUpFormUserTextBox.Text == String.Empty ||
+               SignUpFormPassTextBox.Text == "Create a password" || SignUpFormPassTextBox.Text == String.Empty)
+            {
+                return;
+            }
+
+            Boolean blnWasAccountCreated = BusinessLogicClass.registerNewUser(SignUpFormFirstTextBox.Text,
+                                                                           SignUpFormLastTextBox.Text,
+                                                                           SignUpFormUserTextBox.Text,
+                                                                           SignUpFormPassTextBox.Text);
+
+            if (blnWasAccountCreated)
+            {
+                DisplayConfirmation();
+            }
+            else
+            {
+                DisplayError();
+            }
+
+        }
+        #endregion
+
+        #region GUI Functionality Methods
         private void SignUpFormBackLabel_MouseHover(object sender, EventArgs e)
         {
             SignUpFormBackLabel.ForeColor = Color.Aqua;
@@ -117,32 +149,6 @@ namespace AzureDentalDev.Forms
             timer1.Start();
         }
 
-        private void SignUpFormRegisterButton_Click(object sender, EventArgs e)
-        {
-
-            if (SignUpFormFirstTextBox.Text == "Enter your first name" || SignUpFormFirstTextBox.Text == String.Empty ||
-               SignUpFormLastTextBox.Text == "Enter your last name" || SignUpFormLastTextBox.Text == String.Empty ||
-               SignUpFormUserTextBox.Text == "Create a username" || SignUpFormUserTextBox.Text == String.Empty ||
-               SignUpFormPassTextBox.Text == "Create a password" || SignUpFormPassTextBox.Text == String.Empty)
-            {
-                return;
-            }
-
-            Boolean blnWasAccountCreated = BusinessLogicClass.registerNewUser(SignUpFormFirstTextBox.Text, 
-                                                                           SignUpFormLastTextBox.Text,
-                                                                           SignUpFormUserTextBox.Text,
-                                                                           SignUpFormPassTextBox.Text);
-
-            if (blnWasAccountCreated)
-            {
-                DisplayConfirmation();
-            } else
-            {
-                DisplayError();
-            }
-
-        }
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
             this.Left -= 10;
@@ -231,5 +237,6 @@ namespace AzureDentalDev.Forms
                 SignUpConfirmPanel.Top += 7;
             }
         }
+        #endregion
     }
 }

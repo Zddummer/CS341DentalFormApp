@@ -1,18 +1,19 @@
-﻿using AzureDentalDev.Classes;
+﻿/**
+ * 
+ * This class handles the creation of new users by the system administrator.
+ * The admin can create a user of any type
+ * 
+ */
+
+using AzureDentalDev.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AzureDentalDev.Forms
 {
     public partial class AdminCreateAccountForm : Form
     {
+        // Constructor method for Admin Create Account Form
         public AdminCreateAccountForm()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace AzureDentalDev.Forms
             AdminCreateTypeCombobox.Items.Add("A");
         }
 
+        #region GUI FUnctionality Methods
         private void AdminCreateAccountFormCloseLabel_Click(object sender, EventArgs e)
         {
             Close();
@@ -90,7 +92,9 @@ namespace AzureDentalDev.Forms
                 AdminCreateLastTextbox.Text = "Enter the last name";
             }
         }
+        #endregion
 
+        #region Logical Methods
         private void AdminCreateButton_Click(object sender, EventArgs e)
         {
             if(AdminCreateUserTextbox.Text == String.Empty || AdminCreateUserTextbox.Text == "Create a Username" ||
@@ -118,5 +122,6 @@ namespace AzureDentalDev.Forms
                 AdminCreateErrorLabel.Visible = true;
             }
         }
+        #endregion
     }
 }

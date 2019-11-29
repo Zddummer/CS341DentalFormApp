@@ -1,23 +1,23 @@
 ﻿/**
- * This class acts as the business logic layer for the company's application
+ * This class acts as the business logic layer for the company's application.
+ * It passes information between the UI layer and Data Access Layer, applying
+ * business logic during the process
  */
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AzureDentalDev.Classes
 {
     class BusinessLogicClass
     {
+
+        // Hashes passwords before passing information along to the Data Access Layer
         public static UserClass QueryDatabaseForUser(String strUserName, String strPassword)
         {
             // convert string to stream
             byte[] byteArray = Encoding.UTF8.GetBytes(strPassword);
-            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
             MemoryStream stream = new MemoryStream(byteArray);
 
             var sha1 = new SHA1CryptoServiceProvider();
@@ -27,6 +27,7 @@ namespace AzureDentalDev.Classes
             return DataAccessClass.QueryDatabaseForUser(strUserName, strPassword);
         }
 
+        // Hashes passwords before passing information along to the Data Access Layer
         public static Boolean registerNewUser(String strFirstName,
                                               String strLastName,
                                               String strUserName,
@@ -36,7 +37,6 @@ namespace AzureDentalDev.Classes
 
             // convert string to stream
             byte[] byteArray = Encoding.UTF8.GetBytes(strPassword);
-            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
             MemoryStream stream = new MemoryStream(byteArray);
 
             var sha1 = new SHA1CryptoServiceProvider();
@@ -49,6 +49,7 @@ namespace AzureDentalDev.Classes
                                                    strPassword);
         }
 
+        // Hashes passwords before passing information along to the Data Access Layer
         public static Boolean registerNewUser(String strFirstName,
                                               String strLastName,
                                               String strUserName,
@@ -57,7 +58,6 @@ namespace AzureDentalDev.Classes
         {
             // convert string to stream
             byte[] byteArray = Encoding.UTF8.GetBytes(strPassword);
-            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
             MemoryStream stream = new MemoryStream(byteArray);
 
             var sha1 = new SHA1CryptoServiceProvider();

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * 
+ * This class handles all the access to the Database
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -112,6 +118,13 @@ namespace AzureDentalDev.Classes
 
         }
 
+        /**
+         * Uses and in-line SQL statement to create an AppointmentClass object with a given
+         * date of the appointment
+         * 
+         * parameters: String Datetime of Appointment
+         * returns: Appointment object
+         */
         public static AppointmentClass QueryDatabaseForAppointmentWithDateTime(String strDateTimeOfAppointment)
         {
             AppointmentClass acAppointmentToReturn = null;
@@ -145,6 +158,13 @@ namespace AzureDentalDev.Classes
             return acAppointmentToReturn;
         }
 
+        /**
+         * Uses and in-line SQL statement to create a UserClass object with a given
+         * Username
+         * 
+         * parameters: String Username
+         * returns: UserClass object
+         */
         public static UserClass QueryDatabaseForUser(String strUserName)
         {
             UserClass ucReturnUser = null;
@@ -193,7 +213,13 @@ namespace AzureDentalDev.Classes
 
         }
 
-
+        /**
+         * Uses and in-line SQL statement to create an OfficeHoursClass object with a given
+         * appointment date
+         * 
+         * parameters: DateTime Appointment Date
+         * returns: OfficeHoursClass object
+         */
         public static OfficeHoursClass QueryDatabaseForOfficeHours(DateTime dtAppointmentDate)
         {
             OfficeHoursClass ohcReturnOfficeHours = null;
@@ -303,6 +329,13 @@ namespace AzureDentalDev.Classes
             return blnWasUserCreated;
         }
 
+        /**
+         * Uses and in-line SQL statement to delete a user with the provided
+         * Username
+         * 
+         * parameters: String Username
+         * returns: Boolean
+         */
         public static Boolean deleteUser(String strUserName)
         {
             Boolean blnWasUserDeleted = false;
@@ -331,6 +364,11 @@ namespace AzureDentalDev.Classes
             return blnWasUserDeleted;
         }
 
+        /**
+         * private helper method that cancels all the appointments of a deleted user
+         * 
+         * parameters: String Username
+         */
         private static void deleteAllAppointmentsWhenUserIsDeleted(String strUserName)
         {
             using (SqlConnection connection = getConnection())
@@ -348,6 +386,12 @@ namespace AzureDentalDev.Classes
             }
         }
 
+        /**
+         * Uses and in-line SQL statement to set a user to an active status
+         * 
+         * parameters: String Username, String Password
+         * returns: Boolean
+         */
         public static Boolean activateUser(String strUserName)
         {
             Boolean blnWasUserActivated = false;
@@ -375,6 +419,12 @@ namespace AzureDentalDev.Classes
             return blnWasUserActivated;
         }
 
+        /**
+         * Uses and in-line SQL statement to get all the appointments with a provided username
+         * 
+         * parameters: String Username, String Password
+         * returns: List of AppointmentClass objects
+         */
         public static List<AppointmentClass> getAppointmentsWithCustomerName(String strUserName)
         {
             //get all appointments associated with the given username
@@ -426,6 +476,12 @@ namespace AzureDentalDev.Classes
             return appointments;
         }
 
+        /**
+         * Uses and in-line SQL statement to get all the appointments with a provided username
+         * 
+         * parameters: String Username, String Password
+         * returns: List of AppointmentClass objects
+         */
         public static List<AppointmentClass> getAppointmentsWithDentistName(String strUserName)
         {
             //get all appointments associated with the given username
@@ -692,6 +748,13 @@ namespace AzureDentalDev.Classes
             return blnWasDayClosed;
         }
 
+        /**
+         * Uses and in-line SQL statement to change the status of the given appointment
+         * to given status
+         * 
+         * parameters: AppointmentClass appointment, char status
+         * returns: Boolean
+         */
         public static Boolean updateAppointmentStatus(AppointmentClass apt, char status)
         {
             Boolean blnWasApptUpdated = false;
@@ -720,6 +783,12 @@ namespace AzureDentalDev.Classes
             }
         }
 
+        /**
+         * Uses and in-line SQL statement to get all the appointments with a provided username and/ or date
+         * 
+         * parameters: String Username, String Password
+         * returns: List of AppointmentClass objects
+         */
         public static List<AppointmentClass> getAppointments_Admin(String strUserName, DateTime dtDate)
         {
             List<AppointmentClass> lstAppointmentList = new List<AppointmentClass>();

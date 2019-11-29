@@ -1,31 +1,36 @@
-﻿using AzureDentalDev.Classes;
+﻿/**
+ * 
+ * This form handles all the logic for users to log in. It serves as the main form page and handles all the routing
+ * to other form pages based on log in information.
+ * 
+ */
+
+using AzureDentalDev.Classes;
 using AzureDentalDev.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AzureDentalDev
 {
     public partial class LoginForm : Form
     {
+        // constructor method for LoginForm
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        SignUpForm childSignUpForm = new SignUpForm();
+        SignUpForm childSignUpForm = new SignUpForm(); // creates the sign up form to register a new account
 
+        #region login logic methods
+        // serves as a close button to exit the program
         private void Label1_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        // validates user credentials and routes to appropriate home page
         private void LoginFormLoginButton_Click(object sender, EventArgs e)
         {
             UserClass ucUser = BusinessLogicClass.QueryDatabaseForUser(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
@@ -34,26 +39,26 @@ namespace AzureDentalDev
             {
                 switch (ucUser.m_chrUserType[0])
                 {
-                    case 'A':
+                    case 'A': // route to admin home
                         AdminHomeForm oAdminHomeForm = new AdminHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
                         oAdminHomeForm.Show();
                         this.Visible = false;
                         childSignUpForm.Visible = false;
                         break;
-                    case 'P':
+                    case 'P': // route to patient home
                         PatientHomeForm oCustomerHomeForm = new PatientHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
                         oCustomerHomeForm.Show();
                         this.Visible = false;
                         childSignUpForm.Visible = false;
                         break;
 
-                    case 'D':
+                    case 'D': // route to dentist home
                         DoctorHomeForm oDoctorHomeForm = new DoctorHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
                         oDoctorHomeForm.Show();
                         this.Visible = false;
                         childSignUpForm.Visible = false;
                         break;
-                    case 'H':
+                    case 'H': // route to hygeinist home
                         HygienistHomeForm oHygenistHomeForm = new HygienistHomeForm(LoginFormUserTextBox.Text, LoginFormPassTextBox.Text);
                         oHygenistHomeForm.Show();
                         this.Visible = false;
@@ -68,7 +73,14 @@ namespace AzureDentalDev
                 DisplayError();
             }
         }
+        #endregion
 
+        #region Form GUI Functionality methods
+        /**
+         * 
+         * The following methods handle all of the GUI functionality
+         * 
+         */
         private void LoginFormUserTextBox_Click(object sender, EventArgs e)
         {
             LoginFormUserTextBox.Clear();
@@ -207,5 +219,6 @@ namespace AzureDentalDev
             this.WindowState = FormWindowState.Minimized;
             childSignUpForm.Visible = false;
         }
+        #endregion
     }
 }

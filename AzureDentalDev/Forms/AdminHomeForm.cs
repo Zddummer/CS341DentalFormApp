@@ -1,4 +1,12 @@
-﻿using AzureDentalDev.Classes;
+﻿/**
+ * 
+ * This class handles all the functionality need for a system administrator to control the workflow
+ * of the company by being able to create, delete, and reactive users, set up company calender, and
+ * search for/ delete appointments
+ * 
+ */
+
+using AzureDentalDev.Classes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,21 +16,26 @@ namespace AzureDentalDev.Forms
 {
     public partial class AdminHomeForm : Form
     {
+        #region Setup
+        // global variables
         UserClass g_ucUserReturnedFromSearch = null;
         String g_strFocusedApptDateTime = String.Empty;
+
+        // constructor method for Admin Home form
         public AdminHomeForm(String strUserName, String strPassword)
         {
             InitializeComponent();
             AdminHomeFormCode(strUserName, strPassword);
         }
 
+        // some intial setup for the form
         private void AdminHomeFormCode(String strUserName, String strPassword)
         {
             UserClass ucUser = BusinessLogicClass.QueryDatabaseForUser(strUserName, strPassword);
 
             AdminHomeFormWelcomeLabel.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
 
-            for(int i = 9; i <= 17; i++)
+            for(int i = 7; i <= 19; i++)
             {
                 if(i <= 12)
                 {
@@ -34,19 +47,9 @@ namespace AzureDentalDev.Forms
                 }
             }
         }
+        #endregion
 
-        private void AdminHomeFormCloseLabel_Click(object sender, EventArgs e)
-        {
-            Close();
-            Application.Exit();
-        }
-
-        private void AdminFormCreateButton_Click(object sender, EventArgs e)
-        {
-            AdminCreateAccountForm oAdminCreateAccountForm = new AdminCreateAccountForm();
-            oAdminCreateAccountForm.Show();
-        }
-
+        #region Logical Methods
         private void HoursUpdateButton_Click(object sender, EventArgs e)
         {
             if (DataAccessClass.updateOpenOfficeHours(StartTimeComboBox.Text, CloseTimeComboBox.Text))
@@ -80,81 +83,6 @@ namespace AzureDentalDev.Forms
                 AdminConfirmPanel.Top = 575 - 33;
                 AdminConfirmLabel.Text = "THAT DAY IS NOW CLOSED";
                 timer1.Start();
-            }
-        }
-
-        private void AdminHomeLogoutLabel_Click(object sender, EventArgs e)
-        {
-            Application.OpenForms[0].Visible = true;
-            Close();
-        }
-
-        private void AdminHomeUserSearchButton_Click(object sender, EventArgs e)
-        {
-            g_ucUserReturnedFromSearch = DataAccessClass.QueryDatabaseForUser(AdminHomeSearchTextBox.Text);
-            if(g_ucUserReturnedFromSearch != null)
-            {
-                AdminSearchPanel.Visible = true;
-                AdminHomeFullNameLabel.Text = g_ucUserReturnedFromSearch.m_strLastName + ", " + g_ucUserReturnedFromSearch.m_strFirstName;
-                AdminUserNameLabel.Text = g_ucUserReturnedFromSearch.m_strUsername;
-                AdminHomeTypeLabel.Text = g_ucUserReturnedFromSearch.m_chrUserType[0].ToString();
-                AdminHomeStatusLabel.Text = g_ucUserReturnedFromSearch.m_chrAccessType[0].ToString();
-            } else
-            {
-                AdminHomeErrorPanel.Visible = true;
-                AdminHomeErrorPanel.Left = 900;
-                AdminHomeErrorPanel.Top = 575 - 33;
-                AdminErrorMessageLabel.Text = "THAT USER DOES NOT EXIT";
-                timer1.Start();
-            }
-        }
-
-
-        private void AdminHomeSearchTextBox_Enter(object sender, EventArgs e)
-        {
-            if(AdminHomeSearchTextBox.Text == "Enter a Username")
-            {
-                AdminHomeSearchTextBox.Text = String.Empty;
-            }
-        }
-
-        private void AdminHomeSearchTextBox_Leave(object sender, EventArgs e)
-        {
-            if(AdminHomeSearchTextBox.Text == String.Empty)
-            {
-                AdminHomeSearchTextBox.Text = "Enter a Username";
-            }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (AdminWarnPanel.Visible)
-            {
-                AdminWarnPanel.Left -= 300;
-            } else if (AdminHomeErrorPanel.Visible)
-            {
-                AdminHomeErrorPanel.Left -= 300;
-            } else if (AdminConfirmPanel.Visible)
-            {
-                AdminConfirmPanel.Left -= 300;
-            }
-
-
-
-            if (AdminHomeErrorPanel.Left <= 0 && AdminHomeErrorPanel.Visible)
-            {
-                timer1.Stop();
-                System.Threading.Thread.Sleep(1500);
-                AdminHomeErrorPanel.Visible = false;
-            } else if(AdminWarnPanel.Left <= 0 && AdminWarnPanel.Visible)
-            {
-                timer1.Stop();
-            }
-            else if (AdminConfirmPanel.Left <= 0 && AdminConfirmPanel.Visible)
-            {
-                timer1.Stop();
-                System.Threading.Thread.Sleep(1500);
-                AdminConfirmPanel.Visible = false;
             }
         }
 
@@ -321,6 +249,28 @@ namespace AzureDentalDev.Forms
             }
         }
 
+        private void AppointmentListView_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem oFocusedItem = AppointmentListView.FocusedItem;
+            String strAppointmentDetails = String.Empty;
+            int intIndexOfAppointmentItemDetails = 0;
+            g_strFocusedApptDateTime = String.Empty;
+
+            foreach (ListViewItem.ListViewSubItem oSubItems in oFocusedItem.SubItems)
+            {
+                strAppointmentDetails += oSubItems.Text + "\n";
+                if (intIndexOfAppointmentItemDetails == 1 || intIndexOfAppointmentItemDetails == 2)
+                {
+                    g_strFocusedApptDateTime += oSubItems.Text + " ";
+                }
+                intIndexOfAppointmentItemDetails++;
+            }
+            g_strFocusedApptDateTime = g_strFocusedApptDateTime.TrimEnd(g_strFocusedApptDateTime[g_strFocusedApptDateTime.Length - 1]);
+            AdminApptDetailLabel.Text = strAppointmentDetails;
+        }
+        #endregion
+
+        #region GUI Functionality Methods
         private void AppointmentListView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             throw new NotImplementedException();
@@ -372,25 +322,6 @@ namespace AzureDentalDev.Forms
             }
         }
 
-        private void AppointmentListView_ItemActivate(object sender, EventArgs e)
-        {
-            ListViewItem oFocusedItem = AppointmentListView.FocusedItem;
-            String strAppointmentDetails = String.Empty;
-            int intIndexOfAppointmentItemDetails = 0;
-            g_strFocusedApptDateTime = String.Empty;
-
-            foreach (ListViewItem.ListViewSubItem oSubItems in oFocusedItem.SubItems) {
-                strAppointmentDetails += oSubItems.Text + "\n";
-                if(intIndexOfAppointmentItemDetails == 1 || intIndexOfAppointmentItemDetails == 2)
-                {
-                    g_strFocusedApptDateTime += oSubItems.Text + " ";
-                }
-                intIndexOfAppointmentItemDetails++;
-            }
-            g_strFocusedApptDateTime = g_strFocusedApptDateTime.TrimEnd(g_strFocusedApptDateTime[g_strFocusedApptDateTime.Length - 1]);
-            AdminApptDetailLabel.Text = strAppointmentDetails;
-        }
-
         private void AdminApptCancelButton_Click(object sender, EventArgs e)
         {
             if(AdminApptDetailLabel.Text == "Select an appointment")
@@ -416,5 +347,97 @@ namespace AzureDentalDev.Forms
             path = path.Replace("bin\\Debug", "HelpFiles\\Dental_Admin_help.pdf");
             System.Diagnostics.Process.Start(path);
         }
+
+        private void AdminHomeLogoutLabel_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            Close();
+        }
+
+        private void AdminHomeUserSearchButton_Click(object sender, EventArgs e)
+        {
+            g_ucUserReturnedFromSearch = DataAccessClass.QueryDatabaseForUser(AdminHomeSearchTextBox.Text);
+            if (g_ucUserReturnedFromSearch != null)
+            {
+                AdminSearchPanel.Visible = true;
+                AdminHomeFullNameLabel.Text = g_ucUserReturnedFromSearch.m_strLastName + ", " + g_ucUserReturnedFromSearch.m_strFirstName;
+                AdminUserNameLabel.Text = g_ucUserReturnedFromSearch.m_strUsername;
+                AdminHomeTypeLabel.Text = g_ucUserReturnedFromSearch.m_chrUserType[0].ToString();
+                AdminHomeStatusLabel.Text = g_ucUserReturnedFromSearch.m_chrAccessType[0].ToString();
+            }
+            else
+            {
+                AdminHomeErrorPanel.Visible = true;
+                AdminHomeErrorPanel.Left = 900;
+                AdminHomeErrorPanel.Top = 575 - 33;
+                AdminErrorMessageLabel.Text = "THAT USER DOES NOT EXIT";
+                timer1.Start();
+            }
+        }
+
+
+        private void AdminHomeSearchTextBox_Enter(object sender, EventArgs e)
+        {
+            if (AdminHomeSearchTextBox.Text == "Enter a Username")
+            {
+                AdminHomeSearchTextBox.Text = String.Empty;
+            }
+        }
+
+        private void AdminHomeSearchTextBox_Leave(object sender, EventArgs e)
+        {
+            if (AdminHomeSearchTextBox.Text == String.Empty)
+            {
+                AdminHomeSearchTextBox.Text = "Enter a Username";
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (AdminWarnPanel.Visible)
+            {
+                AdminWarnPanel.Left -= 300;
+            }
+            else if (AdminHomeErrorPanel.Visible)
+            {
+                AdminHomeErrorPanel.Left -= 300;
+            }
+            else if (AdminConfirmPanel.Visible)
+            {
+                AdminConfirmPanel.Left -= 300;
+            }
+
+
+
+            if (AdminHomeErrorPanel.Left <= 0 && AdminHomeErrorPanel.Visible)
+            {
+                timer1.Stop();
+                System.Threading.Thread.Sleep(1500);
+                AdminHomeErrorPanel.Visible = false;
+            }
+            else if (AdminWarnPanel.Left <= 0 && AdminWarnPanel.Visible)
+            {
+                timer1.Stop();
+            }
+            else if (AdminConfirmPanel.Left <= 0 && AdminConfirmPanel.Visible)
+            {
+                timer1.Stop();
+                System.Threading.Thread.Sleep(1500);
+                AdminConfirmPanel.Visible = false;
+            }
+        }
+
+        private void AdminHomeFormCloseLabel_Click(object sender, EventArgs e)
+        {
+            Close();
+            Application.Exit();
+        }
+
+        private void AdminFormCreateButton_Click(object sender, EventArgs e)
+        {
+            AdminCreateAccountForm oAdminCreateAccountForm = new AdminCreateAccountForm();
+            oAdminCreateAccountForm.Show();
+        }
+        #endregion
     }
 }
