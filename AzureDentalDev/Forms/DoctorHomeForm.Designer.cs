@@ -39,6 +39,9 @@
             this.DoctorHomeFormCloseButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DoctorHomeLogoutLabel = new System.Windows.Forms.Label();
+            this.DoctorHomeFormTimeOff = new System.Windows.Forms.Label();
+            this.DoctorHomeFormRequestOffButton = new System.Windows.Forms.Button();
+            this.DoctorTimeOffCalendar = new System.Windows.Forms.MonthCalendar();
             this.SuspendLayout();
             // 
             // DoctorHomeFormWelcomeLabel
@@ -116,12 +119,43 @@
             this.DoctorHomeLogoutLabel.Text = "Logout";
             this.DoctorHomeLogoutLabel.Click += new System.EventHandler(this.DoctorHomeLogoutLabel_Click);
             // 
+            // DoctorHomeFormTimeOff
+            // 
+            this.DoctorHomeFormTimeOff.AutoSize = true;
+            this.DoctorHomeFormTimeOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DoctorHomeFormTimeOff.Location = new System.Drawing.Point(871, 114);
+            this.DoctorHomeFormTimeOff.Name = "DoctorHomeFormTimeOff";
+            this.DoctorHomeFormTimeOff.Size = new System.Drawing.Size(148, 20);
+            this.DoctorHomeFormTimeOff.TabIndex = 7;
+            this.DoctorHomeFormTimeOff.Text = "Request time off:";
+            // 
+            // DoctorHomeFormRequestOffButton
+            // 
+            this.DoctorHomeFormRequestOffButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.DoctorHomeFormRequestOffButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DoctorHomeFormRequestOffButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DoctorHomeFormRequestOffButton.Location = new System.Drawing.Point(875, 408);
+            this.DoctorHomeFormRequestOffButton.Name = "DoctorHomeFormRequestOffButton";
+            this.DoctorHomeFormRequestOffButton.Size = new System.Drawing.Size(144, 66);
+            this.DoctorHomeFormRequestOffButton.TabIndex = 8;
+            this.DoctorHomeFormRequestOffButton.Text = "Confirm time off";
+            this.DoctorHomeFormRequestOffButton.UseVisualStyleBackColor = false;
+            // 
+            // DoctorTimeOffCalendar
+            // 
+            this.DoctorTimeOffCalendar.Location = new System.Drawing.Point(786, 143);
+            this.DoctorTimeOffCalendar.Name = "DoctorTimeOffCalendar";
+            this.DoctorTimeOffCalendar.TabIndex = 9;
+            // 
             // DoctorHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1178, 635);
+            this.Controls.Add(this.DoctorTimeOffCalendar);
+            this.Controls.Add(this.DoctorHomeFormRequestOffButton);
+            this.Controls.Add(this.DoctorHomeFormTimeOff);
             this.Controls.Add(this.DoctorHomeLogoutLabel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DoctorHomeFormCloseButton);
@@ -152,5 +186,8 @@
         private System.Windows.Forms.ColumnHeader description;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label DoctorHomeLogoutLabel;
+        private System.Windows.Forms.Label DoctorHomeFormTimeOff;
+        private System.Windows.Forms.Button DoctorHomeFormRequestOffButton;
+        private System.Windows.Forms.MonthCalendar DoctorTimeOffCalendar;
     }
 }
