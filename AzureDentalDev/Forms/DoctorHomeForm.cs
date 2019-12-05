@@ -34,6 +34,7 @@ namespace AzureDentalDev.Forms
             int i = 1;
             foreach(AppointmentClass appointment in lstAppointments)
             {
+                //If the appointment is of "Vacation" type, ignore it
                 if (appointment.m_strDescription == "Vacation")
                 {
                     
@@ -46,7 +47,7 @@ namespace AzureDentalDev.Forms
                     item.SubItems.Add(appointment.m_strPatientName);
                     item.SubItems.Add(appointment.m_strDescription);
                     item.ForeColor = Color.LightSkyBlue;
-                    //Don't show vacation appointments and show cancelled appointments as strikethrough text
+                    //Show cancelled appointments as strikethrough text
 
                     if (appointment.m_chrStatus[0] == 'C')
                     {
