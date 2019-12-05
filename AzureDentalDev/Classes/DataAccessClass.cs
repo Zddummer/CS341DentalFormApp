@@ -514,7 +514,7 @@ namespace AzureDentalDev.Classes
                                                                     reader.GetDateTime(5),
                                                                     reader.GetSqlChars(6)), 'I');
                             }
-                            else if (reader.GetSqlChars(6)[0] != 'I')
+                            else if (reader.GetSqlChars(6)[0] != 'I' && reader.GetString(3) != "Vacation")
                             {
                                 appointments.Add(new AppointmentClass(reader.GetString(0),
                                                              reader.GetString(1),
@@ -831,6 +831,48 @@ namespace AzureDentalDev.Classes
                 }
             }
             return lstAppointmentList;
+        }
+
+        /*returns an int pertaining to the succcess or failure of a Doctor requesting a specific day off
+         * 1 = Day Taken off Successfully
+         * -1 = Day requested is in the past
+         * -2 = building is closed on that day
+         * -3 = day requested is within 7 days of the present
+         * 
+         */
+        public static int requestDayOff_Doctor(DateTime dtdate, UserClass ucUser)
+        {
+            //Error checking for if the day requested is in the past
+            if(dtdate.Date < DateTime.Today)
+            {
+                return -1;
+            }
+
+            //Error checking for if the day requested is a day the office is already closed
+            OfficeHoursClass ohcDay = QueryDatabaseForOfficeHours(dtdate);
+            if(ohcDay == null)
+            {
+                return -2;
+            }
+
+            //Error checking for if the date requested is within 7 days of the present
+            if((dtdate - DateTime.Today).TotalDays < 7)
+            {
+                return -3;
+            }
+
+            List<AppointmentClass> appts = getAppointments_Admin(ucUser.m_strUsername, dtdate);
+            foreach(AppointmentClass a in appts)
+            {
+                updateAppointmentStatus(a, 'C');
+            }
+
+            for(int i = 0; i < 8; i++)
+            {
+                createAppointment(dtdate.AddHours(9 + i), null, ucUser.m_strUsername, "Vacation", "Vacation", DateTime.Today);
+            }
+
+            return 1;
         }
     }
 }

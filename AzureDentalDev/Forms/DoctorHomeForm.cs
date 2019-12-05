@@ -14,10 +14,19 @@ namespace AzureDentalDev.Forms
     public partial class DoctorHomeForm : Form
         
     {
+        private UserClass ucDoctorUser = null;
         public DoctorHomeForm(String strUserName, String strPassword)
         {           InitializeComponent();
-            UserClass ucDoctorUser = BusinessLogicClass.QueryDatabaseForUser(strUserName, strPassword);
+            ucDoctorUser = BusinessLogicClass.QueryDatabaseForUser(strUserName, strPassword);
             DoctorHomeFormWelcomeLabel.Text = $"Welcome Dr. {ucDoctorUser.m_strFirstName} {ucDoctorUser.m_strLastName}";
+            this.Controls.Add(ConfirmationPanel);
+            ConfirmationPanel.Controls.Add(ConfirmationPanelLabel);
+            ConfirmationPanel.Controls.Add(ConfirmationPanelNoButton);
+            ConfirmationPanel.Controls.Add(ConfirmationPanelYesButton);
+            ConfirmationPanel.Controls.Add(ConfirmationPanelError1);
+            ConfirmationPanel.Controls.Add(ConfirmationPanelError2);
+            ConfirmationPanel.Controls.Add(ConfirmationPanelError3);
+            ConfirmationPanel.Visible = false;
 
             List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithDentistName(strUserName);
 
@@ -86,6 +95,47 @@ namespace AzureDentalDev.Forms
             sb.Append($"{patient} \nDescription: ");
             sb.Append(description);
             MessageBox.Show(sb.ToString());
+        }
+
+        private void DoctorHomeFormRequestOffButton_Click(object sender, EventArgs e)
+        {
+            ConfirmationPanel.BringToFront();
+            ConfirmationPanel.Visible = true;
+            ConfirmationPanelError1.Visible = false;
+            ConfirmationPanelError2.Visible = false;
+            ConfirmationPanelError3.Visible = false;
+
+            ConfirmationPanelLabel.Text = $"Are you sure you wish to take {DoctorTimeOffCalendar.SelectionStart.ToShortDateString()} off?";
+        }
+
+        private void ConfirmationPanelNoButton_Click(object sender, EventArgs e)
+        {
+            ConfirmationPanel.Visible = false;
+        }
+
+        private void ConfirmationPanelYesButton_Click(object sender, EventArgs e)
+        {
+            int success = DataAccessClass.requestDayOff_Doctor(DoctorTimeOffCalendar.SelectionStart, ucDoctorUser);
+            if(success == -1)
+            {
+                ConfirmationPanelError1.Visible = true;
+            }
+
+            if(success == -2)
+            {
+                ConfirmationPanelError2.Visible = true;
+            }
+
+            if(success == -3)
+            {
+                ConfirmationPanelError3.Visible = true;
+            }
+
+            if(success == 1)
+            {
+                ConfirmationPanel.Visible = false;
+                DoctorAppointmentListView.Invalidate();
+            }
         }
     }
 }
