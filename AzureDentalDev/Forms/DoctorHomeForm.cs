@@ -137,5 +137,12 @@ namespace AzureDentalDev.Forms
                 DoctorAppointmentListView.Invalidate();
             }
         }
+
+        private void DoctorHelpButton_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Directory.GetCurrentDirectory();
+            path = path.Replace("bin\\Debug", "HelpFiles\\Doctor_Home_Page_Help.pdf");
+            System.Diagnostics.Process.Start(path);
+        }
     }
 }

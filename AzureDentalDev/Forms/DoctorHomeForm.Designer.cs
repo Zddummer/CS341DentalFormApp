@@ -43,12 +43,13 @@
             this.DoctorHomeFormRequestOffButton = new System.Windows.Forms.Button();
             this.DoctorTimeOffCalendar = new System.Windows.Forms.MonthCalendar();
             this.ConfirmationPanel = new System.Windows.Forms.Panel();
-            this.ConfirmationPanelLabel = new System.Windows.Forms.Label();
-            this.ConfirmationPanelNoButton = new System.Windows.Forms.Button();
-            this.ConfirmationPanelYesButton = new System.Windows.Forms.Button();
-            this.ConfirmationPanelError1 = new System.Windows.Forms.Label();
-            this.ConfirmationPanelError2 = new System.Windows.Forms.Label();
             this.ConfirmationPanelError3 = new System.Windows.Forms.Label();
+            this.ConfirmationPanelError2 = new System.Windows.Forms.Label();
+            this.ConfirmationPanelError1 = new System.Windows.Forms.Label();
+            this.ConfirmationPanelYesButton = new System.Windows.Forms.Button();
+            this.ConfirmationPanelNoButton = new System.Windows.Forms.Button();
+            this.ConfirmationPanelLabel = new System.Windows.Forms.Label();
+            this.DoctorHelpButton = new System.Windows.Forms.Button();
             this.ConfirmationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,16 +170,56 @@
             this.ConfirmationPanel.Name = "ConfirmationPanel";
             this.ConfirmationPanel.Size = new System.Drawing.Size(539, 287);
             this.ConfirmationPanel.TabIndex = 10;
+            this.ConfirmationPanel.Visible = false;
             // 
-            // ConfirmationPanelLabel
+            // ConfirmationPanelError3
             // 
-            this.ConfirmationPanelLabel.Font = new System.Drawing.Font("Arial Narrow", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmationPanelLabel.Location = new System.Drawing.Point(3, 0);
-            this.ConfirmationPanelLabel.Name = "ConfirmationPanelLabel";
-            this.ConfirmationPanelLabel.Size = new System.Drawing.Size(540, 102);
-            this.ConfirmationPanelLabel.TabIndex = 0;
-            this.ConfirmationPanelLabel.Text = "Are you sure you wish to take";
-            this.ConfirmationPanelLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ConfirmationPanelError3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmationPanelError3.ForeColor = System.Drawing.Color.Red;
+            this.ConfirmationPanelError3.Location = new System.Drawing.Point(3, 102);
+            this.ConfirmationPanelError3.Name = "ConfirmationPanelError3";
+            this.ConfirmationPanelError3.Size = new System.Drawing.Size(536, 79);
+            this.ConfirmationPanelError3.TabIndex = 5;
+            this.ConfirmationPanelError3.Text = "Days requested must be at least a week out";
+            this.ConfirmationPanelError3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ConfirmationPanelError3.Visible = false;
+            // 
+            // ConfirmationPanelError2
+            // 
+            this.ConfirmationPanelError2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmationPanelError2.ForeColor = System.Drawing.Color.Red;
+            this.ConfirmationPanelError2.Location = new System.Drawing.Point(0, 139);
+            this.ConfirmationPanelError2.Name = "ConfirmationPanelError2";
+            this.ConfirmationPanelError2.Size = new System.Drawing.Size(539, 42);
+            this.ConfirmationPanelError2.TabIndex = 4;
+            this.ConfirmationPanelError2.Text = "The office is already closed that day";
+            this.ConfirmationPanelError2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ConfirmationPanelError2.Visible = false;
+            // 
+            // ConfirmationPanelError1
+            // 
+            this.ConfirmationPanelError1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmationPanelError1.ForeColor = System.Drawing.Color.Red;
+            this.ConfirmationPanelError1.Location = new System.Drawing.Point(7, 139);
+            this.ConfirmationPanelError1.Name = "ConfirmationPanelError1";
+            this.ConfirmationPanelError1.Size = new System.Drawing.Size(529, 42);
+            this.ConfirmationPanelError1.TabIndex = 3;
+            this.ConfirmationPanelError1.Text = "Day requested is in the past";
+            this.ConfirmationPanelError1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ConfirmationPanelError1.Visible = false;
+            // 
+            // ConfirmationPanelYesButton
+            // 
+            this.ConfirmationPanelYesButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.ConfirmationPanelYesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConfirmationPanelYesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmationPanelYesButton.Location = new System.Drawing.Point(304, 197);
+            this.ConfirmationPanelYesButton.Name = "ConfirmationPanelYesButton";
+            this.ConfirmationPanelYesButton.Size = new System.Drawing.Size(170, 62);
+            this.ConfirmationPanelYesButton.TabIndex = 2;
+            this.ConfirmationPanelYesButton.Text = "Yes";
+            this.ConfirmationPanelYesButton.UseVisualStyleBackColor = false;
+            this.ConfirmationPanelYesButton.Click += new System.EventHandler(this.ConfirmationPanelYesButton_Click);
             // 
             // ConfirmationPanelNoButton
             // 
@@ -194,54 +235,28 @@
             this.ConfirmationPanelNoButton.UseVisualStyleBackColor = false;
             this.ConfirmationPanelNoButton.Click += new System.EventHandler(this.ConfirmationPanelNoButton_Click);
             // 
-            // ConfirmationPanelYesButton
+            // ConfirmationPanelLabel
             // 
-            this.ConfirmationPanelYesButton.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ConfirmationPanelYesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConfirmationPanelYesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmationPanelYesButton.Location = new System.Drawing.Point(304, 197);
-            this.ConfirmationPanelYesButton.Name = "ConfirmationPanelYesButton";
-            this.ConfirmationPanelYesButton.Size = new System.Drawing.Size(170, 62);
-            this.ConfirmationPanelYesButton.TabIndex = 2;
-            this.ConfirmationPanelYesButton.Text = "Yes";
-            this.ConfirmationPanelYesButton.UseVisualStyleBackColor = false;
-            this.ConfirmationPanelYesButton.Click += new System.EventHandler(this.ConfirmationPanelYesButton_Click);
+            this.ConfirmationPanelLabel.Font = new System.Drawing.Font("Arial Narrow", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmationPanelLabel.Location = new System.Drawing.Point(3, 0);
+            this.ConfirmationPanelLabel.Name = "ConfirmationPanelLabel";
+            this.ConfirmationPanelLabel.Size = new System.Drawing.Size(540, 102);
+            this.ConfirmationPanelLabel.TabIndex = 0;
+            this.ConfirmationPanelLabel.Text = "Are you sure you wish to take";
+            this.ConfirmationPanelLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // ConfirmationPanelError1
+            // DoctorHelpButton
             // 
-            this.ConfirmationPanelError1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmationPanelError1.ForeColor = System.Drawing.Color.Red;
-            this.ConfirmationPanelError1.Location = new System.Drawing.Point(7, 139);
-            this.ConfirmationPanelError1.Name = "ConfirmationPanelError1";
-            this.ConfirmationPanelError1.Size = new System.Drawing.Size(529, 42);
-            this.ConfirmationPanelError1.TabIndex = 3;
-            this.ConfirmationPanelError1.Text = "Day requested is in the past";
-            this.ConfirmationPanelError1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ConfirmationPanelError1.Visible = false;
-            // 
-            // ConfirmationPanelError2
-            // 
-            this.ConfirmationPanelError2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmationPanelError2.ForeColor = System.Drawing.Color.Red;
-            this.ConfirmationPanelError2.Location = new System.Drawing.Point(0, 139);
-            this.ConfirmationPanelError2.Name = "ConfirmationPanelError2";
-            this.ConfirmationPanelError2.Size = new System.Drawing.Size(539, 42);
-            this.ConfirmationPanelError2.TabIndex = 4;
-            this.ConfirmationPanelError2.Text = "The office is already closed that day";
-            this.ConfirmationPanelError2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ConfirmationPanelError2.Visible = false;
-            // 
-            // ConfirmationPanelError3
-            // 
-            this.ConfirmationPanelError3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmationPanelError3.ForeColor = System.Drawing.Color.Red;
-            this.ConfirmationPanelError3.Location = new System.Drawing.Point(3, 102);
-            this.ConfirmationPanelError3.Name = "ConfirmationPanelError3";
-            this.ConfirmationPanelError3.Size = new System.Drawing.Size(536, 79);
-            this.ConfirmationPanelError3.TabIndex = 5;
-            this.ConfirmationPanelError3.Text = "Days requested must be at least a week out";
-            this.ConfirmationPanelError3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ConfirmationPanelError3.Visible = false;
+            this.DoctorHelpButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.DoctorHelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DoctorHelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DoctorHelpButton.Location = new System.Drawing.Point(1097, 562);
+            this.DoctorHelpButton.Name = "DoctorHelpButton";
+            this.DoctorHelpButton.Size = new System.Drawing.Size(69, 61);
+            this.DoctorHelpButton.TabIndex = 11;
+            this.DoctorHelpButton.Text = "?";
+            this.DoctorHelpButton.UseVisualStyleBackColor = false;
+            this.DoctorHelpButton.Click += new System.EventHandler(this.DoctorHelpButton_Click);
             // 
             // DoctorHomeForm
             // 
@@ -249,6 +264,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1178, 635);
+            this.Controls.Add(this.DoctorHelpButton);
             this.Controls.Add(this.ConfirmationPanel);
             this.Controls.Add(this.DoctorTimeOffCalendar);
             this.Controls.Add(this.DoctorHomeFormRequestOffButton);
@@ -294,5 +310,6 @@
         private System.Windows.Forms.Label ConfirmationPanelError1;
         private System.Windows.Forms.Label ConfirmationPanelError2;
         private System.Windows.Forms.Label ConfirmationPanelError3;
+        private System.Windows.Forms.Button DoctorHelpButton;
     }
 }
