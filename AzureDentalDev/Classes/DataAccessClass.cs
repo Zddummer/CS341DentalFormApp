@@ -869,7 +869,7 @@ namespace AzureDentalDev.Classes
 
             for(int i = 0; i < 8; i++)
             {
-                createAppointment(dtdate.AddHours(9 + i), null, ucUser.m_strUsername, "Vacation", "Vacation", DateTime.Today);
+                createAppointment(dtdate.AddHours(9 + i), "Vacation", ucUser.m_strUsername, "Vacation", "Vacation", DateTime.Today);
             }
 
             return 1;

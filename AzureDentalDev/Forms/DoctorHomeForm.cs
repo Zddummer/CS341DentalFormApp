@@ -28,6 +28,7 @@ namespace AzureDentalDev.Forms
             ConfirmationPanel.Controls.Add(ConfirmationPanelError3);
             ConfirmationPanel.Visible = false;
 
+            //Create a list of appointments for a specific doctor and add them to the ListView
             List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithDentistName(strUserName);
 
             int i = 1;
@@ -40,6 +41,7 @@ namespace AzureDentalDev.Forms
                 item.SubItems.Add(appointment.m_strPatientName);
                 item.SubItems.Add(appointment.m_strDescription);
                 item.ForeColor = Color.LightSkyBlue;
+                //Show cancelled appointments as strikethrough text
                 if (appointment.m_chrStatus[0] == 'C')
                 {
                     item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
@@ -64,18 +66,21 @@ namespace AzureDentalDev.Forms
 
         }
 
+        //close application when the exit button is clicked
         private void DoctorHomeFormCloseButton_Click(object sender, EventArgs e)
         {
             Close();
             Application.Exit();
         }
 
+        //Send user back to login page if the logout button is clicked
         private void DoctorHomeLogoutLabel_Click(object sender, EventArgs e)
         {
             Application.OpenForms[0].Visible = true;
             Close();
         }
 
+        //Show expanded details for Appointments when clicked
         private void DoctorAppointmentListView_ItemActivate(object sender, EventArgs e)
         {
             
@@ -97,6 +102,7 @@ namespace AzureDentalDev.Forms
             MessageBox.Show(sb.ToString());
         }
 
+        //Bring up the Confirmation panel visible with the date asked off for in the label
         private void DoctorHomeFormRequestOffButton_Click(object sender, EventArgs e)
         {
             ConfirmationPanel.BringToFront();
@@ -108,11 +114,13 @@ namespace AzureDentalDev.Forms
             ConfirmationPanelLabel.Text = $"Are you sure you wish to take {DoctorTimeOffCalendar.SelectionStart.ToShortDateString()} off?";
         }
 
+        //Set the Confirmation panel invisible if the No button is clicked
         private void ConfirmationPanelNoButton_Click(object sender, EventArgs e)
         {
             ConfirmationPanel.Visible = false;
         }
 
+        //Validate day requested off, show an error message if the request failed
         private void ConfirmationPanelYesButton_Click(object sender, EventArgs e)
         {
             int success = DataAccessClass.requestDayOff_Doctor(DoctorTimeOffCalendar.SelectionStart, ucDoctorUser);
@@ -138,6 +146,7 @@ namespace AzureDentalDev.Forms
             }
         }
 
+        //Open Doctor_Home_Page_Help pdf if Help button is clicked
         private void DoctorHelpButton_Click(object sender, EventArgs e)
         {
             string path = System.IO.Directory.GetCurrentDirectory();
