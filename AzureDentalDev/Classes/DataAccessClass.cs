@@ -514,7 +514,7 @@ namespace AzureDentalDev.Classes
                                                                     reader.GetDateTime(5),
                                                                     reader.GetSqlChars(6)), 'I');
                             }
-                            else if (reader.GetSqlChars(6)[0] != 'I' && reader.GetString(3) != "Vacation")
+                            else if (reader.GetSqlChars(6)[0] != 'I')
                             {
                                 appointments.Add(new AppointmentClass(reader.GetString(0),
                                                              reader.GetString(1),

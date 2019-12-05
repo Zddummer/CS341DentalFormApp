@@ -34,24 +34,31 @@ namespace AzureDentalDev.Forms
             int i = 1;
             foreach(AppointmentClass appointment in lstAppointments)
             {
-
-                ListViewItem item = new ListViewItem("Appointment " + i);
-                item.SubItems.Add(appointment.m_dtDateTime.Date.ToShortDateString());
-                item.SubItems.Add(appointment.m_dtDateTime.TimeOfDay.ToString());
-                item.SubItems.Add(appointment.m_strPatientName);
-                item.SubItems.Add(appointment.m_strDescription);
-                item.ForeColor = Color.LightSkyBlue;
-                //Show cancelled appointments as strikethrough text
-                if (appointment.m_chrStatus[0] == 'C')
+                if (appointment.m_strDescription == "Vacation")
                 {
-                    item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+                    
                 }
                 else
                 {
-                    item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                    ListViewItem item = new ListViewItem("Appointment " + i);
+                    item.SubItems.Add(appointment.m_dtDateTime.Date.ToShortDateString());
+                    item.SubItems.Add(appointment.m_dtDateTime.TimeOfDay.ToString());
+                    item.SubItems.Add(appointment.m_strPatientName);
+                    item.SubItems.Add(appointment.m_strDescription);
+                    item.ForeColor = Color.LightSkyBlue;
+                    //Don't show vacation appointments and show cancelled appointments as strikethrough text
+
+                    if (appointment.m_chrStatus[0] == 'C')
+                    {
+                        item.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
+                    }
+                    else
+                    {
+                        item.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                    }
+                    DoctorAppointmentListView.Items.Add(item);
+                    i++;
                 }
-                 DoctorAppointmentListView.Items.Add(item);
-                i++;
 
             }
         }
