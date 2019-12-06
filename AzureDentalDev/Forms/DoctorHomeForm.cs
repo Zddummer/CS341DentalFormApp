@@ -28,16 +28,23 @@ namespace AzureDentalDev.Forms
             ConfirmationPanel.Controls.Add(ConfirmationPanelError3);
             ConfirmationPanel.Visible = false;
 
+            GenerateListView();
+        }
+
+        //Method to build Listview of appointments and display it on the home page
+        private void GenerateListView()
+        {
             //Create a list of appointments for a specific doctor and add them to the ListView
-            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithDentistName(strUserName);
+
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithDentistName(ucDoctorUser.m_strUsername);
 
             int i = 1;
-            foreach(AppointmentClass appointment in lstAppointments)
+            foreach (AppointmentClass appointment in lstAppointments)
             {
                 //If the appointment is of "Vacation" type, ignore it
                 if (appointment.m_strDescription == "Vacation")
                 {
-                    
+
                 }
                 else
                 {
@@ -60,7 +67,7 @@ namespace AzureDentalDev.Forms
                     DoctorAppointmentListView.Items.Add(item);
                     i++;
                 }
-
+                
             }
         }
 
@@ -150,7 +157,7 @@ namespace AzureDentalDev.Forms
             if(success == 1)
             {
                 ConfirmationPanel.Visible = false;
-                DoctorAppointmentListView.Invalidate();
+                GenerateListView();
             }
         }
 
