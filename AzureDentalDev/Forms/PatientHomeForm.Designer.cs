@@ -58,9 +58,11 @@
             this.CloseAppointmentDetailsButton = new System.Windows.Forms.Button();
             this.CancelAppointmentButton = new System.Windows.Forms.Button();
             this.AppointmentDetailsLabel = new System.Windows.Forms.Label();
+            this.HelpPictureBox = new System.Windows.Forms.PictureBox();
             this.AppointmentConfirmationPanel.SuspendLayout();
             this.AppointmentDetailsPanel.SuspendLayout();
             this.ConfirmCancelAppointmentPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // PatientHomeFormWelcome
@@ -133,9 +135,8 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(242, 21);
             this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.Value = System.DateTime.Now;
+            this.dateTimePicker1.Value = new System.DateTime(2019, 12, 7, 12, 34, 37, 78);
             this.dateTimePicker1.Visible = false;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // AppointmentConfirmationPanel
             // 
@@ -255,8 +256,9 @@
             // ErrorMessageLabel
             // 
             this.ErrorMessageLabel.AutoSize = true;
+            this.ErrorMessageLabel.BackColor = System.Drawing.Color.Red;
             this.ErrorMessageLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.ErrorMessageLabel.ForeColor = System.Drawing.Color.Black;
             this.ErrorMessageLabel.Location = new System.Drawing.Point(369, 392);
             this.ErrorMessageLabel.Name = "ErrorMessageLabel";
             this.ErrorMessageLabel.Size = new System.Drawing.Size(338, 16);
@@ -306,7 +308,7 @@
             this.AppointmentDetailsPanel.Controls.Add(this.AppointmentDetailsLabel);
             this.AppointmentDetailsPanel.Location = new System.Drawing.Point(326, 51);
             this.AppointmentDetailsPanel.Name = "AppointmentDetailsPanel";
-            this.AppointmentDetailsPanel.Size = new System.Drawing.Size(462, 377);
+            this.AppointmentDetailsPanel.Size = new System.Drawing.Size(462, 357);
             this.AppointmentDetailsPanel.TabIndex = 13;
             this.AppointmentDetailsPanel.Visible = false;
             // 
@@ -319,7 +321,7 @@
             this.ConfirmCancelAppointmentPanel.Controls.Add(this.CancelAppointmentConfirmationLabel);
             this.ConfirmCancelAppointmentPanel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmCancelAppointmentPanel.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.ConfirmCancelAppointmentPanel.Location = new System.Drawing.Point(239, 266);
+            this.ConfirmCancelAppointmentPanel.Location = new System.Drawing.Point(237, 239);
             this.ConfirmCancelAppointmentPanel.Name = "ConfirmCancelAppointmentPanel";
             this.ConfirmCancelAppointmentPanel.Size = new System.Drawing.Size(200, 100);
             this.ConfirmCancelAppointmentPanel.TabIndex = 14;
@@ -384,7 +386,7 @@
             this.CancelAppointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelAppointmentButton.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelAppointmentButton.ForeColor = System.Drawing.Color.Aqua;
-            this.CancelAppointmentButton.Location = new System.Drawing.Point(79, 291);
+            this.CancelAppointmentButton.Location = new System.Drawing.Point(60, 262);
             this.CancelAppointmentButton.Name = "CancelAppointmentButton";
             this.CancelAppointmentButton.Size = new System.Drawing.Size(112, 45);
             this.CancelAppointmentButton.TabIndex = 1;
@@ -403,12 +405,23 @@
             this.AppointmentDetailsLabel.TabIndex = 0;
             this.AppointmentDetailsLabel.Text = "Appointment Details";
             // 
+            // HelpPictureBox
+            // 
+            this.HelpPictureBox.Image = global::AzureDentalDev.Properties.Resources.info_512pxGREY_2_28x28;
+            this.HelpPictureBox.Location = new System.Drawing.Point(750, 414);
+            this.HelpPictureBox.Name = "HelpPictureBox";
+            this.HelpPictureBox.Size = new System.Drawing.Size(33, 34);
+            this.HelpPictureBox.TabIndex = 14;
+            this.HelpPictureBox.TabStop = false;
+            this.HelpPictureBox.Click += new System.EventHandler(this.HelpPictureBox_Click);
+            // 
             // PatientHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.HelpPictureBox);
             this.Controls.Add(this.AppointmentDetailsPanel);
             this.Controls.Add(this.PatientHomeLogoutLabel);
             this.Controls.Add(this.panel2);
@@ -428,13 +441,13 @@
             this.Name = "PatientHomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PatientHomeForm";
-            this.Load += new System.EventHandler(this.CustomerHomeForm_Load);
             this.AppointmentConfirmationPanel.ResumeLayout(false);
             this.AppointmentConfirmationPanel.PerformLayout();
             this.AppointmentDetailsPanel.ResumeLayout(false);
             this.AppointmentDetailsPanel.PerformLayout();
             this.ConfirmCancelAppointmentPanel.ResumeLayout(false);
             this.ConfirmCancelAppointmentPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,5 +485,6 @@
         private System.Windows.Forms.Label CancelAppointmentConfirmationLabel;
         private System.Windows.Forms.Button ConfirmCancelAppointmentButton;
         private System.Windows.Forms.Button DenyCancelAppointmentButton;
+        private System.Windows.Forms.PictureBox HelpPictureBox;
     }
 }

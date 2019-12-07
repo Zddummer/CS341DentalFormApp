@@ -134,6 +134,7 @@
     </Compile>
     <None Include="HelpFiles\Dental_Admin_help.pdf" />
     <None Include="HelpFiles\Dental_Login_Signup_help.pdf" />
+    <None Include="HelpFiles\Dental_Patient_Help.pdf" />
     <None Include="HelpFiles\Doctor_Home_Page_Help.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

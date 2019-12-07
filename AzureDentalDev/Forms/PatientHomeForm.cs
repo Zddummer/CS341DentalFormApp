@@ -1,4 +1,11 @@
-﻿using AzureDentalDev.Classes;
+﻿/**
+ * 
+ * This form handles functionalities of the patient home form.
+ * When a patient logs in, this form will appear, with the functionality
+ * to schedule and cancel appointments for the patient.
+ * 
+ */
+using AzureDentalDev.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +23,16 @@ namespace AzureDentalDev.Forms
     {
         private List<UserClass> m_lstDentistsHygeinists = new List<UserClass>();
         private String m_strUserName = "";
-        private String m_strPassword = "";
 
+        /// <summary>
+        /// Patient Home form constructor
+        /// </summary>
+        /// @param strUserName username used to log in
+        /// @param strPassword password used to log in
         public PatientHomeForm(String strUserName, String strPassword)
         {
             InitializeComponent();
             m_strUserName = strUserName;
-            m_strPassword = strPassword;
             //Add user's first and last name to welcome label
             UserClass ucUser = BusinessLogicClass.QueryDatabaseForUser(strUserName, strPassword);
             PatientHomeFormWelcome.Text = $"Welcome {ucUser.m_strFirstName} {ucUser.m_strLastName}!";
@@ -116,19 +126,22 @@ namespace AzureDentalDev.Forms
             }
         }
 
+        /// <summary>
+        /// Close application event
+        /// </summary>
         private void ClosePatientHomeFormButton_Click(object sender, EventArgs e)
         {
             Close();
             Application.Exit();
         }
 
-        private void CustomerHomeForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        #region Events involved with scheduling appointments
+        /// <summary>
+        /// Patient clicked "Schedule Appointment" button
+        /// </summary>
         private void ScheduleAppointmentButton_Click(object sender, EventArgs e)
         {
+            //display fields associated with scheduling an appointment
             ScheduleDescriptionTextBox.ForeColor = Color.Gray;
             ErrorMessageLabel.Visible = false;
             AppointmentTypeComboBox.Visible = true;
@@ -138,18 +151,29 @@ namespace AzureDentalDev.Forms
             DentistHygeinistComboBox.Visible = true;
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Patient clicked on the appointment description box
+        /// </summary>
+        private void ScheduleDescriptionTextBox_Click(object sender, EventArgs e)
         {
+            ScheduleDescriptionTextBox.Clear();
+            ScheduleDescriptionTextBox.ForeColor = Color.Aqua;
         }
 
+        /// <summary>
+        /// Patient selected a time, the last field for schedule appointment information
+        /// </summary>
         private void PickTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             AppointmentConfirmationPanel.Visible = true;
         }
 
+        /// <summary>
+        /// Patient clicked to confirm an appointment.
+        /// </summary>
         private void AppointmentConfirmationButton_Click(object sender, EventArgs e)
         {
-            //Validity Check
+            //Get time that the patient selected
             String appointmentTime = "";
             if(PickTimeComboBox.Text.Substring(0,1) != "1")
             {
@@ -158,7 +182,11 @@ namespace AzureDentalDev.Forms
             {
                 appointmentTime = " " + PickTimeComboBox.Text.Substring(0, 5);
             }
+
+            //Get date that the patient selected
             String appointmentDate = dateTimePicker1.Value.ToShortDateString();
+
+            //Get the dentist that was selected and find the related UserClass object
             String appointmentDentistName = DentistHygeinistComboBox.Text.ToString();
             UserClass appointmentDentist = null;
             foreach (UserClass user in m_lstDentistsHygeinists)
@@ -169,6 +197,8 @@ namespace AzureDentalDev.Forms
                     appointmentDentist = user;
                 }
             }
+
+            //Get the description of the appointment
             String appointmentDescription = ScheduleDescriptionTextBox.Text.ToString();
 
             //store appointment in database
@@ -179,8 +209,9 @@ namespace AzureDentalDev.Forms
                         appointmentDescription,
                         DateTime.Now);
 
+            //The appointment was not available for one of 6 reasons
             ErrorMessageLabel.Visible = true;
-            ErrorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(255, 55, 55);
+            ErrorMessageLabel.BackColor = Color.Red;
             switch (responseCode)
             {
                 case -1:
@@ -204,12 +235,14 @@ namespace AzureDentalDev.Forms
                 default:
                     break;
             }
-
+            //The appointment was available and added to the database
             if(responseCode == 1)
             {
-                ErrorMessageLabel.ForeColor = System.Drawing.Color.Green;
+                //display green confirmation message
+                ErrorMessageLabel.BackColor = System.Drawing.Color.Green;
                 ErrorMessageLabel.Text = "Your appointment has been created";
 
+                //hide and reset fields for scheduling an appointment
                 AppointmentTypeComboBox.Visible = false;
                 AppointmentTypeComboBox.Text = "Select Appointment Type";
 
@@ -227,6 +260,7 @@ namespace AzureDentalDev.Forms
 
                 AppointmentConfirmationPanel.Visible = false;
 
+                //add new appointment to upcoming appointments list
                 ListViewItem item = new ListViewItem("New Appointment");
                 item.SubItems.Add(appointmentDate);
                 item.SubItems.Add(appointmentTime);
@@ -238,8 +272,12 @@ namespace AzureDentalDev.Forms
             }  
         }
 
+        /// <summary>
+        /// Patient decided not to confirm appointment
+        /// </summary>
         private void DenyConfirmationButton_Click(object sender, EventArgs e)
         {
+            //Reset all fields to their default text and visibility
             AppointmentTypeComboBox.Visible = false;
             AppointmentTypeComboBox.Text = "Select Appointment Type";
 
@@ -256,18 +294,25 @@ namespace AzureDentalDev.Forms
             ScheduleDescriptionTextBox.Text = "Description of Appointment";
 
             AppointmentConfirmationPanel.Visible = false;
+            ErrorMessageLabel.Visible = false;
         }
+        #endregion
 
+        #region Events involved in selecting and canceling appointments
+        /// <summary>
+        /// Patient selected an appointment from their upcoming appointments
+        /// </summary>
         private void AppointmentsList_ItemActivate(object sender, EventArgs e)
         {
+            //hide unnecessary labels on the page
             ErrorMessageLabel.Visible = false;
-            ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
 
+            //store the appointment that was selected 
+            ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
             String date = items[1].Text.ToString();
             String time = items[2].Text.ToString();
             String dentist = items[3].Text.ToString();
             String description = items[4].Text.ToString();
-            
             UserClass appointmentDentist = null;
             foreach (UserClass user in m_lstDentistsHygeinists)
             {
@@ -277,14 +322,15 @@ namespace AzureDentalDev.Forms
                     appointmentDentist = user;
                 }
             }
+
+            //Display the details of the selected appointment in a new panel
             StringBuilder sb = new StringBuilder();
             sb.Append(AppointmentsList.FocusedItem.Text.ToString());
             sb.Append($"\nDate of Appointment: {date}");
             sb.Append($"\nTime of Appointment: {time}");
-            
             if (appointmentDentist.m_chrUserType[0] == 'H')
             {
-                sb.Append("\nYour Hygeinist: ");
+                sb.Append("\nYour Hygienist: ");
             } 
             else
             {
@@ -296,39 +342,45 @@ namespace AzureDentalDev.Forms
             AppointmentDetailsPanel.Visible = true;
         }
 
-        private void ScheduleDescriptionTextBox_Click(object sender, EventArgs e)
-        {
-            ScheduleDescriptionTextBox.Clear();
-            ScheduleDescriptionTextBox.ForeColor = Color.Aqua;
-        }
-
-        private void PatientHomeLogoutLabel_Click(object sender, EventArgs e)
-        {
-            Application.OpenForms[0].Visible = true;
-            Close();
-        }
-
+        /// <summary>
+        /// An appointment is already slected and patient wishes to close the details panel
+        /// </summary>
         private void CloseAppointmentDetailsButton_Click(object sender, EventArgs e)
         {
             AppointmentDetailsPanel.Visible = false;
             ConfirmCancelAppointmentPanel.Visible = false;
         }
 
+        /// <summary>
+        /// Patient wishes to cancel the currently selected appointment
+        /// </summary>
         private void CancelAppointmentButton_Click(object sender, EventArgs e)
         {
+            //display message for patient to confirm the cancel action
             ConfirmCancelAppointmentPanel.Visible = true;
         }
 
+        /// <summary>
+        /// Patient does not wish to cancel appointment
+        /// </summary>
         private void DenyCancelAppointmentButton_Click(object sender, EventArgs e)
         {
             ConfirmCancelAppointmentPanel.Visible = false;
         }
 
+        /// <summary>
+        /// Patient confirms that they want to cancel the selected appointment
+        /// </summary>
         private void ConfirmCancelAppointmentButton_Click(object sender, EventArgs e)
         {
+            //store the currently selected appointment
             ListViewItem.ListViewSubItemCollection items = AppointmentsList.FocusedItem.SubItems;
-            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(m_strUserName);
 
+            //find the AppointmentClass object corresponding to the selected appointment
+            
+            //first get all appointments related to the patient from the database
+            List<AppointmentClass> lstAppointments = DataAccessClass.getAppointmentsWithCustomerName(m_strUserName);
+            //determine which appointment object corresponds to the selected list item
             String date = items[1].Text.ToString();
             String time = items[2].Text.ToString();
             DateTime dateAndTime = DateTime.Parse(date + " " + time);
@@ -341,10 +393,33 @@ namespace AzureDentalDev.Forms
                 }
             }
 
+            //send appointment back to the database with cancel status
             DataAccessClass.updateAppointmentStatus(selectedAppointment, 'C');
+
+            //strikeout appointment in the "Upcoming Appointments" list and hide cancel appointment panel
             AppointmentsList.FocusedItem.Font = new Font("Arial", 9F, FontStyle.Strikeout, GraphicsUnit.Point, ((byte)(0)));
             AppointmentDetailsPanel.Visible = false;
             ConfirmCancelAppointmentPanel.Visible = false;
+        }
+        #endregion
+
+        /// <summary>
+        /// Patient clicked the logout button
+        /// </summary>
+        private void PatientHomeLogoutLabel_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            Close();
+        }
+
+        /// <summary>
+        /// Help button clicked event
+        /// </summary>
+        private void HelpPictureBox_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Directory.GetCurrentDirectory();
+            path = path.Replace("bin\\Debug", "HelpFiles\\Dental_Patient_Help.pdf");
+            System.Diagnostics.Process.Start(path);
         }
     }
 }
