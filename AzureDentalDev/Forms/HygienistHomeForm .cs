@@ -87,5 +87,12 @@ namespace AzureDentalDev.Forms
             sb.Append(description);
             MessageBox.Show(sb.ToString());
         }
+
+        private void HelpPictureBox_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Directory.GetCurrentDirectory();
+            path = path.Replace("bin\\Debug", "HelpFiles\\Hygienic_Patient_help.pdf");
+            System.Diagnostics.Process.Start(path);
+        }
     }
 }

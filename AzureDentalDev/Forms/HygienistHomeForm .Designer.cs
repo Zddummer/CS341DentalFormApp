@@ -39,15 +39,17 @@
             this.DoctorHomeFormCloseButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DoctorHomeLogoutLabel = new System.Windows.Forms.Label();
+            this.HelpPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // DoctorHomeFormWelcomeLabel
             // 
             this.DoctorHomeFormWelcomeLabel.AutoSize = true;
             this.DoctorHomeFormWelcomeLabel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DoctorHomeFormWelcomeLabel.Location = new System.Drawing.Point(43, 29);
+            this.DoctorHomeFormWelcomeLabel.Location = new System.Drawing.Point(43, 27);
             this.DoctorHomeFormWelcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.DoctorHomeFormWelcomeLabel.MinimumSize = new System.Drawing.Size(67, 26);
+            this.DoctorHomeFormWelcomeLabel.MinimumSize = new System.Drawing.Size(67, 24);
             this.DoctorHomeFormWelcomeLabel.Name = "DoctorHomeFormWelcomeLabel";
             this.DoctorHomeFormWelcomeLabel.Size = new System.Drawing.Size(130, 32);
             this.DoctorHomeFormWelcomeLabel.TabIndex = 0;
@@ -65,10 +67,10 @@
             this.description});
             this.DoctorAppointmentListView.ForeColor = System.Drawing.Color.Aqua;
             this.DoctorAppointmentListView.HideSelection = false;
-            this.DoctorAppointmentListView.Location = new System.Drawing.Point(12, 91);
+            this.DoctorAppointmentListView.Location = new System.Drawing.Point(12, 84);
             this.DoctorAppointmentListView.Margin = new System.Windows.Forms.Padding(2);
             this.DoctorAppointmentListView.Name = "DoctorAppointmentListView";
-            this.DoctorAppointmentListView.Size = new System.Drawing.Size(432, 315);
+            this.DoctorAppointmentListView.Size = new System.Drawing.Size(432, 291);
             this.DoctorAppointmentListView.TabIndex = 1;
             this.DoctorAppointmentListView.TileSize = new System.Drawing.Size(150, 80);
             this.DoctorAppointmentListView.UseCompatibleStateImageBehavior = false;
@@ -79,7 +81,7 @@
             // 
             this.DoctorHomeFormAppointmentsLabel.AutoSize = true;
             this.DoctorHomeFormAppointmentsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DoctorHomeFormAppointmentsLabel.Location = new System.Drawing.Point(12, 74);
+            this.DoctorHomeFormAppointmentsLabel.Location = new System.Drawing.Point(12, 68);
             this.DoctorHomeFormAppointmentsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DoctorHomeFormAppointmentsLabel.Name = "DoctorHomeFormAppointmentsLabel";
             this.DoctorHomeFormAppointmentsLabel.Size = new System.Drawing.Size(147, 13);
@@ -92,7 +94,7 @@
             this.DoctorHomeFormCloseButton.Location = new System.Drawing.Point(760, 1);
             this.DoctorHomeFormCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.DoctorHomeFormCloseButton.Name = "DoctorHomeFormCloseButton";
-            this.DoctorHomeFormCloseButton.Size = new System.Drawing.Size(27, 26);
+            this.DoctorHomeFormCloseButton.Size = new System.Drawing.Size(27, 24);
             this.DoctorHomeFormCloseButton.TabIndex = 3;
             this.DoctorHomeFormCloseButton.Text = "X";
             this.DoctorHomeFormCloseButton.UseVisualStyleBackColor = true;
@@ -103,7 +105,7 @@
             this.panel2.BackColor = System.Drawing.Color.Aqua;
             this.panel2.Location = new System.Drawing.Point(753, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 25);
+            this.panel2.Size = new System.Drawing.Size(3, 23);
             this.panel2.TabIndex = 4;
             // 
             // DoctorHomeLogoutLabel
@@ -118,12 +120,23 @@
             this.DoctorHomeLogoutLabel.Text = "Logout";
             this.DoctorHomeLogoutLabel.Click += new System.EventHandler(this.DoctorHomeLogoutLabel_Click);
             // 
+            // HelpPictureBox
+            // 
+            this.HelpPictureBox.BackgroundImage = global::AzureDentalDev.Properties.Resources.info_512pxGREY_2_28x28;
+            this.HelpPictureBox.Location = new System.Drawing.Point(745, 349);
+            this.HelpPictureBox.Name = "HelpPictureBox";
+            this.HelpPictureBox.Size = new System.Drawing.Size(28, 26);
+            this.HelpPictureBox.TabIndex = 7;
+            this.HelpPictureBox.TabStop = false;
+            this.HelpPictureBox.Click += new System.EventHandler(this.HelpPictureBox_Click);
+            // 
             // HygienistHomeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(785, 413);
+            this.ClientSize = new System.Drawing.Size(785, 381);
+            this.Controls.Add(this.HelpPictureBox);
             this.Controls.Add(this.DoctorHomeLogoutLabel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DoctorHomeFormCloseButton);
@@ -137,6 +150,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DoctorHomeForm";
             this.Load += new System.EventHandler(this.DoctorHomeForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.HelpPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +169,6 @@
         private System.Windows.Forms.ColumnHeader description;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label DoctorHomeLogoutLabel;
+        private System.Windows.Forms.PictureBox HelpPictureBox;
     }
 }
