@@ -3,6 +3,7 @@
  * This class handles the creation of new users by the system administrator.
  * The admin can create a user of any type
  * 
+ * @authors Zach Dummer
  */
 
 using AzureDentalDev.Classes;

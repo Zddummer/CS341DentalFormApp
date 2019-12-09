@@ -4,6 +4,7 @@
  * of the company by being able to create, delete, and reactive users, set up company calender, and
  * search for/ delete appointments
  * 
+ * @authors Zach Dummer
  */
 
 using AzureDentalDev.Classes;

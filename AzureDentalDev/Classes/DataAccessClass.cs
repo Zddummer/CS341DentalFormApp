@@ -2,6 +2,8 @@
  * 
  * This class handles all the access to the Database
  * 
+ * @authors Zach Dummer
+ * 
  */
 
 using System;

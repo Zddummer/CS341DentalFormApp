@@ -3,6 +3,7 @@
  * This form handles all the logic for users to log in. It serves as the main form page and handles all the routing
  * to other form pages based on log in information.
  * 
+ * @authors Zach Dummer
  */
 
 using AzureDentalDev.Classes;

@@ -2,6 +2,7 @@
  * 
  * This class handles all the logic and GUI functionality for creating a new user
  * 
+ * @authors Zach Dummer
  */
 
 using AzureDentalDev.Classes;

@@ -2,6 +2,8 @@
  * This class acts as the business logic layer for the company's application.
  * It passes information between the UI layer and Data Access Layer, applying
  * business logic during the process
+ * 
+ * @authors Zach Dummer
  */
 using System;
 using System.IO;
