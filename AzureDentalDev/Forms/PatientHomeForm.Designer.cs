@@ -1,4 +1,10 @@
-﻿namespace AzureDentalDev.Forms
+﻿/**
+ * 
+ * Auto-generated code used to construct the patient home form
+ * 
+ * 
+ */
+namespace AzureDentalDev.Forms
 {
     partial class PatientHomeForm
     {

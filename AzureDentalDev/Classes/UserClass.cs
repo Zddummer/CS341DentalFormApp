@@ -1,4 +1,12 @@
-﻿using System;
+﻿/**
+ * 
+ * This class is a data structure that allows for the 
+ * organization of user data
+ * 
+ * @author Austin Stalsberg
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

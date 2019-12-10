@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**
+ * 
+ * This class allows organization of appointment data
+ * 
+ * @author Austin Stalsberg
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -2,10 +2,9 @@
  * 
  * This class handles all the access to the Database
  * 
- * @authors Zach Dummer
+ * @authors Zach Dummer, Austin Stalsberg, Tim Olson
  * 
  */
-
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

@@ -4,6 +4,7 @@
  * When a patient logs in, this form will appear, with the functionality
  * to schedule and cancel appointments for the patient.
  * 
+ * @Author Austin Stalsberg
  */
 using AzureDentalDev.Classes;
 using System;
