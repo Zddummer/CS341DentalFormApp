@@ -11,6 +11,8 @@ using AzureDentalDev.Classes;
 
 namespace AzureDentalDev.Forms
 {
+    //Form for Doctor's homepage
+    //@author Tim Olson
     public partial class DoctorHomeForm : Form
         
     {
@@ -71,11 +73,13 @@ namespace AzureDentalDev.Forms
             }
         }
 
+        //Unused method that throws errors if deleted
         private void DoctorHomeForm_Load(object sender, EventArgs e)
         {
 
         }
 
+        //Unused method that throws errors if deleted
         private void Label1_Click(object sender, EventArgs e)
         {
 
@@ -158,6 +162,8 @@ namespace AzureDentalDev.Forms
             {
                 ConfirmationPanel.Visible = false;
                 GenerateListView();
+                DoctorAppointmentListView.Invalidate();
+                DoctorAppointmentListView.Update();
             }
         }
 

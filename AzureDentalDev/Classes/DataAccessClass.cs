@@ -482,6 +482,7 @@ namespace AzureDentalDev.Classes
          * 
          * parameters: String Username, String Password
          * returns: List of AppointmentClass objects
+         * @author: Tim Olson
          */
         public static List<AppointmentClass> getAppointmentsWithDentistName(String strUserName)
         {
@@ -841,6 +842,8 @@ namespace AzureDentalDev.Classes
          * -2 = building is closed on that day
          * -3 = day requested is within 7 days of the present
          * 
+         * Parameters: a date, and a dentist type UserClass
+         * @author: Tim Olson
          */
         public static int requestDayOff_Doctor(DateTime dtdate, UserClass ucUser)
         {

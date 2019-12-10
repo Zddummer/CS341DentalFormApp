@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace AzureDentalDev.Classes
 {
+    
     class AppointmentClass
     {
         public DateTime m_dtDateTime = DateTime.Now;
