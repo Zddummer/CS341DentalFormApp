@@ -1,4 +1,9 @@
-﻿using System;
+/**
+*This form handles functionalities of the hygienist home form.
+*When a hygienist logs in, this form will apper
+*@Authors Yichu Yang
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,29 +49,29 @@ namespace AzureDentalDev.Forms
 
             }
         }
-
+        //throws error if deleted
         private void DoctorHomeForm_Load(object sender, EventArgs e)
         {
 
         }
-
+        //throws error if deleted
         private void Label1_Click(object sender, EventArgs e)
         {
 
         }
-
+        //close the application
         private void DoctorHomeFormCloseButton_Click(object sender, EventArgs e)
         {
             Close();
             Application.Exit();
         }
-
+        //Send user back to login page if button is clicked
         private void DoctorHomeLogoutLabel_Click(object sender, EventArgs e)
         {
             Application.OpenForms[0].Visible = true;
             Close();
         }
-
+        //Show expanded details for Appointments 
         private void DoctorAppointmentListView_ItemActivate(object sender, EventArgs e)
         {
             
@@ -87,7 +92,7 @@ namespace AzureDentalDev.Forms
             sb.Append(description);
             MessageBox.Show(sb.ToString());
         }
-
+        //Open Hygienist home page help pdf if help button is clicked
         private void HelpPictureBox_Click(object sender, EventArgs e)
         {
             string path = System.IO.Directory.GetCurrentDirectory();
